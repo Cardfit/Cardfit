@@ -16,6 +16,7 @@
 		721E772E2A247DBB001DFBBF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 721E772D2A247DBB001DFBBF /* FirebaseFirestore */; };
 		721E77302A247DBB001DFBBF /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 721E772F2A247DBB001DFBBF /* FirebaseFirestoreSwift */; };
 		721E77322A247DBB001DFBBF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 721E77312A247DBB001DFBBF /* FirebaseStorage */; };
+		721E77362A248040001DFBBF /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E77352A248040001DFBBF /* FirebaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		721E76ED2A20BFE4001DFBBF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		721E76EF2A20BFE4001DFBBF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		721E76F22A20BFE4001DFBBF /* Cardfit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cardfit.xcdatamodel; sourceTree = "<group>"; };
+		721E77352A248040001DFBBF /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				721E76E62A20BFE2001DFBBF /* CardfitApp.swift */,
+				721E77352A248040001DFBBF /* FirebaseManager.swift */,
 				721E76E82A20BFE2001DFBBF /* ContentView.swift */,
 				721E76EA2A20BFE4001DFBBF /* Assets.xcassets */,
 				721E76EF2A20BFE4001DFBBF /* Persistence.swift */,
@@ -159,6 +162,7 @@
 			files = (
 				721E76F02A20BFE4001DFBBF /* Persistence.swift in Sources */,
 				721E76F32A20BFE4001DFBBF /* Cardfit.xcdatamodeld in Sources */,
+				721E77362A248040001DFBBF /* FirebaseManager.swift in Sources */,
 				721E76E92A20BFE2001DFBBF /* ContentView.swift in Sources */,
 				721E76E72A20BFE2001DFBBF /* CardfitApp.swift in Sources */,
 			);
