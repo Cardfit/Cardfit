@@ -17,6 +17,7 @@
 		721E77302A247DBB001DFBBF /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 721E772F2A247DBB001DFBBF /* FirebaseFirestoreSwift */; };
 		721E77322A247DBB001DFBBF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 721E77312A247DBB001DFBBF /* FirebaseStorage */; };
 		721E77362A248040001DFBBF /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E77352A248040001DFBBF /* FirebaseManager.swift */; };
+		721E77662A2764A8001DFBBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 721E77652A2764A8001DFBBF /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		721E76EF2A20BFE4001DFBBF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		721E76F22A20BFE4001DFBBF /* Cardfit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cardfit.xcdatamodel; sourceTree = "<group>"; };
 		721E77352A248040001DFBBF /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		721E77652A2764A8001DFBBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +68,9 @@
 				721E76E62A20BFE2001DFBBF /* CardfitApp.swift */,
 				721E77352A248040001DFBBF /* FirebaseManager.swift */,
 				721E76E82A20BFE2001DFBBF /* ContentView.swift */,
-				721E76EA2A20BFE4001DFBBF /* Assets.xcassets */,
 				721E76EF2A20BFE4001DFBBF /* Persistence.swift */,
+				721E76EA2A20BFE4001DFBBF /* Assets.xcassets */,
+				721E77652A2764A8001DFBBF /* GoogleService-Info.plist */,
 				721E76F12A20BFE4001DFBBF /* Cardfit.xcdatamodeld */,
 				721E76EC2A20BFE4001DFBBF /* Preview Content */,
 			);
@@ -150,6 +153,7 @@
 			files = (
 				721E76EE2A20BFE4001DFBBF /* Preview Assets.xcassets in Resources */,
 				721E76EB2A20BFE4001DFBBF /* Assets.xcassets in Resources */,
+				721E77662A2764A8001DFBBF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
