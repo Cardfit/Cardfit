@@ -15,9 +15,6 @@ struct CardfitApp: App {
     
     let persistenceController = PersistenceController.shared
     
-    // todo(domb): 다른 파일로 분리하기
-    let companies = ["KB", "HD", "..."]
-    
     init() {
         // 앱 실행시 초기 설정 여기서
     }
