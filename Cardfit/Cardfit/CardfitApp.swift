@@ -21,7 +21,7 @@ struct CardfitApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CardSearchView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }.onChange(of: scenePhase) { newValue in
             print(newValue)
