@@ -9,31 +9,36 @@ import SwiftUI
 
 struct CardCompanySingleView: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    @State var isSelected = false
+    
     var imageURL: String
     var name: String
     var mainBenefit: String
     
     var body: some View {
-        HStack(alignment: .center) {
-            AsyncImage(url: URL(string: imageURL), scale: 1)
+        HStack(alignment: .top) {
+            AsyncImage(url: URL(string: imageURL))
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 100)
+                .frame(width: 90)
                 .background(.white)
                 .padding(.all, 20)
-            
             VStack(alignment: .leading) {
                 Text(name)
-                    .font(.system(size: 26, weight: .bold, design: .default))
-                    .foregroundColor(.white)
-                    .padding(.bottom)
+                    .font(.system(size: 20, weight: .bold, design: .default))
+                    .foregroundColor(.black)
+                    .padding(.top, 22)
+                    
                 Text(mainBenefit)
                     .font(.system(size: 16, weight: .bold, design: .default))
                     .foregroundColor(.gray)
-            }.padding(.trailing, 20)
+                    .padding(.top, 5)
+            }
+            .padding(.trailing, 20)
             Spacer()
         }
         .frame(maxWidth: .infinity, alignment: .center)
-        .background(Color(red: 32/255, green: 36/255, blue: 38/255))
+        .background(colorScheme == .light ? .white : Color(UIColor.systemGray5))
         .modifier(CardModifier())
         .padding(.all, 10)
     }

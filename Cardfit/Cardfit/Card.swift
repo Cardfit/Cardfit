@@ -85,8 +85,9 @@ enum CompanyList: String, CaseIterable {
     }
 }
 
-struct Card: Codable {
+struct Card: Identifiable, Hashable,  Codable {
     
+    var id: Int?
     var cardName: String?
     var cardNumber: String?
     var cardImageURL: String?

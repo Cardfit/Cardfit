@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import FirebaseStorage
+import CoreData
 
 class FirebaseManager: NSObject {
     
@@ -23,6 +24,33 @@ class FirebaseManager: NSObject {
         self.firestore = Firestore.firestore()
         
         super.init()
+    }
+    
+    func fetchCardInfo(of company: CompanyList) async -> [Card] {
+        var cardList: [Card] = []
+        
+        let cardListRef = firestore.collection("CardList")
+        let allCardInfo = cardListRef.document("CardInfo")
+        let cardsOfSelectedCompany = allCardInfo.collection(company.rawValue)
+        
+        do {
+            let cardNumberRefs = try await cardsOfSelectedCompany.getDocuments().documents
+            
+            for cardNumberRef in cardNumberRefs {
+                do {
+                    let cardSnapshot = try await cardsOfSelectedCompany.document(cardNumberRef.documentID).getDocument()
+                    let card = try cardSnapshot.data(as: Card.self)
+                    cardList.append(card)
+                    
+                } catch {
+                    print("Failed to fetch card info:", error)
+                }
+            }
+        } catch {
+            print("Failed to fetch card number refs:", error)
+        }
+        
+        return cardList
     }
 }
 

@@ -9,8 +9,13 @@ import SwiftUI
 
 struct CardListView: View {
     
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CardEntity.cardNumber, ascending: true)])
-    private var cards: FetchedResults<CardEntity>
+    @State private var isLoading = false
+    
+//    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CardEntity.cardNumber, ascending: true)])
+//    private var cards: FetchedResults<CardEntity>
+    @State private var cards: [Card] = []
+    @State private var selectedCards: [Card] = []
+    @State private var showDetail = false
     private let company: CompanyList
     
     init(company: CompanyList) {
@@ -19,16 +24,37 @@ struct CardListView: View {
     
     var body: some View {
         ScrollView {
+            if isLoading {
+                ProgressView("Loading...")
+                    .padding()
+            }
             ForEach(cards, id: \.self) { card in
-                CardCompanySingleView(imageURL: card.cardImageURL ?? String(), name: card.cardName ?? String(), mainBenefit: card.mainBenefit ?? String())
+                CardCompanySingleView(isSelected: selectedCards.contains(card), imageURL: card.cardImageURL ?? String(), name: card.cardName ?? String(), mainBenefit: card.mainBenefit ?? String())
             }
         }
         .onAppear {
+            isLoading = true
             Task(priority: .background) {
-                let viewContext = PersistenceController.shared.container.viewContext
-                await FirebaseManager.shared.fetchCardInfo(of: company, in: viewContext)
+                let cardList = await FirebaseManager.shared.fetchCardInfo(of: company)
+                self.cards = cardList
+                isLoading = false
             }
         }
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarTrailing) {
+//                Button(action: {
+//                    selectedCards = cards.filter { card in
+//                        card.isSelected
+//                    }
+//                    showDetail = true
+//                }) {
+//                    Text("추가")
+//                }
+//            }
+//        }
+//        .sheet(isPresented: $showDetail) {
+//            DetailView(selectedCards: $selectedCards)
+//        }
 //        .modifier(CustomNavigationBar(title: "\(categoryViewModel.category.icon) \(categoryViewModel.category.rawValue.capitalized)"))
     }
 }
@@ -36,7 +62,7 @@ struct CardListView: View {
 struct CardListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CardListView(company: .bc)
+            CardListView(company: .chai)
         }
     }
 }
