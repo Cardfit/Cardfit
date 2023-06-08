@@ -94,5 +94,6 @@ struct Card: Identifiable, Hashable,  Codable {
     var domesticAnnualFee: String?
     var requiredPreviousMonthUsage: Int64?
     var mainBenefit: String?
+    var company: String?
 }
 

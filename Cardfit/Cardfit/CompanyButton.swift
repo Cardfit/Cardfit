@@ -9,8 +9,6 @@ import SwiftUI
 
 struct CompanyButton: View {
     
-    @Environment(\.colorScheme) var colorScheme
-    
     let company: CompanyList
     
     var body: some View {
@@ -30,7 +28,7 @@ struct CompanyButton: View {
             }
             .padding(.all)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(colorScheme == .light ? .white : Color(UIColor.systemGray5))
+            .background(.white)
             .cornerRadius(20)
             .shadow(color: Color.black.opacity(0.1), radius: 20, x: 0, y: 0)
         }

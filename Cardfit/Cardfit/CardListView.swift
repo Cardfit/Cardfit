@@ -9,17 +9,12 @@ import SwiftUI
 
 struct CardListView: View {
     
-    @State private var isLoading = false
+    @ObservedObject private var viewModel: CardListViewModel
     
-//    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CardEntity.cardNumber, ascending: true)])
-//    private var cards: FetchedResults<CardEntity>
-    @State private var cards: [Card] = []
-    @State private var selectedCards: [Card] = []
-    @State private var showDetail = false
-    private let company: CompanyList
+    @State private var isLoading = true
     
     init(company: CompanyList) {
-        self.company = company
+        self.viewModel = CardListViewModel(company: company)
     }
     
     var body: some View {
@@ -27,42 +22,41 @@ struct CardListView: View {
             if isLoading {
                 ProgressView("Loading...")
                     .padding()
-            }
-            ForEach(cards, id: \.self) { card in
-                CardCompanySingleView(isSelected: selectedCards.contains(card), imageURL: card.cardImageURL ?? String(), name: card.cardName ?? String(), mainBenefit: card.mainBenefit ?? String())
+            } else {
+                ForEach(viewModel.cardList, id: \.self) { card in
+                    CardListViewCell(company: viewModel.company, imageURL: card.cardImageURL ?? String(), cardNumber: card.cardNumber ?? String(), name: card.cardName ?? String(), mainBenefit: card.mainBenefit ?? String())
+                }
+                // domb: 이미지 로딩후 isLoading을 false로 바꾸는 로직 구현하기.
             }
         }
         .onAppear {
-            isLoading = true
-            Task(priority: .background) {
-                let cardList = await FirebaseManager.shared.fetchCardInfo(of: company)
-                self.cards = cardList
-                isLoading = false
+            Task {
+                let result = await viewModel.fetchCardList()
+                switch result {
+                case .success(let entity):
+                    viewModel.cardList = entity
+                    isLoading = false
+                case .failure(let error):
+                    print(error)
+                }
+            
             }
         }
-//        .toolbar {
-//            ToolbarItem(placement: .navigationBarTrailing) {
-//                Button(action: {
-//                    selectedCards = cards.filter { card in
-//                        card.isSelected
-//                    }
-//                    showDetail = true
-//                }) {
-//                    Text("추가")
-//                }
-//            }
-//        }
-//        .sheet(isPresented: $showDetail) {
-//            DetailView(selectedCards: $selectedCards)
-//        }
-//        .modifier(CustomNavigationBar(title: "\(categoryViewModel.category.icon) \(categoryViewModel.category.rawValue.capitalized)"))
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: LoadingView()) {
+                    Text("확인")
+                        .foregroundColor(.black)
+                }
+            }
+        }
     }
 }
 
 struct CardListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CardListView(company: .chai)
+            CardListView(company: .bc)
         }
     }
 }

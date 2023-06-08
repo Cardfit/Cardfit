@@ -9,13 +9,6 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    
-    @Environment(\.managedObjectContext)
-    private var viewContext
-    
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \CardEntity.cardNumber, ascending: true)])
-    private var cards: FetchedResults<CardEntity>
 
     var body: some View {
         Text("Content View Body")
@@ -24,6 +17,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+        ContentView()
     }
 }
