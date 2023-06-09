@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 
 enum CompanyList: String, CaseIterable {
     case bc = "BC CARD"
