@@ -33,7 +33,7 @@ class FirebaseManager: NSObject {
                 
                 DispatchQueue.global().async {
                     let data = try? Data(contentsOf: url!)
-                    let uiImage = UIImage(data: data!)
+                    let uiImage = UIImage(data: data!)?.preparingThumbnail(of: CGSize(width: 150, height: 150))
                     
                     continuation.resume(returning: uiImage)
                 }
