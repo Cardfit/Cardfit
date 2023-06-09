@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct LoadingView: View {
+    
+    @State var percent: CGFloat = 50
+    
     var body: some View {
-        
-        @State var percent: CGFloat = 50
-        
         VStack(spacing: 20) {
             Text("카드 등록중입니다.")
                 .font(.title2)
