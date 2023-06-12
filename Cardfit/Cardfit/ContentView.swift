@@ -19,10 +19,6 @@ struct ContentView: View {
     var body: some View {
         Main()
             .environmentObject(mainModel)
-//        NavigationView {
-//
-//
-//        }
     }
 
     private func addItem() {
