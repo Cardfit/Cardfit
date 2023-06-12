@@ -16,7 +16,7 @@ struct DetailView: View {
         ZStack {
             VStack{
                 
-                Text(model.selectedCard.company)
+                Text(model.selectedCard.company ?? "")
                     .font(.caption)
                     .foregroundColor(Color.white.opacity(0.85))
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -25,7 +25,7 @@ struct DetailView: View {
                     .matchedGeometryEffect(id: "Date-\(model.selectedCard.id)", in: animation)
             
                 HStack{
-                    Text(model.selectedCard.title)
+                    Text(model.selectedCard.title ?? "")
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -40,7 +40,7 @@ struct DetailView: View {
                 
                 if model.showContent{
                     ScrollView(showsIndicators: false){
-                        model.selectedCard.image
+                        model.selectedCard.image?
                             .resizable()
                             .scaledToFit()
                             .frame(width: 250, height: 250, alignment: .center)
@@ -73,7 +73,7 @@ struct DetailView: View {
                         
                         
                         VStack{
-                            ForEach(model.selectedCard.content, id: \.self) { listitem in
+                            ForEach(model.selectedCard.content ?? [], id: \.self) { listitem in
                                 BenefitView(cate: listitem.first?.key ?? "", benefit: listitem.first?.value ?? "").padding([.leading,.trailing])
                             }
                         }

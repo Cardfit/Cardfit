@@ -15,7 +15,7 @@ struct CardView: View {
     
     var body: some View {
         VStack{
-            Text(card.title)
+            Text(card.title ?? "")
                 .font(.caption)
                 .fontWeight(.bold)
                 .foregroundColor(Color.white.opacity(0.85))
@@ -25,7 +25,7 @@ struct CardView: View {
                 .matchedGeometryEffect(id: "Date-\(card.id)", in: animation)
         
             HStack{
-                card.image
+                card.image?
                     .resizable()
                     .scaledToFit()
                     .frame(width: 250, height: 250, alignment: .center)

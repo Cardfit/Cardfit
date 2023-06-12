@@ -33,7 +33,7 @@ class CarouselViewModel: ObservableObject{
     // Detail Content....
     
     @Published var showCard = false
-    @Published var selectedCard = Card(cardId: "", image: Image("card"), title: "", content: [], company: "")
+    @Published var selectedCard = Card(cardId: "", image: Image("DefaultCardImage"), title: "", content: [], company: "")
     @Published var selectedColor : Color = .clear
     @Published var showContent = false
     
