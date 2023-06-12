@@ -25,21 +25,11 @@ struct CardView: View {
                 .matchedGeometryEffect(id: "Date-\(card.id)", in: animation)
         
             HStack{
-//                Text(card.title)
-//                    .font(.title)
-//                    .fontWeight(.bold)
-//                    .foregroundColor(.white)
-//                    .frame(width: 250, alignment: .leading)
-//                    .padding()
-//                    .matchedGeometryEffect(id: "Title-\(card.id)", in: animation)
                 card.image
                     .resizable()
                     .scaledToFit()
                     .frame(width: 250, height: 250, alignment: .center)
                     .padding()
-//                    .matchedGeometryEffect(id: "Image-\(card.id)", in: animation)
-                
-                
                 Spacer(minLength: 0)
             }
             
@@ -58,7 +48,6 @@ struct CardView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
-//            card.cardColor
             color
             .cornerRadius(25)
             .overlay(RoundedRectangle(cornerRadius: 25)

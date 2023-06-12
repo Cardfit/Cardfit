@@ -29,7 +29,6 @@ struct Main: View {
                 // Carousel
                 ZStack{
                     ForEach(model.cards.indices.reversed(), id:\.self){index in
-                        
                         HStack{
                             CardView(card: model.cards[index], color: getColor(index: index), animation: animation)
                                 .frame(width: getCardWidth(index: index), height: getCardHeight(index: index))
@@ -68,7 +67,6 @@ struct Main: View {
             }
             
             // Detail View
-            
             if model.showCard{
                 DetailView(animation: animation)
             }
@@ -124,12 +122,12 @@ struct Main: View {
     }
     
     // Getting Offset...
-    
     func getCardOffset(index: Int) -> CGFloat{
         return index - model.swipedCard  <= 2 ? CGFloat(index - model.swipedCard) * 30 : 60
     }
+    
     func getColor(index: Int) -> Color{
-        let colorList = [Color("lightBlue"), Color.purple, Color.green, Color.yellow, Color.orange]
+        let colorList = [Color("LightBlue"), Color("LightOrange"), Color("LightPink"), Color("LightPurple"), Color("LightYellow")]
         return colorList[index % colorList.count]
     }
 }

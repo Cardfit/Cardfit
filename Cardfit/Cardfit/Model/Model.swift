@@ -13,8 +13,11 @@ struct Card: Identifiable{
     var image: Image
     var offset: CGFloat = 0
     var title: String
-    var content: String
-    var domesticAnnualFee: String = "국내전용 [10,000]원 "
+    var content: [[String:String]]
+    var domesticAnnualFee: String = "0"
     var requiredPreviousMonthUsage = 0
     var company: String
+    
 }
+
+
