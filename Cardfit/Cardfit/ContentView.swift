@@ -9,9 +9,10 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-
+    @StateObject var mainModel = CarouselViewModel()
     var body: some View {
-        Text("Content View Body")
+        Main()
+            .environmentObject(mainModel)
     }
 }
 
