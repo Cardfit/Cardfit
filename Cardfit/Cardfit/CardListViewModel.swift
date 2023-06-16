@@ -6,13 +6,10 @@
 //
 
 import Foundation
-import CoreData
 
 class CardListViewModel: ObservableObject {
-    
-    @Published var cardList: [CardEntity] = []
-    
-//    @State var selectedCards: [Card]
+    @Published var cardList: [Card] = []
+    @Published var selectedCards: [Card] = []
     
     var company: CompanyList
     
@@ -20,27 +17,43 @@ class CardListViewModel: ObservableObject {
         self.company = company
     }
     
-    func fetchCardList() async -> Result<[CardEntity], Error> {
-
+    func fetchCardList() async -> Result<[Card], Error> {
         do {
-            var entities = try PersistenceController.shared.fetchCardEntities(for: company)
+            
+            let entities = try PersistenceController.shared.fetchData(entity: .cardEntity, entityType: CardEntity.self, predicate: NSPredicate(format: "company == %@", company.rawValue))
             
             if entities.isEmpty {
                 let cardList = try await FirebaseManager.shared.fetchCardInfo(of: company)
                 
-                PersistenceController.shared.changeToCardEntity(from: cardList)
-                PersistenceController.shared.save()
+                PersistenceController.shared.saveMulitpleData(datas: cardList, entityType: CardEntity.self) { (data, entity) in
+                    
+                    entity.setValue(data.cardName, forKey: "cardName")
+                    entity.setValue(data.cardNumber, forKey: "cardNumber")
+                    entity.setValue(data.company, forKey: "company")
+                    entity.setValue(data.mainBenefit, forKey: "mainBenefit")
+                    entity.setValue(data.domesticAnnualFee, forKey: "domesticAnnualFee")
+                    entity.setValue(data.requiredPreviousMonthUsage, forKey: "requiredPreviousMonthUsage")
+                    
+                    let benefit = try? JSONEncoder().encode(data.benefit)
+                    entity.setValue(benefit, forKey: "benefit")
+                }
                 
-                entities = try PersistenceController.shared.fetchCardEntities(for: company)
+                return .success(cardList)
+            } else {
+                let cards = try entities.map { cardEntity in
+                    let benefit = try JSONDecoder().decode(Benefits.self, from: cardEntity.benefit ?? Data())
+                    let card = Card(id: Int(cardEntity.cardNumber!), cardName: cardEntity.cardName, cardNumber: cardEntity.cardNumber ?? String(), cardImageURL: cardEntity.cardImageURL, domesticAnnualFee: cardEntity.domesticAnnualFee, requiredPreviousMonthUsage: cardEntity.requiredPreviousMonthUsage, mainBenefit: cardEntity.mainBenefit, company: cardEntity.company, benefit: benefit)
+                   
+                    return card
+                }
+                return .success(cards)
             }
-            
-            return .success(entities)
         } catch {
             return .failure(error)
         }
     }
     
     func removeCardEntity() {
-        PersistenceController.shared.resetCardEntity()
+        PersistenceController.shared.deleteData(entity: .cardEntity)
     }
 }

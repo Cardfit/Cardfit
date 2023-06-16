@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CardListView: View {
-    
     @ObservedObject private var viewModel: CardListViewModel
     
     @State private var isLoading = true
@@ -24,17 +23,17 @@ struct CardListView: View {
                     .padding()
             } else {
                 ForEach(viewModel.cardList, id: \.self) { card in
-                    CardListViewCell(company: viewModel.company, imageURL: card.cardImageURL ?? String(), cardNumber: card.cardNumber ?? String(), name: card.cardName ?? String(), mainBenefit: card.mainBenefit ?? String())
+                    CardListViewCell(isSelected: bindingForCard(card), card: card, company: viewModel.company)
+                        .environmentObject(viewModel)
                 }
-                // domb: 이미지 로딩후 isLoading을 false로 바꾸는 로직 구현하기.
             }
         }
         .onAppear {
-            Task {
+            Task(priority: .background) {
                 let result = await viewModel.fetchCardList()
                 switch result {
-                case .success(let entity):
-                    viewModel.cardList = entity
+                case .success(let cards):
+                    viewModel.cardList = cards
                     isLoading = false
                 case .failure(let error):
                     print(error)
@@ -44,12 +43,35 @@ struct CardListView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: LoadingView()) {
-                    Text("확인")
-                        .foregroundColor(.black)
+                if !viewModel.selectedCards.isEmpty {
+                    NavigationLink(destination: LoadingView(selectedCards: viewModel.selectedCards).navigationBarBackButtonHidden()) {
+                        Text("추가")
+                            .foregroundColor(.black)
+                    }
+                } else {
+                    Text("추가")
+                        .foregroundColor(.gray)
                 }
             }
         }
+        .onDisappear {
+            viewModel.selectedCards = []
+        }
+    }
+    
+    private func bindingForCard(_ card: Card) -> Binding<Bool> {
+        Binding<Bool> (
+            get: {
+                viewModel.selectedCards.contains(card)
+            },
+            set: { newValue in
+                if newValue {
+                    viewModel.selectedCards.append(card)
+                } else {
+                    viewModel.selectedCards.removeAll(where: { $0 == card })
+                }
+            }
+        )
     }
 }
 
