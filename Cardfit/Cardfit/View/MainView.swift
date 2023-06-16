@@ -10,7 +10,7 @@ import SwiftUI
 var width = UIScreen.main.bounds.width
 
 struct Main: View {
-    @EnvironmentObject var model: CarouselViewModel
+    @EnvironmentObject var model: MainViewModel
     @Namespace var animation
     
     var body: some View {

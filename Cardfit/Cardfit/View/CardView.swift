@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardView: View {
-    @EnvironmentObject var model: CarouselViewModel
+    @EnvironmentObject var model: MainViewModel
     @State private var image: UIImage?
     
     var card: Card

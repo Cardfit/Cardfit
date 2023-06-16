@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailView: View {
-    @EnvironmentObject var model: CarouselViewModel
+    @EnvironmentObject var model: MainViewModel
     @State private var Details = false
     @State private var image: UIImage?
     

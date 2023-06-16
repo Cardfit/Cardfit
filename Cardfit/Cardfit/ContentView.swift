@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @StateObject var mainModel = CarouselViewModel()
+    @StateObject var mainModel = MainViewModel()
     var body: some View {
         Main()
             .environmentObject(mainModel)
