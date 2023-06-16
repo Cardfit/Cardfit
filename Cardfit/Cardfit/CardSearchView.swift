@@ -9,13 +9,12 @@ import SwiftUI
 import Combine
 
 struct CardSearchView: View {
-    
     @StateObject private var viewModel = CardSearchViewModel()
     
     private var columnGrid = Array(repeating: GridItem(.flexible()), count: 3)
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columnGrid) {
                     ForEach(viewModel.searchText.isEmpty ? CompanyList.allCases : viewModel.filteredCompanyList, id: \.rawValue) { company in
