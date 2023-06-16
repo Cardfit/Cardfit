@@ -7,11 +7,12 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 import FirebaseStorage
 import CoreData
+import UIKit
 
 class FirebaseManager: NSObject {
-    
     static let shared = FirebaseManager()
     
     let storage: Storage
@@ -27,83 +28,51 @@ class FirebaseManager: NSObject {
     }
     
     func downloadImage(company: CompanyList, cardNumber: String) async -> UIImage? {
-        
         await withCheckedContinuation { continuation in
             storage.reference(forURL: "gs://cardfit-b9d71.appspot.com/CardImage/\(company.rawValue)/\(cardNumber)").downloadURL { url, error in
-                
                 DispatchQueue.global().async {
-                    let data = try? Data(contentsOf: url!)
-                    let uiImage = UIImage(data: data!)?.preparingThumbnail(of: CGSize(width: 150, height: 150))
-                    
-                    continuation.resume(returning: uiImage)
+                    do {
+                        guard let url = url else {
+                            print("downloadImage(), 잘못된 URL")
+                            continuation.resume(returning: nil)
+                            return
+                        }
+                        let data = try Data(contentsOf: url)
+                        guard let uiImage = UIImage(data: data) else {
+                            print("downloadImage(), data 없음")
+                            continuation.resume(returning: nil)
+                            return
+                        }
+                        continuation.resume(returning: uiImage)
+                    } catch {
+                        print(error)
+                        continuation.resume(returning: nil)
+                    }
                 }
             }
         }
     }
     
-    func getReference(of company: CompanyList) -> CollectionReference {
-        let cardListRef = firestore.collection("CardList")
-        let allCardInfo = cardListRef.document("CardInfo")
-        let selectedCompanyReference = allCardInfo.collection(company.rawValue)
-
-        return selectedCompanyReference
-    }
-
-    func fetchCardNumberList(of company: CompanyList) async -> [String] {
-        var cardNumberList: [String] = []
-        
-        do {
-            let reference = getReference(of: company)
-            let snapshots = try await reference.getDocumentsSnapShot()
-            snapshots.forEach { snapshot in
-                cardNumberList.append(snapshot.documentID)
-            }
-        } catch {
-            print(error)
-        }
-        
-        return cardNumberList
-    }
-
     func fetchCardInfo(of company: CompanyList) async throws -> [Card] {
-        
         let reference = getReference(of: company)
-        let snapshots = try await reference.getDocumentsSnapShot()
-        var cards = try snapshots.getData(as: Card.self)
-        
-        cards = cards.map { card in
-            var updatedCard = card
-            updatedCard.company = company.rawValue
-            return updatedCard
+        let snapshots = try await reference.getDocuments().documents
+        let cards = try snapshots.map { snapshot in
+            var card = try snapshot.data(as: Card.self)
+            
+            card.company = company.rawValue
+            
+            return card
         }
-        
         return cards
     }
 }
 
-extension CollectionReference {
-    
-    func getDocumentsSnapShot() async throws -> [QueryDocumentSnapshot] {
-        do {
-            let cardsOfSelectedCompany = try await self.getDocuments().documents
-            return cardsOfSelectedCompany
-        }
+extension FirebaseManager {
+    private func getReference(of company: CompanyList) -> CollectionReference {
+        let cardListRef = firestore.collection("CardList")
+        let allCardInfo = cardListRef.document("CardInfo")
+        let selectedCompanyReference = allCardInfo.collection(company.rawValue)
+        
+        return selectedCompanyReference
     }
 }
-
-extension [QueryDocumentSnapshot] {
-    func getData<T: Decodable>(as type: T.Type) throws -> [T] {
-        
-        var decodedData: [T] = []
-        
-        do {
-            try self.forEach { snapshot in
-                let data = try snapshot.data(as: type)
-                decodedData.append(data)
-            }
-        }
-        
-        return decodedData
-    }
-}
-

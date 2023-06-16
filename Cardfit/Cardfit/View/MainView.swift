@@ -14,12 +14,12 @@ struct Main: View {
     @Namespace var animation
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
-                VStack{
+                VStack {
                     Spacer()
                     
-                    HStack{
+                    HStack(alignment: .center){
                         Text("My Cards")
                             .font(.system(size: 40))
                             .fontWeight(.bold)
@@ -34,6 +34,7 @@ struct Main: View {
                                 .frame(width: 40, height: 40)
                         }
                         .padding()
+                        
 //                        Button {
 ////                            NavigationLink{
 ////                                CardSearchView()
@@ -46,52 +47,65 @@ struct Main: View {
 //                        }
 //                        .padding()
 
-
                     }
                     
-                    // Carousel
-                    ZStack{
-                        ForEach(model.cards.indices.reversed(), id:\.self){index in
-                            HStack{
-                                CardView(card: model.cards[index], color: getColor(index: index), animation: animation)
-                                    .frame(width: getCardWidth(index: index), height: getCardHeight(index: index))
-                                    .offset(x: getCardOffset(index: index))
-                                    .rotationEffect(.init(degrees: getCardRotation(index: index)))
-                                Spacer(minLength: 0)
-                            }
-                            .frame(height: 400)
-                            .contentShape(Rectangle())
-                            .offset(x: model.cards[index].offset ?? 0)
-                            .gesture(DragGesture(minimumDistance: 0)
-                                .onChanged({ (value) in
-                                    onChanged(value: value, index: index)
-                                })
-                                    .onEnded({ (value) in
-                                        onEnd(value: value, index: index)
+                    if !model.cards.isEmpty {
+                        ZStack{
+                            ForEach(model.cards.indices.reversed(), id:\.self){index in
+                                HStack{
+                                    CardView(card: model.cards[index], color: getColor(index: index), animation: animation)
+                                        .frame(width: getCardWidth(index: index), height: getCardHeight(index: index))
+                                        .offset(x: getCardOffset(index: index))
+                                        .rotationEffect(.init(degrees: getCardRotation(index: index)))
+                                    Spacer(minLength: 0)
+                                }
+                                .frame(height: 400)
+                                .contentShape(Rectangle())
+                                .offset(x: model.cards[index].offset ?? 0)
+                                .gesture(DragGesture(minimumDistance: 0)
+                                    .onChanged({ (value) in
+                                        onChanged(value: value, index: index)
                                     })
-                            )
+                                        .onEnded({ (value) in
+                                            onEnd(value: value, index: index)
+                                        })
+                                )
+                            }
                         }
+                        .padding(.top,25)
+                        .padding(.horizontal, 30)
+                        Button(action: ResetViews) {
+                            Image(systemName: "arrow.left")
+                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundColor(.blue)
+                                .padding()
+                                .background(Color.white)
+                                .clipShape(Circle())
+                                .shadow(radius: 3)
+                        }
+                        .padding(.top, 35)
+                    } else {
+                        HStack(alignment: .center, spacing: 10) {
+                            Image(systemName: "plus.app")
+                                .foregroundColor(.blue)
+                            Text("를 눌러서 카드를 등록해주세요.")
+                        
+                        }
+                        .font(.system(size: 23))
+                        .padding(.top, 30)
                     }
-                    .padding(.top,25)
-                    .padding(.horizontal, 30)
-                    
-                    Button(action: ResetViews) {
-                        Image(systemName: "arrow.left")
-                            .font(.system(size: 20, weight: .semibold))
-                            .foregroundColor(.blue)
-                            .padding()
-                            .background(Color.white)
-                            .clipShape(Circle())
-                            .shadow(radius: 3)
-                    }
-                    .padding(.top, 35)
-                    
                     Spacer()
                 }
                 
                 // Detail View
-                if model.showCard{
+                if model.showCard {
                     DetailView(animation: animation)
+                }
+            }
+            .onAppear {
+                Task {
+                    let cards = await model.fetchUserCardList()
+                    self.model.cards = cards
                 }
             }
         }
@@ -158,6 +172,6 @@ struct Main: View {
 
 struct Main_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Main().environmentObject(MainViewModel())
     }
 }

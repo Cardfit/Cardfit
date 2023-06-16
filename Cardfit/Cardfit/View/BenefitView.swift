@@ -278,6 +278,6 @@ struct BenefitView: View {
 
 struct BenefitView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        BenefitView(cate: "1", benefit: "")
     }
 }

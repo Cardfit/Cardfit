@@ -1,8 +1,8 @@
 //
-//  Card.swift
+//  CompanyList.swift
 //  Cardfit
 //
-//  Created by 서동운 on 6/1/23.
+//  Created by 서동운 on 6/16/23.
 //
 
 import Foundation
@@ -15,7 +15,7 @@ enum CompanyList: String, CaseIterable {
     case creditUnion = "CREDIT UNION"
     case dgb = "DGB"
     case gwangju = "GWANGJU"
-    case hana = "HANACARD"
+    case hana = "HANA CARD"
     case hyundai = "HYUNDAI CARD"
     case ibk = "IBK"
     case jbBank = "JBBANK"
@@ -82,17 +82,4 @@ enum CompanyList: String, CaseIterable {
             return "우리카드"
         }
     }
-}
-
-struct Card: Identifiable, Hashable, Codable {
-    var id: Int?
-    var cardName: String?
-    var cardNumber: String?
-    var cardImageURL: String?
-    var domesticAnnualFee: String?
-    var requiredPreviousMonthUsage: Int64?
-    var mainBenefit: String?
-    var company: String?
-//    var benefit: [[String:String]]?
-    var offset: CGFloat? = 0
 }
