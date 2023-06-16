@@ -30,12 +30,24 @@ class FirebaseManager: NSObject {
     func downloadImage(company: CompanyList, cardNumber: String) async -> UIImage? {
         await withCheckedContinuation { continuation in
             storage.reference(forURL: "gs://cardfit-b9d71.appspot.com/CardImage/\(company.rawValue)/\(cardNumber)").downloadURL { url, error in
-                
                 DispatchQueue.global().async {
-                    let data = try? Data(contentsOf: url!)
-                    let uiImage = UIImage(data: data!)?.preparingThumbnail(of: CGSize(width: 150, height: 150))
-                    
-                    continuation.resume(returning: uiImage)
+                    do {
+                        guard let url = url else {
+                            print("downloadImage(), 잘못된 URL")
+                            continuation.resume(returning: nil)
+                            return
+                        }
+                        let data = try Data(contentsOf: url)
+                        guard let uiImage = UIImage(data: data) else {
+                            print("downloadImage(), data 없음")
+                            continuation.resume(returning: nil)
+                            return
+                        }
+                        continuation.resume(returning: uiImage)
+                    } catch {
+                        print(error)
+                        continuation.resume(returning: nil)
+                    }
                 }
             }
         }
