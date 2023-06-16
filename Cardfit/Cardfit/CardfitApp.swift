@@ -19,7 +19,7 @@ struct CardfitApp: App {
 
     var body: some Scene {
         WindowGroup {
-            CardSearchView()
+            Main()
             
         }.onChange(of: scenePhase) { newValue in
             print(newValue)

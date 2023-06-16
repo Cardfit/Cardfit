@@ -26,6 +26,11 @@
 		72AE83362A2DF4E900390AF8 /* CardSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE83352A2DF4E900390AF8 /* CardSearchViewModel.swift */; };
 		72AE833A2A30438800390AF8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE83392A30438800390AF8 /* LoadingView.swift */; };
 		72AE83442A324E4300390AF8 /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE83432A324E4300390AF8 /* CardListViewModel.swift */; };
+		AA331FB02A39DA0100EBDBD4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA331FAF2A39DA0100EBDBD4 /* MainView.swift */; };
+		AA331FB22A39DA0C00EBDBD4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA331FB12A39DA0C00EBDBD4 /* CardView.swift */; };
+		AA331FB42A39DA1700EBDBD4 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA331FB32A39DA1700EBDBD4 /* DetailView.swift */; };
+		AA331FB62A39DA2400EBDBD4 /* BenefitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA331FB52A39DA2400EBDBD4 /* BenefitView.swift */; };
+		AA811A382A3B8C50006AE3FF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA811A372A3B8C50006AE3FF /* MainViewModel.swift */; };
 		AAEFAEA12A2F192600B9170C /* CardfitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEFAEA02A2F192600B9170C /* CardfitUITests.swift */; };
 		AAEFAEA32A2F192600B9170C /* CardfitUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEFAEA22A2F192600B9170C /* CardfitUITestsLaunchTests.swift */; };
 		AAEFAEB02A2F193300B9170C /* CardfitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEFAEAF2A2F193300B9170C /* CardfitTests.swift */; };
@@ -66,6 +71,11 @@
 		72AE83352A2DF4E900390AF8 /* CardSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchViewModel.swift; sourceTree = "<group>"; };
 		72AE83392A30438800390AF8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		72AE83432A324E4300390AF8 /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
+		AA331FAF2A39DA0100EBDBD4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		AA331FB12A39DA0C00EBDBD4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		AA331FB32A39DA1700EBDBD4 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		AA331FB52A39DA2400EBDBD4 /* BenefitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitView.swift; sourceTree = "<group>"; };
+		AA811A372A3B8C50006AE3FF /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		AAEFAE9E2A2F192500B9170C /* CardfitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardfitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEFAEA02A2F192600B9170C /* CardfitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardfitUITests.swift; sourceTree = "<group>"; };
 		AAEFAEA22A2F192600B9170C /* CardfitUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardfitUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -124,6 +134,8 @@
 		721E76E52A20BFE2001DFBBF /* Cardfit */ = {
 			isa = PBXGroup;
 			children = (
+				AA331FAA2A39A0CD00EBDBD4 /* View */,
+				AA331FA92A39A0C700EBDBD4 /* ViewModel */,
 				721E77672A279D77001DFBBF /* Card.swift */,
 				721E76E62A20BFE2001DFBBF /* CardfitApp.swift */,
 				721E77352A248040001DFBBF /* FirebaseManager.swift */,
@@ -150,6 +162,25 @@
 				721E76ED2A20BFE4001DFBBF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AA331FA92A39A0C700EBDBD4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AA811A372A3B8C50006AE3FF /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AA331FAA2A39A0CD00EBDBD4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA331FAF2A39DA0100EBDBD4 /* MainView.swift */,
+				AA331FB12A39DA0C00EBDBD4 /* CardView.swift */,
+				AA331FB32A39DA1700EBDBD4 /* DetailView.swift */,
+				AA331FB52A39DA2400EBDBD4 /* BenefitView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		AAEFAE9F2A2F192600B9170C /* CardfitUITests */ = {
@@ -309,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72AE83442A324E4300390AF8 /* CardListViewModel.swift in Sources */,
+				AA331FB42A39DA1700EBDBD4 /* DetailView.swift in Sources */,
 				72AE83362A2DF4E900390AF8 /* CardSearchViewModel.swift in Sources */,
 				72AE83302A29EC8E00390AF8 /* CompanyButton.swift in Sources */,
 				72AE832E2A29E93700390AF8 /* CardListView.swift in Sources */,
@@ -316,11 +348,15 @@
 				721E77682A279D77001DFBBF /* Card.swift in Sources */,
 				72AE833A2A30438800390AF8 /* LoadingView.swift in Sources */,
 				721E76F32A20BFE4001DFBBF /* Cardfit.xcdatamodeld in Sources */,
+				AA331FB02A39DA0100EBDBD4 /* MainView.swift in Sources */,
 				721E77362A248040001DFBBF /* FirebaseManager.swift in Sources */,
 				721E77782A28CEDB001DFBBF /* CardSearchView.swift in Sources */,
 				721E76E92A20BFE2001DFBBF /* ContentView.swift in Sources */,
 				721E76E72A20BFE2001DFBBF /* CardfitApp.swift in Sources */,
+				AA331FB22A39DA0C00EBDBD4 /* CardView.swift in Sources */,
+				AA331FB62A39DA2400EBDBD4 /* BenefitView.swift in Sources */,
 				721E77742A28C5F6001DFBBF /* CardListViewCell.swift in Sources */,
+				AA811A382A3B8C50006AE3FF /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

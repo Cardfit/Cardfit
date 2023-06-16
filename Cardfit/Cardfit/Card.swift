@@ -84,8 +84,7 @@ enum CompanyList: String, CaseIterable {
     }
 }
 
-struct Card: Identifiable, Hashable,  Codable {
-    
+struct Card: Identifiable, Hashable, Codable {
     var id: Int?
     var cardName: String?
     var cardNumber: String?
@@ -94,5 +93,6 @@ struct Card: Identifiable, Hashable,  Codable {
     var requiredPreviousMonthUsage: Int64?
     var mainBenefit: String?
     var company: String?
+//    var benefit: [[String:String]]?
+    var offset: CGFloat? = 0
 }
-
