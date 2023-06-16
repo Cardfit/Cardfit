@@ -15,7 +15,7 @@ enum CompanyList: String, CaseIterable {
     case creditUnion = "CREDIT UNION"
     case dgb = "DGB"
     case gwangju = "GWANGJU"
-    case hana = "HANACARD"
+    case hana = "HANA CARD"
     case hyundai = "HYUNDAI CARD"
     case ibk = "IBK"
     case jbBank = "JBBANK"
