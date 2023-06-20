@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E261" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CardCompanyEntity" representedClassName="CardCompanyEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CardEntity"/>
-    </entity>
     <entity name="CardEntity" representedClassName="CardEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="benefit" optional="YES" attributeType="Transformable"/>
+        <attribute name="benefit" optional="YES" attributeType="Binary"/>
         <attribute name="cardImageURL" optional="YES" attributeType="String"/>
         <attribute name="cardName" optional="YES" attributeType="String"/>
         <attribute name="cardNumber" optional="YES" attributeType="String"/>
@@ -13,5 +9,8 @@
         <attribute name="domesticAnnualFee" optional="YES" attributeType="String"/>
         <attribute name="mainBenefit" optional="YES" attributeType="String"/>
         <attribute name="requiredPreviousMonthUsage" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="UserCardEntity" representedClassName="UserCardEntity" syncable="YES" codeGenerationType="class">
+        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CardEntity"/>
     </entity>
 </model>

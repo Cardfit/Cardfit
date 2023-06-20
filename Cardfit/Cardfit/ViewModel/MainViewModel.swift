@@ -18,40 +18,25 @@ class MainViewModel: ObservableObject{
     @Published var selectedColor : Color = .clear
     @Published var showContent = false
     
-    public init(){
-        if cards.isEmpty{
-            Task(priority: .background){
-                var cards = await fetchCardList()
-                self.cards = cards ?? []   
+    func fetchUserCardList() async -> [Card] {
+        do {
+            let userCardEntity = try PersistenceController.shared.fetchData(entity: .userCardEntity, entityType: UserCardEntity.self, predicate: nil).first
+            guard let cardsSet = userCardEntity?.cards else { return [] }
+            var cardEntities = [CardEntity]()
+            if let cardsArray = cardsSet.allObjects as? [CardEntity] {
+                // CardEntity 배열을 사용하여 원하는 작업을 수행합니다.
+                for card in cardsArray {
+                    cardEntities.append(card)
+                }
             }
+            
+            let cards = cardEntities.map { cardEntity in
+                return Card(id: Int(cardEntity.cardNumber!), cardName: cardEntity.cardName, cardNumber: cardEntity.cardNumber, cardImageURL: cardEntity.cardImageURL, domesticAnnualFee: cardEntity.domesticAnnualFee, requiredPreviousMonthUsage: cardEntity.requiredPreviousMonthUsage, mainBenefit: cardEntity.mainBenefit, company: cardEntity.company, benefit: nil)
+            }
+            return cards
+        } catch {
+            print(error)
+            return []
         }
-        
     }
-    
-    func fetchCardList() async -> [Card]? {
-
-            do {
-                var entities = try PersistenceController.shared.fetchCardEntities(for: .bc)
-                
-                if entities.isEmpty {
-                    let cardList = try await FirebaseManager.shared.fetchCardInfo(of: .bc)
-                    
-                    PersistenceController.shared.changeToCardEntity(from: cardList)
-                    PersistenceController.shared.save()
-                    
-                    entities = try PersistenceController.shared.fetchCardEntities(for: .bc)
-                }
-                
-                let cards = entities.map { cardEntity in
-                    Card(id: Int(cardEntity.cardNumber!), cardName: cardEntity.cardName, cardNumber: cardEntity.cardNumber, cardImageURL: cardEntity.cardImageURL, domesticAnnualFee: cardEntity.domesticAnnualFee, requiredPreviousMonthUsage: cardEntity.requiredPreviousMonthUsage, mainBenefit: cardEntity.mainBenefit, company: cardEntity.company)
-                }
-                
-                return cards
-            } catch {
-                print(error)
-                return nil
-            }
-        }
-    
-    
 }

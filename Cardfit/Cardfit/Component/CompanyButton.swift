@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CompanyButton: View {
-    
     let company: CompanyList
     
     var body: some View {

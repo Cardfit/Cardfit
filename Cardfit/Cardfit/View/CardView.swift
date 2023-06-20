@@ -92,6 +92,6 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CardView(card: Card(), color: .red, animation: Namespace().wrappedValue)
     }
 }

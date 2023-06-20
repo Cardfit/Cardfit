@@ -9,7 +9,6 @@ import Foundation
 import Combine
 
 class CardSearchViewModel: ObservableObject {
-    
     @Published var searchText = String()
     @Published var filteredCompanyList: [CompanyList] = []
     

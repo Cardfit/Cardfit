@@ -9,28 +9,25 @@ import SwiftUI
 import Combine
 
 struct CardSearchView: View {
-    
     @StateObject private var viewModel = CardSearchViewModel()
     
     private var columnGrid = Array(repeating: GridItem(.flexible()), count: 3)
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                LazyVGrid(columns: columnGrid) {
-                    ForEach(viewModel.searchText.isEmpty ? CompanyList.allCases : viewModel.filteredCompanyList, id: \.rawValue) { company in
-                        NavigationLink {
-                            CardListView(company: company)
-                        } label: {
-                            CompanyButton(company: company)
-                        }
+        ScrollView {
+            LazyVGrid(columns: columnGrid) {
+                ForEach(viewModel.searchText.isEmpty ? CompanyList.allCases : viewModel.filteredCompanyList, id: \.rawValue) { company in
+                    NavigationLink {
+                        CardListView(company: company)
+                    } label: {
+                        CompanyButton(company: company)
                     }
                 }
-                .padding([.top, .horizontal])
-                .padding(.bottom, 80)
             }
-            .navigationTitle("카드 선택")
+            .padding([.top, .horizontal])
+            .padding(.bottom, 80)
         }
+        .navigationTitle("카드 선택")
         .accentColor(.black)
         .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search for Card")
         .textInputAutocapitalization(.never)

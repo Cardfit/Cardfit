@@ -10,19 +10,17 @@ import FirebaseFirestoreSwift
 
 @main
 struct CardfitApp: App {
-    
     @Environment(\.scenePhase) private var scenePhase
-    
-    init() {
-        // 앱 실행시 초기 설정 여기서
-    }
+    @StateObject var mainModel = MainViewModel()
 
     var body: some Scene {
         WindowGroup {
-            Main()
-            
+            Main().environmentObject(mainModel)
         }.onChange(of: scenePhase) { newValue in
-            print(newValue)
+            // 영구저장소에 잘못 저장된데이터가 있으면 여기서 지우세요!
+//            if newValue == .inactive {
+//                PersistenceController.shared.deleteData(entity: .cardEntity)
+//            }
         }
     }
 }
