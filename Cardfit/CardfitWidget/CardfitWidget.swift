@@ -45,7 +45,7 @@ struct MyCardEntry: TimelineEntry {
 
 struct CardfitWidgetEntryView : View {
     @Environment(\.widgetFamily) var widgetFamily
-    @State private var selectedCard: Card = Card()
+    @State private var selectedCard: Card = Card(id: nil, cardName: "국민카드", cardNumber: "1111", cardImageURL: "1111", domesticAnnualFee: "111", requiredPreviousMonthUsage: 123, mainBenefit: nil, company: nil, benefit: nil, offset: nil)
     
     var entry: Provider.Entry
     

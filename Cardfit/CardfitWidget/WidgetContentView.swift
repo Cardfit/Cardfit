@@ -14,7 +14,13 @@ struct WidgetContentView: View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             VStack(alignment: .leading, spacing: 0) {
+                TitleLabel(title: card.cardName ?? String(), font: .title2)
+                    .padding([.top, .leading, .bottom], 15)
+               
+                .padding([.leading, .trailing], 15)
+                .padding(.bottom, 5)
                 
+                BenefitList(benefit: card.benefit ?? Benefits())
                 Spacer()
                 Divider()
                     .padding(.horizontal, 10)
@@ -27,6 +33,34 @@ struct WidgetContentView: View {
             }
             
             CardImageView(name: "CardImage")
+        }
+    }
+}
+                
+struct BenefitList: View {
+    @State var benefit: Benefits
+    
+    var body: some View {
+        ForEach(benefit, id: \.self) { benefit in
+            BenefitCell(title: "\(benefit.keys.first): \(benefit.values)")
+        }
+    }
+}
+
+struct BenefitCell: View {
+    let title: String
+    
+    var body: some View {
+        Button(title) {
+            
+        }
+        .buttonStyle(.plain)
+        .font(.subheadline)
+        .fontWeight(.semibold)
+        .padding(5)
+        .background {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(.gray.opacity(0.1))
         }
     }
 }
