@@ -44,10 +44,19 @@ struct MyCardEntry: TimelineEntry {
 }
 
 struct CardfitWidgetEntryView : View {
-    var entry: Provider.Entry
+    @Environment(\.widgetFamily) var widgetFamily
 
+    var entry: Provider.Entry
+    
     var body: some View {
-        Text(entry.date, style: .time)
+        switch widgetFamily {
+        case .systemLarge:
+            Text("systemLarge")
+        default:
+            VStack {
+                Text("지원하지 않는 사이즈")
+            }
+        }
     }
 }
 
@@ -58,14 +67,15 @@ struct CardfitWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             CardfitWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("나의 카드")
+        .description("내가 등록한 카드의 상세보기를 빠르게 접근하세요")
+        .supportedFamilies([.systemLarge])
     }
 }
 
 struct CardfitWidget_Previews: PreviewProvider {
     static var previews: some View {
         CardfitWidgetEntryView(entry: MyCardEntry(date: Date(), userCards: [], configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }
