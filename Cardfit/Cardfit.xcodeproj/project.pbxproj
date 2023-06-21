@@ -17,6 +17,7 @@
 		721825C82A43088100D5F282 /* CardfitWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 721825C32A43087F00D5F282 /* CardfitWidget.intentdefinition */; };
 		721825CB2A43088100D5F282 /* CardfitWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 721825B82A43087F00D5F282 /* CardfitWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		721825D02A430DE500D5F282 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E77672A279D77001DFBBF /* Card.swift */; };
+		721825D32A43113E00D5F282 /* WidgetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721825D12A4310DA00D5F282 /* WidgetContentView.swift */; };
 		721E76E72A20BFE2001DFBBF /* CardfitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E76E62A20BFE2001DFBBF /* CardfitApp.swift */; };
 		721E76E92A20BFE2001DFBBF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E76E82A20BFE2001DFBBF /* ContentView.swift */; };
 		721E76EB2A20BFE4001DFBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 721E76EA2A20BFE4001DFBBF /* Assets.xcassets */; };
@@ -94,6 +95,7 @@
 		721825C32A43087F00D5F282 /* CardfitWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = CardfitWidget.intentdefinition; sourceTree = "<group>"; };
 		721825C42A43088100D5F282 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		721825C62A43088100D5F282 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		721825D12A4310DA00D5F282 /* WidgetContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetContentView.swift; sourceTree = "<group>"; };
 		721E76E32A20BFE2001DFBBF /* Cardfit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cardfit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		721E76E62A20BFE2001DFBBF /* CardfitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardfitApp.swift; sourceTree = "<group>"; };
 		721E76E82A20BFE2001DFBBF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			children = (
 				721825BF2A43087F00D5F282 /* CardfitWidgetBundle.swift */,
 				721825C12A43087F00D5F282 /* CardfitWidget.swift */,
+				721825D12A4310DA00D5F282 /* WidgetContentView.swift */,
 				721825C32A43087F00D5F282 /* CardfitWidget.intentdefinition */,
 				721825C42A43088100D5F282 /* Assets.xcassets */,
 				721825C62A43088100D5F282 /* Info.plist */,
@@ -468,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				721825D32A43113E00D5F282 /* WidgetContentView.swift in Sources */,
 				721825C02A43087F00D5F282 /* CardfitWidgetBundle.swift in Sources */,
 				721825C22A43087F00D5F282 /* CardfitWidget.swift in Sources */,
 				721825C72A43088100D5F282 /* CardfitWidget.intentdefinition in Sources */,

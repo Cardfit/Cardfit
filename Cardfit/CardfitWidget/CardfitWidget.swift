@@ -45,13 +45,14 @@ struct MyCardEntry: TimelineEntry {
 
 struct CardfitWidgetEntryView : View {
     @Environment(\.widgetFamily) var widgetFamily
-
+    @State private var selectedCard: Card = Card()
+    
     var entry: Provider.Entry
     
     var body: some View {
         switch widgetFamily {
         case .systemLarge:
-            Text("systemLarge")
+            WidgetContentView(card: selectedCard)
         default:
             VStack {
                 Text("지원하지 않는 사이즈")
