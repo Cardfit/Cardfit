@@ -209,9 +209,9 @@
 			children = (
 				721825BF2A43087F00D5F282 /* CardfitWidgetBundle.swift */,
 				721825C12A43087F00D5F282 /* CardfitWidget.swift */,
+				721825D12A4310DA00D5F282 /* WidgetContentView.swift */,
 				721825D42A4312E000D5F282 /* CardImageView.swift */,
 				721825D72A43162100D5F282 /* TitleLabel.swift */,
-				721825D12A4310DA00D5F282 /* WidgetContentView.swift */,
 				721825C32A43087F00D5F282 /* CardfitWidget.intentdefinition */,
 				721825C42A43088100D5F282 /* Assets.xcassets */,
 				721825C62A43088100D5F282 /* Info.plist */,
