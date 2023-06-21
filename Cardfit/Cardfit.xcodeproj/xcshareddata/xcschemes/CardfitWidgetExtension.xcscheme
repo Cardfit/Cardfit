@@ -15,7 +15,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7218256F2A3FF8A500D5F282"
+               BlueprintIdentifier = "721825B72A43087F00D5F282"
                BuildableName = "CardfitWidgetExtension.appex"
                BlueprintName = "CardfitWidgetExtension"
                ReferencedContainer = "container:Cardfit.xcodeproj">
@@ -61,7 +61,7 @@
          BundleIdentifier = "com.apple.springboard">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7218256F2A3FF8A500D5F282"
+            BlueprintIdentifier = "721825B72A43087F00D5F282"
             BuildableName = "CardfitWidgetExtension.appex"
             BlueprintName = "CardfitWidgetExtension"
             ReferencedContainer = "container:Cardfit.xcodeproj">

@@ -9,24 +9,26 @@ import WidgetKit
 import SwiftUI
 import Intents
 
+// 렌더링할 시기(업데이트 시기)를 알려주는 Timeline을 생성하는 객체
 struct Provider: IntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent())
+    // placeholder를 이용해서 appleWatch나 lockScreen의 민감한 정보들을 숨길수 있음.
+    func placeholder(in context: Context) -> MyCardEntry {
+        MyCardEntry(date: Date(), userCards: [], configuration: ConfigurationIntent())
     }
 
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration)
+    // 단일 timeline 을 반환
+    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (MyCardEntry) -> ()) {
+        let entry = MyCardEntry(date: Date(), userCards: [], configuration: configuration)
         completion(entry)
     }
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
+        var entries: [MyCardEntry] = []
 
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
+            let entry = MyCardEntry(date: entryDate, userCards: [], configuration: configuration)
             entries.append(entry)
         }
 
@@ -35,8 +37,9 @@ struct Provider: IntentTimelineProvider {
     }
 }
 
-struct SimpleEntry: TimelineEntry {
+struct MyCardEntry: TimelineEntry {
     let date: Date
+    let userCards: [Card]
     let configuration: ConfigurationIntent
 }
 
@@ -62,7 +65,7 @@ struct CardfitWidget: Widget {
 
 struct CardfitWidget_Previews: PreviewProvider {
     static var previews: some View {
-        CardfitWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+        CardfitWidgetEntryView(entry: MyCardEntry(date: Date(), userCards: [], configuration: ConfigurationIntent()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
