@@ -40,13 +40,12 @@ struct PersistenceController {
         
         do {
             try viewContext.save()
-            print("단일 데이터 저장 완료")
         } catch let error as NSError {
-            print("단일 데이터 저장 실패: \(error), \(error.userInfo)")
+            print("엔티티 생성 후 저장 실패: \(error), \(error.userInfo)")
         }
         
         completion(newEntity)
-        print(newEntity)
+        
         do {
             try viewContext.save()
             print("단일 데이터 저장 완료")
