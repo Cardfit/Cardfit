@@ -21,6 +21,8 @@
 		721825D52A4312E000D5F282 /* CardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721825D42A4312E000D5F282 /* CardImageView.swift */; };
 		721825D62A43144100D5F282 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 721E76EA2A20BFE4001DFBBF /* Assets.xcassets */; };
 		721825D82A43162100D5F282 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721825D72A43162100D5F282 /* TitleLabel.swift */; };
+		721825D92A431AD100D5F282 /* Cardfit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 721E76F12A20BFE4001DFBBF /* Cardfit.xcdatamodeld */; };
+		721825DA2A431ADC00D5F282 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E76EF2A20BFE4001DFBBF /* Persistence.swift */; };
 		721E76E72A20BFE2001DFBBF /* CardfitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E76E62A20BFE2001DFBBF /* CardfitApp.swift */; };
 		721E76E92A20BFE2001DFBBF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E76E82A20BFE2001DFBBF /* ContentView.swift */; };
 		721E76EB2A20BFE4001DFBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 721E76EA2A20BFE4001DFBBF /* Assets.xcassets */; };
@@ -101,6 +103,8 @@
 		721825D12A4310DA00D5F282 /* WidgetContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetContentView.swift; sourceTree = "<group>"; };
 		721825D42A4312E000D5F282 /* CardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageView.swift; sourceTree = "<group>"; };
 		721825D72A43162100D5F282 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		721825DB2A43BB7A00D5F282 /* CardfitWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CardfitWidgetExtension.entitlements; sourceTree = "<group>"; };
+		721825DC2A43BB7F00D5F282 /* Cardfit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cardfit.entitlements; sourceTree = "<group>"; };
 		721E76E32A20BFE2001DFBBF /* Cardfit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cardfit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		721E76E62A20BFE2001DFBBF /* CardfitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardfitApp.swift; sourceTree = "<group>"; };
 		721E76E82A20BFE2001DFBBF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 		721E76DA2A20BFE2001DFBBF = {
 			isa = PBXGroup;
 			children = (
+				721825DB2A43BB7A00D5F282 /* CardfitWidgetExtension.entitlements */,
 				721E76E52A20BFE2001DFBBF /* Cardfit */,
 				AAEFAE9F2A2F192600B9170C /* CardfitUITests */,
 				AAEFAEAE2A2F193300B9170C /* CardfitTests */,
@@ -245,6 +250,7 @@
 		721E76E52A20BFE2001DFBBF /* Cardfit */ = {
 			isa = PBXGroup;
 			children = (
+				721825DC2A43BB7F00D5F282 /* Cardfit.entitlements */,
 				721E76E62A20BFE2001DFBBF /* CardfitApp.swift */,
 				721E76E82A20BFE2001DFBBF /* ContentView.swift */,
 				721E76EF2A20BFE4001DFBBF /* Persistence.swift */,
@@ -479,7 +485,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				721825DA2A431ADC00D5F282 /* Persistence.swift in Sources */,
 				721825D32A43113E00D5F282 /* WidgetContentView.swift in Sources */,
+				721825D92A431AD100D5F282 /* Cardfit.xcdatamodeld in Sources */,
 				721825C02A43087F00D5F282 /* CardfitWidgetBundle.swift in Sources */,
 				721825C22A43087F00D5F282 /* CardfitWidget.swift in Sources */,
 				721825C72A43088100D5F282 /* CardfitWidget.intentdefinition in Sources */,
@@ -559,8 +567,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = CardfitWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G8228CR939;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardfitWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CardfitWidget;
@@ -586,8 +596,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = CardfitWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G8228CR939;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardfitWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CardfitWidget;
@@ -728,9 +740,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Cardfit/Cardfit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cardfit/Preview Content\"";
+				DEVELOPMENT_TEAM = G8228CR939;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -758,9 +772,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Cardfit/Cardfit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cardfit/Preview Content\"";
+				DEVELOPMENT_TEAM = G8228CR939;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
