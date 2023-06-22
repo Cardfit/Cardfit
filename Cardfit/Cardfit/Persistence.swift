@@ -13,6 +13,7 @@ struct PersistenceController {
         case userCardEntity = "UserCardEntity"
     }
     
+    private let appGroup = "group.com.Cardfit"
     static let shared = PersistenceController(inMemory: false)
     let container = NSPersistentContainer(name: "Cardfit")
     
@@ -20,7 +21,7 @@ struct PersistenceController {
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         } else {
-            let storeURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("Card.sqlite")
+            let storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)?.appendingPathComponent("Card.sqlite")
             container.persistentStoreDescriptions.first!.url = storeURL
         }
         
@@ -89,13 +90,18 @@ struct PersistenceController {
     /// - Parameter entityType: 엔티티의 실직적인 타입 (ex: CardEntity.self)
     /// - Returns: [NSFetchRequestResult]
 
-    func fetchData<Result: NSFetchRequestResult>(entity: Entity, entityType: Result.Type, predicate: NSPredicate?) throws -> [Result] {
+    func fetchData<Result: NSFetchRequestResult>(entity: Entity, entityType: Result.Type, predicate: NSPredicate?) -> [Result] {
         let viewContext = container.viewContext
         let fetchRequest = NSFetchRequest<Result>(entityName: entity.rawValue)
         
         fetchRequest.predicate = predicate
-
-        return try viewContext.fetch(fetchRequest)
+        
+        do {
+            let fetchResult = try viewContext.fetch(fetchRequest)
+            return fetchResult
+        } catch {
+            fatalError("Unresolved error \(error), \(error.localizedDescription)")
+        }
     }
     
     func deleteData(entity: Entity) {
