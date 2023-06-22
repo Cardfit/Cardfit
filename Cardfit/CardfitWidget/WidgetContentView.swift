@@ -10,24 +10,28 @@ import WidgetKit
 
 struct WidgetContentView: View {
     let card: Card
+    var category: [String] {
+        return card.benefit?.flatMap({ $0.keys }) ?? []
+    }
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
             VStack(alignment: .leading, spacing: 0) {
                 TitleLabel(title: card.cardName ?? String(), font: .title3)
                     .padding([.top, .leading, .bottom], 15)
-                    .frame(height: 70)
+                    .frame(height: 70, alignment: .bottom)
                 Divider()
                     .padding(.horizontal, 10)
                 BenefitList(benefit: card.benefit ?? Benefits())
-                    .padding(.leading, 5)
+                    .padding(.leading, 10)
                 Spacer()
                 Divider()
                     .padding(.horizontal, 10)
                 
                 VStack(alignment: .leading) {
-                    TitleLabel(title: "브랜드", font: .title3)
-                    LogoHStack(brands: [])
+                    TitleLabel(title: "브랜드", font: .headline)
+                    LogoHStack(category: category)
+                        .padding(.leading, 5)
                 }
                 .padding(15)
             }
@@ -75,27 +79,26 @@ struct BenefitCell: View {
 }
 
 struct LogoHStack: View {
-    @State var brands: [String]
+    @State var category: [String]
     
     var body: some View {
-        HStack(spacing: -5) {
-            ForEach(0..<10) { index in
-                //Image(brand[index])
-                
-                Circle()
-                    .foregroundColor(Color.randomColor())
-                    .frame(width: 35, height: 35)
+        HStack() {
+            if category.count > 0 {
+                ForEach(category, id: \.count) { index in
+                    //Image(brand[index])
+                    Image(index)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 25, height: 25)
+                        .padding(6)
+                        .background {
+                            Circle().fill(.gray.opacity(0.2))
+                        }
+                }
+            } else {
+                EmptyView()
             }
         }
-    }
-}
-
-extension Color {
-    static func randomColor() -> Color {
-        let red = Double.random(in: 0...1)
-        let green = Double.random(in: 0...1)
-        let blue = Double.random(in: 0...1)
-        return Color(red: red, green: green, blue: blue)
     }
 }
 
