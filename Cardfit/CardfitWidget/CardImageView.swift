@@ -15,11 +15,11 @@ struct CardImageView: View {
         ZStack {
             Circle()
                 .fill(.gray.opacity(0.1))
-                .frame(width: 70)
+                .frame(width: 50)
             Image(name)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 50)
+                .frame(width: 30)
         }
         .padding(10)
     }

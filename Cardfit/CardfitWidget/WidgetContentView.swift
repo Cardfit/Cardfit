@@ -14,13 +14,13 @@ struct WidgetContentView: View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             VStack(alignment: .leading, spacing: 0) {
-                TitleLabel(title: card.cardName ?? String(), font: .title2)
+                TitleLabel(title: card.cardName ?? String(), font: .title3)
                     .padding([.top, .leading, .bottom], 15)
-               
-                .padding([.leading, .trailing], 15)
-                .padding(.bottom, 5)
-                
+                    .frame(height: 70)
+                Divider()
+                    .padding(.horizontal, 10)
                 BenefitList(benefit: card.benefit ?? Benefits())
+                    .padding(.leading, 5)
                 Spacer()
                 Divider()
                     .padding(.horizontal, 10)
@@ -42,25 +42,34 @@ struct BenefitList: View {
     
     var body: some View {
         ForEach(benefit, id: \.self) { benefit in
-            BenefitCell(title: "\(benefit.keys.first): \(benefit.values)")
+            BenefitCell(benefit: benefit.values.first!)
         }
+        .padding([.top, .leading, .trailing], 5)
+        .padding(.bottom, 5)
     }
 }
 
 struct BenefitCell: View {
-    let title: String
+    let benefit: [String: String]
+    
+    @State private var isExpanded = false
     
     var body: some View {
-        Button(title) {
-            
-        }
-        .buttonStyle(.plain)
-        .font(.subheadline)
-        .fontWeight(.semibold)
-        .padding(5)
-        .background {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(.gray.opacity(0.1))
+        VStack {
+            HStack {
+                Text(benefit["category"] ?? String())
+                    .font(.system(size: 14))
+                    .fontWeight(.semibold)
+                    .padding(5)
+                    .background {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(.gray.opacity(0.1))
+                    }
+                Text(benefit["description"] ?? String())
+                    .font(.system(size: 12))
+                    .fontWeight(.semibold)
+                    .foregroundColor(.black.opacity(0.8))
+            }
         }
     }
 }
@@ -92,7 +101,7 @@ extension Color {
 
 struct WidgetContentView_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetContentView(card: Card())
+        WidgetContentView(card: exCard)
             .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }
