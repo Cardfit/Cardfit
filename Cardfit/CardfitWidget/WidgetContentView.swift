@@ -38,6 +38,9 @@ struct WidgetContentView: View {
             
             CardImageView(name: "CardImage")
         }
+        .onAppear {
+            print(card)
+        }
     }
 }
                 
@@ -50,6 +53,9 @@ struct BenefitList: View {
         }
         .padding([.top, .leading, .trailing], 5)
         .padding(.bottom, 5)
+        .onAppear {
+            print(benefit)
+        }
     }
 }
 
@@ -60,7 +66,7 @@ struct BenefitCell: View {
     
     var body: some View {
         VStack {
-            HStack {
+            HStack(alignment: .top) {
                 Text(benefit["category"] ?? String())
                     .font(.system(size: 14))
                     .fontWeight(.semibold)
@@ -73,6 +79,7 @@ struct BenefitCell: View {
                     .font(.system(size: 12))
                     .fontWeight(.semibold)
                     .foregroundColor(.black.opacity(0.8))
+                    .lineLimit(4)
             }
         }
     }
@@ -104,7 +111,7 @@ struct LogoHStack: View {
 
 struct WidgetContentView_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetContentView(card: exCard)
+        WidgetContentView(card: .placeholder())
             .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }

@@ -37,7 +37,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>내 카드</string>
+					<string>내내 카드</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>KTeZ7e</string>
 					<key>INIntentParameterDisplayPriority</key>
@@ -99,7 +99,7 @@
 	<array>
 		<dict>
 			<key>INTypeDisplayName</key>
-			<string>나의카드</string>
+			<string>나의카드으응</string>
 			<key>INTypeDisplayNameID</key>
 			<string>l24BIb</string>
 			<key>INTypeLastPropertyTag</key>
@@ -160,7 +160,7 @@
 				</dict>
 				<dict>
 					<key>INTypePropertyDisplayName</key>
-					<string>Card Name</string>
+					<string>Card Name!</string>
 					<key>INTypePropertyDisplayNameID</key>
 					<string>M0L6bF</string>
 					<key>INTypePropertyDisplayPriority</key>

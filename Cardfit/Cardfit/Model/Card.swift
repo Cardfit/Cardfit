@@ -20,4 +20,10 @@ struct Card: Identifiable, Hashable, Codable {
     var offset: CGFloat? = 0
 }
 
+extension Card {
+    static func placeholder() -> Card {
+        Card(cardName: "카드핏 카드", cardNumber: "1111", domesticAnnualFee: "15,000원", requiredPreviousMonthUsage: 300_000, mainBenefit: "카드핏 카드 메인혜택", company: "Cardfit", benefit: [["1": ["category":"간편결제", "title":"간편결제시 10% 할인", "description": "카드핏에서 간편결제시 10%할인"]]])
+    }
+}
+
 typealias Benefits = [[String: [String: String]]]

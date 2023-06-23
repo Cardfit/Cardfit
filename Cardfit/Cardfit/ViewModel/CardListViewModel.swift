@@ -20,7 +20,7 @@ class CardListViewModel: ObservableObject {
     func fetchCardList() async -> Result<[Card], Error> {
         do {
             
-            let entities = try PersistenceController.shared.fetchData(entity: .cardEntity, entityType: CardEntity.self, predicate: NSPredicate(format: "company == %@", company.rawValue))
+            let entities = PersistenceController.shared.fetchData(entity: .cardEntity, entityType: CardEntity.self, predicate: NSPredicate(format: "company == %@", company.rawValue))
             
             if entities.isEmpty {
                 let cardList = try await FirebaseManager.shared.fetchCardInfo(of: company)

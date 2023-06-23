@@ -11,18 +11,16 @@ import Intents
 
 // 렌더링할 시기(업데이트 시기)를 알려주는 Timeline을 생성하는 객체
 
-let exCard = Card(cardName: "카드핏 카드", cardNumber: "1111", domesticAnnualFee: "15,000원", requiredPreviousMonthUsage: 300_000, mainBenefit: "카드핏 카드 메인혜택", company: "Cardfit", benefit: [["1": ["category":"간편결제", "title":"간편결제시 10% 할인", "description": "카드핏에서 간편결제시 10%할인"]]])
-
 struct Provider: IntentTimelineProvider {
     
     // placeholder를 이용해서 appleWatch나 lockScreen의 민감한 정보들을 숨길수 있음.
     func placeholder(in context: Context) -> MyCardEntry {
         guard let userCardEntity = PersistenceController.shared.fetchData(entity: .userCardEntity, entityType: UserCardEntity.self, predicate: nil).first else {
             // ✅ 저장한 카드가 없을경우 임시데이터 생성후 넣어준다.
-            return MyCardEntry(date: Date(), userCard: exCard, configuration: ConfigurationIntent())
+            return MyCardEntry(date: Date(), userCard: .placeholder(), configuration: ConfigurationIntent())
         }
         guard let userCard = userCardEntity.convertToCards().first else {
-            return MyCardEntry(date: Date(), userCard: exCard, configuration: ConfigurationIntent())
+            return MyCardEntry(date: Date(), userCard: .placeholder(), configuration: ConfigurationIntent())
         }
         
         return MyCardEntry(date: Date(), userCard: userCard, configuration: ConfigurationIntent())
@@ -31,13 +29,13 @@ struct Provider: IntentTimelineProvider {
     // 단일 timeline 을 반환
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (MyCardEntry) -> ()) {
         guard let userCardEntity = PersistenceController.shared.fetchData(entity: .userCardEntity, entityType: UserCardEntity.self, predicate: nil).first else {
-            let entry = MyCardEntry(date: Date(), userCard: exCard, configuration: configuration)
+            let entry = MyCardEntry(date: Date(), userCard: .placeholder(), configuration: configuration)
             completion(entry)
             return
         }
         
         guard let userCard = userCardEntity.convertToCards().first else {
-            let entry = MyCardEntry(date: Date(), userCard: exCard, configuration: configuration)
+            let entry = MyCardEntry(date: Date(), userCard: .placeholder(), configuration: configuration)
             completion(entry)
             return
         }
@@ -53,7 +51,7 @@ struct Provider: IntentTimelineProvider {
             let entryDate = Calendar.current.date(byAdding: .day, value: hourOffset, to: currentDate)!
             
             guard let userCardEntity = PersistenceController.shared.fetchData(entity: .userCardEntity, entityType: UserCardEntity.self, predicate: nil).first else {
-                let entry = MyCardEntry(date: entryDate, userCard: exCard, configuration: configuration)
+                let entry = MyCardEntry(date: entryDate, userCard: .placeholder(), configuration: configuration)
                 entries.append(entry)
                 let timeline = Timeline(entries: entries, policy: .atEnd)
                 completion(timeline)
@@ -61,7 +59,7 @@ struct Provider: IntentTimelineProvider {
             }
             
             guard let userCard = userCardEntity.convertToCards().first else {
-                let entry = MyCardEntry(date: entryDate, userCard: exCard, configuration: configuration)
+                let entry = MyCardEntry(date: entryDate, userCard: .placeholder(), configuration: configuration)
                 entries.append(entry)
                 let timeline = Timeline(entries: entries, policy: .atEnd)
                 completion(timeline)
@@ -115,7 +113,7 @@ struct CardfitWidget: Widget {
 
 struct CardfitWidget_Previews: PreviewProvider {
     static var previews: some View {
-        CardfitWidgetEntryView(entry: MyCardEntry(date: Date(), userCard: exCard, configuration: ConfigurationIntent()))
+        CardfitWidgetEntryView(entry: MyCardEntry(date: Date(), userCard: .placeholder(), configuration: ConfigurationIntent()))
             .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }
