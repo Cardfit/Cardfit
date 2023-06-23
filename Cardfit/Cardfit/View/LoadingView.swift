@@ -63,7 +63,6 @@ struct LoadingView: View {
             cardEntities.forEach { entity in
                 userCardEntity.addToCards(entity)
             }
-            print(cardEntities)
         }
     }
 }

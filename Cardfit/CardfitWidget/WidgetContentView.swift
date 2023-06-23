@@ -38,9 +38,6 @@ struct WidgetContentView: View {
             
             CardImageView(imageData: card.imageData ?? Data())
         }
-        .onAppear {
-            print(card)
-        }
     }
 }
                 
@@ -53,9 +50,6 @@ struct BenefitList: View {
         }
         .padding([.top, .leading, .trailing], 5)
         .padding(.bottom, 5)
-        .onAppear {
-            print(benefit)
-        }
     }
 }
 
