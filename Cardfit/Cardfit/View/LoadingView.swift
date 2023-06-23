@@ -13,6 +13,8 @@ struct LoadingView: View {
     
     @State var percent: CGFloat = 0
     private var isLoaded: Bool { percent == CGFloat(100) ? true : false }
+    private let timer = Timer.publish(every: 0.005, on: .main, in: .common).autoconnect()
+    
     let selectedCards: [Card]
     
     var body: some View {
@@ -40,31 +42,27 @@ struct LoadingView: View {
                 }
             }
         }
+        .onReceive(timer) { time in
+            if percent == CGFloat(100) {
+                timer.upstream.connect().cancel()
+            } else {
+                percent += 1
+            }
+        }
     }
     
     func saveToPersistence(cards: [Card]) async {
         let cardNumbers = cards.map { $0.cardNumber }
         let predicate = NSPredicate(format: "cardNumber IN %@", cardNumbers)
-    
-        do {
-            PersistenceController.shared.deleteData(entity: .userCardEntity)
-            let cardEntities = try PersistenceController.shared.fetchData(entity: .cardEntity, entityType: CardEntity.self, predicate: predicate)
-            PersistenceController.shared.saveSingleData(entityType: UserCardEntity.self) { userCardEntity in
-                cardEntities.forEach { entity in
-                    userCardEntity.addToCards(entity)
-                }
-                print(cardEntities)
+        
+        // ✅ 일단 기존에 등록한 카드를 모두 삭제후 재등록하도록 구현
+        PersistenceController.shared.deleteData(entity: .userCardEntity)
+        
+        let cardEntities = PersistenceController.shared.fetchData(entity: .cardEntity, entityType: CardEntity.self, predicate: predicate)
+        PersistenceController.shared.saveSingleData(entityType: UserCardEntity.self) { userCardEntity in
+            cardEntities.forEach { entity in
+                userCardEntity.addToCards(entity)
             }
-        } catch {
-            print(error)
-        }
-
-        for index in (1...100) {
-            DispatchQueue.main.async {
-                self.percent = CGFloat(index)
-            }
-            
-            Thread.sleep(forTimeInterval: 0.005)
         }
     }
 }
