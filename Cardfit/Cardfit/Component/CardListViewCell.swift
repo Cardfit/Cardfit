@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct CardListViewCell: View {
-    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject private var viewModel: CardListViewModel
     @Binding var isSelected: Bool
-    @State private var image: UIImage?
+    @State private var imageData: Data?
     
     let card: Card
     let company: CompanyList
     
     var body: some View {
         HStack(alignment: .top) {
-            if let image = image {
-                Image(uiImage: image)
+            if let uiImage = UIImage(data: imageData ?? Data()) {
+                Image(uiImage: uiImage)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 80)
@@ -60,14 +59,16 @@ struct CardListViewCell: View {
             isSelected.toggle()
         }
         .onAppear {
-            downLoadImage()
+            downLoadImage(company: company, cardNumber: card.cardNumber ?? String())
         }
     }
     
-    func downLoadImage() {
+    func downLoadImage(company: CompanyList, cardNumber: String) {
         Task(priority: .background) {
-            let image = await FirebaseManager.shared.downloadImage(company: company, cardNumber: card.cardNumber ?? "")
-            self.image = image
+            let imageData = await FirebaseManager.shared.downloadImageData(company: company, cardNumber: cardNumber)
+            DispatchQueue.main.async {
+                self.imageData = imageData
+            }
         }
     }
 }

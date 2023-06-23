@@ -9,14 +9,14 @@ import SwiftUI
 import WidgetKit
 
 struct CardImageView: View {
-    let name: String
+    let imageData: Data
     
     var body: some View {
         ZStack {
             Circle()
                 .fill(.gray.opacity(0.1))
                 .frame(width: 50)
-            Image(name)
+            Image(uiImage: UIImage(data: imageData) ?? UIImage())
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 30)
@@ -27,6 +27,6 @@ struct CardImageView: View {
 
 struct CardImageView_Previews: PreviewProvider {
     static var previews: some View {
-        CardImageView(name: "CardImage").previewContext(WidgetPreviewContext(family: .systemLarge))
+        CardImageView(imageData: Data()).previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }

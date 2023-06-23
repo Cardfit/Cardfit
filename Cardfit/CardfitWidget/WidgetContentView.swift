@@ -36,7 +36,7 @@ struct WidgetContentView: View {
                 .padding(15)
             }
             
-            CardImageView(name: "CardImage")
+            CardImageView(imageData: card.imageData ?? Data())
         }
         .onAppear {
             print(card)
@@ -66,7 +66,7 @@ struct BenefitCell: View {
     
     var body: some View {
         VStack {
-            HStack(alignment: .top) {
+            HStack(alignment: .firstTextBaseline) {
                 Text(benefit["category"] ?? String())
                     .font(.system(size: 14))
                     .fontWeight(.semibold)

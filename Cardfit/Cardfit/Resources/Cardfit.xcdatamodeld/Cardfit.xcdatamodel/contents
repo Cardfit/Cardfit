@@ -7,6 +7,7 @@
         <attribute name="cardNumber" optional="YES" attributeType="String"/>
         <attribute name="company" optional="YES" attributeType="String"/>
         <attribute name="domesticAnnualFee" optional="YES" attributeType="String"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary"/>
         <attribute name="mainBenefit" optional="YES" attributeType="String"/>
         <attribute name="requiredPreviousMonthUsage" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>

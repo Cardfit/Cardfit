@@ -12,6 +12,7 @@ struct Card: Identifiable, Hashable, Codable {
     var cardName: String?
     var cardNumber: String?
     var cardImageURL: String?
+    var imageData: Data?
     var domesticAnnualFee: String?
     var requiredPreviousMonthUsage: Int64?
     var mainBenefit: String?

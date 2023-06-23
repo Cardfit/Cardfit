@@ -26,16 +26,16 @@ class CardListViewModel: ObservableObject {
                 let cardList = try await FirebaseManager.shared.fetchCardInfo(of: company)
                 
                 PersistenceController.shared.saveMulitpleData(datas: cardList, entityType: CardEntity.self) { (data, entity) in
+                    let benefit = try? JSONEncoder().encode(data.benefit)
                     
+                    entity.setValue(benefit, forKey: "benefit")
                     entity.setValue(data.cardName, forKey: "cardName")
                     entity.setValue(data.cardNumber, forKey: "cardNumber")
                     entity.setValue(data.company, forKey: "company")
                     entity.setValue(data.mainBenefit, forKey: "mainBenefit")
+                    entity.setValue(data.imageData, forKey: "imageData")
                     entity.setValue(data.domesticAnnualFee, forKey: "domesticAnnualFee")
                     entity.setValue(data.requiredPreviousMonthUsage, forKey: "requiredPreviousMonthUsage")
-                    
-                    let benefit = try? JSONEncoder().encode(data.benefit)
-                    entity.setValue(benefit, forKey: "benefit")
                 }
                 
                 return .success(cardList)

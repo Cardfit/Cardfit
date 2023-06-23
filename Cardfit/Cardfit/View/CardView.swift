@@ -9,9 +9,8 @@ import SwiftUI
 
 struct CardView: View {
     @EnvironmentObject var model: MainViewModel
-    @State private var image: UIImage?
     
-    var card: Card
+    @State var card: Card
     var color: Color
     var animation: Namespace.ID
     
@@ -27,8 +26,8 @@ struct CardView: View {
                 .matchedGeometryEffect(id: "Date-\(card.id)", in: animation)
             
             HStack{
-                if let image = image {
-                    Image(uiImage: image)
+                if let imageData = card.imageData, let uiImage = UIImage(data: imageData) {
+                    Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 250, height: 250, alignment: .center)
@@ -76,16 +75,6 @@ struct CardView: View {
                     }
                 }
             }
-        }
-        .onAppear{
-            downLoadImage()
-        }
-    }
-    
-    func downLoadImage() {
-        Task(priority: .background) {
-            let image = await FirebaseManager.shared.downloadImage(company: CompanyList(rawValue: card.company ?? "BC CARD") ?? .bc, cardNumber: String(card.id ?? 0))
-            self.image = image
         }
     }
 }

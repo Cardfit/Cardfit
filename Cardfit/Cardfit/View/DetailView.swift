@@ -10,7 +10,6 @@ import SwiftUI
 struct DetailView: View {
     @EnvironmentObject var model: MainViewModel
     @State private var Details = false
-    @State private var image: UIImage?
     
     var animation: Namespace.ID
     var body: some View {
@@ -41,8 +40,8 @@ struct DetailView: View {
                 
                 if model.showContent{
                     ScrollView(showsIndicators: false){
-                        if let image = image {
-                            Image(uiImage: image)
+                        if let imageData = model.selectedCard.imageData, let uiImage = UIImage(data: imageData) {
+                            Image(uiImage: uiImage)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 250, height: 250, alignment: .center)
@@ -116,15 +115,6 @@ struct DetailView: View {
                     .padding(.bottom)
                 }
             }
-        }
-        .onAppear{
-            downLoadImage()
-        }
-    }
-    func downLoadImage() {
-        Task(priority: .background) {
-            let image = await FirebaseManager.shared.downloadImage(company: CompanyList(rawValue: model.selectedCard.company ?? "BC CARD") ?? .bc, cardNumber: String(model.selectedCard.id ?? 0))
-            self.image = image
         }
     }
     
