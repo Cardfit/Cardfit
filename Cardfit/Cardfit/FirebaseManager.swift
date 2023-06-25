@@ -27,26 +27,21 @@ class FirebaseManager: NSObject {
         super.init()
     }
     
-    func downloadImage(company: CompanyList, cardNumber: String) async -> UIImage? {
+    func downloadImageData(company: CompanyList, cardNumber: String) async -> Data {
         await withCheckedContinuation { continuation in
             storage.reference(forURL: "gs://cardfit-b9d71.appspot.com/CardImage/\(company.rawValue)/\(cardNumber)").downloadURL { url, error in
                 DispatchQueue.global().async {
                     do {
                         guard let url = url else {
                             print("downloadImage(), 잘못된 URL")
-                            continuation.resume(returning: nil)
+                            continuation.resume(returning: Data())
                             return
                         }
                         let data = try Data(contentsOf: url)
-                        guard let uiImage = UIImage(data: data) else {
-                            print("downloadImage(), data 없음")
-                            continuation.resume(returning: nil)
-                            return
-                        }
-                        continuation.resume(returning: uiImage)
+                        continuation.resume(returning: data)
                     } catch {
                         print(error)
-                        continuation.resume(returning: nil)
+                        continuation.resume(returning: Data())
                     }
                 }
             }
@@ -56,15 +51,32 @@ class FirebaseManager: NSObject {
     func fetchCardInfo(of company: CompanyList) async throws -> [Card] {
         let reference = getReference(of: company)
         let snapshots = try await reference.getDocuments().documents
-        let cards = try snapshots.map { snapshot in
-            var card = try snapshot.data(as: Card.self)
-            
-            card.company = company.rawValue
-            
-            return card
+        
+        var cards: [Card] = []
+        for snapshot in snapshots {
+            do {
+                let card = try await createCard(from: snapshot, company: company)
+                cards.append(card)
+            } catch {
+                print("Error creating card:", error)
+            }
         }
+        
         return cards
     }
+
+    func createCard(from snapshot: QueryDocumentSnapshot, company: CompanyList) async throws -> Card {
+        var card = try snapshot.data(as: Card.self)
+        card.company = company.rawValue
+        
+        if let cardNumber = card.cardNumber {
+            let imageData = await downloadImageData(company: company, cardNumber: cardNumber)
+            card.imageData = imageData
+        }
+        
+        return card
+    }
+
 }
 
 extension FirebaseManager {

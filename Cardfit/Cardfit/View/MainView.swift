@@ -34,19 +34,6 @@ struct Main: View {
                                 .frame(width: 40, height: 40)
                         }
                         .padding()
-                        
-//                        Button {
-////                            NavigationLink{
-////                                CardSearchView()
-////                            }
-////                            .navigationTitle("메인화면")
-//                        } label: {
-//                            Image(systemName: "plus.app")
-//                                .resizable()
-//                                .frame(width: 40, height: 40)
-//                        }
-//                        .padding()
-
                     }
                     
                     if !model.cards.isEmpty {
@@ -104,8 +91,13 @@ struct Main: View {
             }
             .onAppear {
                 Task {
-                    let cards = await model.fetchUserCardList()
-                    self.model.cards = cards
+                    let result = await model.fetchUserCardList()
+                    switch result {
+                    case .success(let cards):
+                        self.model.cards = cards
+                    case .failure(let failure):
+                        print(failure)
+                    }
                 }
             }
         }
