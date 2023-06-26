@@ -89,9 +89,10 @@ struct PersistenceController {
     /// - Parameter entityType: 엔티티의 실직적인 타입 (ex: CardEntity.self)
     /// - Returns: [NSFetchRequestResult]
 
-    func fetchData<Result: NSFetchRequestResult>(entity: Entity, entityType: Result.Type, predicate: NSPredicate?) -> [Result] {
+    func fetchData<Result: NSFetchRequestResult>(entity: Entity, entityType: Result.Type, predicate: NSPredicate? = nil) -> [Result] {
         let viewContext = container.viewContext
         let fetchRequest = NSFetchRequest<Result>(entityName: entity.rawValue)
+        
         
         fetchRequest.predicate = predicate
         

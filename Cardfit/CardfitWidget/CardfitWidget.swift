@@ -7,9 +7,8 @@
 
 import WidgetKit
 import SwiftUI
-import Intents
 
-// 렌더링할 시기(업데이트 시기)를 알려주는 Timeline을 생성하는 객체
+// TimelineProvider: 렌더링할 시기(업데이트 시기)를 알려주는 Timeline을 생성하는 객체
 
 struct Provider: IntentTimelineProvider {
     
@@ -28,6 +27,9 @@ struct Provider: IntentTimelineProvider {
     
     // 단일 timeline 을 반환
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (MyCardEntry) -> ()) {
+        
+        let configCardNumber = configuration.MyCard?.cardNumber
+        
         guard let userCardEntity = PersistenceController.shared.fetchData(entity: .userCardEntity, entityType: UserCardEntity.self, predicate: nil).first else {
             let entry = MyCardEntry(date: Date(), userCard: .placeholder(), configuration: configuration)
             completion(entry)
@@ -44,6 +46,8 @@ struct Provider: IntentTimelineProvider {
     }
     
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+        
+        let configCardNumber = configuration.MyCard?.cardNumber
         var entries: [MyCardEntry] = []
         
         let currentDate = Date()
@@ -105,7 +109,7 @@ struct CardfitWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             CardfitWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("나의 카드")
+        .configurationDisplayName("내 카드 혜택보기")
         .description("내가 등록한 카드의 상세보기를 빠르게 접근하세요")
         .supportedFamilies([.systemLarge])
     }

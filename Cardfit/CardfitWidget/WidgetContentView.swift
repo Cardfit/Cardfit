@@ -86,7 +86,6 @@ struct LogoHStack: View {
         HStack() {
             if category.count > 0 {
                 ForEach(category, id: \.count) { index in
-                    //Image(brand[index])
                     Image(index)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
