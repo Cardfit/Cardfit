@@ -28,7 +28,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>2</integer>
+			<integer>18</integer>
 			<key>INIntentName</key>
 			<string>Configuration</string>
 			<key>INIntentParameters</key>
@@ -37,7 +37,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>내내 카드</string>
+					<string>내 카드</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>KTeZ7e</string>
 					<key>INIntentParameterDisplayPriority</key>
@@ -45,7 +45,7 @@
 					<key>INIntentParameterName</key>
 					<string>MyCard</string>
 					<key>INIntentParameterObjectType</key>
-					<string>UserCard</string>
+					<string>MyCard</string>
 					<key>INIntentParameterObjectTypeNamespace</key>
 					<string>88xZPY</string>
 					<key>INIntentParameterPromptDialogs</key>
@@ -63,8 +63,10 @@
 							<string>Primary</string>
 						</dict>
 					</array>
+					<key>INIntentParameterSupportsDynamicEnumeration</key>
+					<true/>
 					<key>INIntentParameterTag</key>
-					<integer>2</integer>
+					<integer>18</integer>
 					<key>INIntentParameterType</key>
 					<string>Object</string>
 				</dict>
@@ -84,6 +86,8 @@
 						<string>failure</string>
 					</dict>
 				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>3</integer>
 			</dict>
 			<key>INIntentTitle</key>
 			<string>Configuration</string>
@@ -99,13 +103,13 @@
 	<array>
 		<dict>
 			<key>INTypeDisplayName</key>
-			<string>나의카드으응</string>
+			<string>MyCard</string>
 			<key>INTypeDisplayNameID</key>
-			<string>l24BIb</string>
+			<string>W6mo2A</string>
 			<key>INTypeLastPropertyTag</key>
-			<integer>100</integer>
+			<integer>102</integer>
 			<key>INTypeName</key>
-			<string>UserCard</string>
+			<string>MyCard</string>
 			<key>INTypeProperties</key>
 			<array>
 				<dict>
@@ -160,15 +164,29 @@
 				</dict>
 				<dict>
 					<key>INTypePropertyDisplayName</key>
-					<string>Card Name!</string>
+					<string>Card Number</string>
 					<key>INTypePropertyDisplayNameID</key>
-					<string>M0L6bF</string>
+					<string>v7XG6r</string>
 					<key>INTypePropertyDisplayPriority</key>
 					<integer>5</integer>
 					<key>INTypePropertyName</key>
+					<string>cardNumber</string>
+					<key>INTypePropertyTag</key>
+					<integer>101</integer>
+					<key>INTypePropertyType</key>
+					<string>String</string>
+				</dict>
+				<dict>
+					<key>INTypePropertyDisplayName</key>
+					<string>Card Name</string>
+					<key>INTypePropertyDisplayNameID</key>
+					<string>0L09mb</string>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>6</integer>
+					<key>INTypePropertyName</key>
 					<string>cardName</string>
 					<key>INTypePropertyTag</key>
-					<integer>100</integer>
+					<integer>102</integer>
 					<key>INTypePropertyType</key>
 					<string>String</string>
 				</dict>
