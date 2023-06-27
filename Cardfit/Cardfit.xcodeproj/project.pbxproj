@@ -29,6 +29,7 @@
 		721E77682A279D77001DFBBF /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E77672A279D77001DFBBF /* Card.swift */; };
 		721E77742A28C5F6001DFBBF /* CardListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E77732A28C5F6001DFBBF /* CardListViewCell.swift */; };
 		721E77782A28CEDB001DFBBF /* CardSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E77772A28CEDB001DFBBF /* CardSearchView.swift */; };
+		727F2B0A2A49DF88008A5BAB /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727F2B092A49DF88008A5BAB /* NavigationManager.swift */; };
 		72AE832E2A29E93700390AF8 /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE832D2A29E93700390AF8 /* CardListView.swift */; };
 		72AE83302A29EC8E00390AF8 /* CompanyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE832F2A29EC8E00390AF8 /* CompanyButton.swift */; };
 		72AE83362A2DF4E900390AF8 /* CardSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE83352A2DF4E900390AF8 /* CardSearchViewModel.swift */; };
@@ -137,6 +138,7 @@
 		721E77672A279D77001DFBBF /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		721E77732A28C5F6001DFBBF /* CardListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewCell.swift; sourceTree = "<group>"; };
 		721E77772A28CEDB001DFBBF /* CardSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchView.swift; sourceTree = "<group>"; };
+		727F2B092A49DF88008A5BAB /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		72AE832D2A29E93700390AF8 /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
 		72AE832F2A29EC8E00390AF8 /* CompanyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyButton.swift; sourceTree = "<group>"; };
 		72AE83352A2DF4E900390AF8 /* CardSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchViewModel.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				721E76E82A20BFE2001DFBBF /* ContentView.swift */,
 				721E76EF2A20BFE4001DFBBF /* Persistence.swift */,
 				721E77352A248040001DFBBF /* FirebaseManager.swift */,
+				727F2B092A49DF88008A5BAB /* NavigationManager.swift */,
 				7218255F2A3C5D6500D5F282 /* Model */,
 				AA331FAA2A39A0CD00EBDBD4 /* View */,
 				AA331FA92A39A0C700EBDBD4 /* ViewModel */,
@@ -598,6 +601,7 @@
 				72AE83362A2DF4E900390AF8 /* CardSearchViewModel.swift in Sources */,
 				72AE83302A29EC8E00390AF8 /* CompanyButton.swift in Sources */,
 				72AE832E2A29E93700390AF8 /* CardListView.swift in Sources */,
+				727F2B0A2A49DF88008A5BAB /* NavigationManager.swift in Sources */,
 				72D3EA3C2A44756F004CA733 /* Category.swift in Sources */,
 				721E77682A279D77001DFBBF /* Card.swift in Sources */,
 				72D3EA312A44364C004CA733 /* CardfitError.swift in Sources */,

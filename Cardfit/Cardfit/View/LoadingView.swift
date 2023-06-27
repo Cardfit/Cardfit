@@ -13,7 +13,7 @@ struct LoadingView: View {
     
     @State var percent: CGFloat = 0
     private var isLoaded: Bool { percent == CGFloat(100) ? true : false }
-    private let timer = Timer.publish(every: 0.005, on: .main, in: .common).autoconnect()
+    private let timer = Timer.publish(every: 0.008, on: .main, in: .common).autoconnect()
     
     let selectedCards: [Card]
     
@@ -27,7 +27,12 @@ struct LoadingView: View {
             Text(String(format: "%.0f", percent) + "%")
             
             Button(isLoaded ? "확인" : "취소") {
-                dismiss()
+                if isLoaded {
+                    NavigationManager.shared.popToRoot()
+                } else {
+//                    PersistenceController.shared.deleteData(entity: .userCardEntity)
+                    dismiss()
+                }
             }
             .fontWeight(.bold)
             .font(.system(size: 20))
