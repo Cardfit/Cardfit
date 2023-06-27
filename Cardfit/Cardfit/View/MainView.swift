@@ -12,6 +12,7 @@ var width = UIScreen.main.bounds.width
 struct Main: View {
     @EnvironmentObject var model: MainViewModel
     @Namespace var animation
+    @State private var isPresented = false
     
     var body: some View {
         NavigationStack {
@@ -26,14 +27,20 @@ struct Main: View {
                             .padding(.leading, 25)
                         Spacer()
                         
-                        NavigationLink{
-                            CardSearchView()
+                        Button {
+                            isPresented = true
                         } label: {
                             Image(systemName: "plus.app")
                                 .resizable()
                                 .frame(width: 40, height: 40)
                         }
-                        .padding()
+                        .padding(.trailing, 10)
+                        .navigationDestination(isPresented: $isPresented) {
+                            CardSearchView()
+                        }
+                    }
+                    .onReceive(NavigationManager.shared.isActivePublisher) { isPresented in
+                        self.isPresented = isPresented
                     }
                     
                     if !model.cards.isEmpty {
@@ -94,6 +101,7 @@ struct Main: View {
                     let result = await model.fetchUserCardList()
                     switch result {
                     case .success(let cards):
+                        print(cards)
                         self.model.cards = cards
                     case .failure(let failure):
                         print(failure)

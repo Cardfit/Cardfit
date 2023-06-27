@@ -45,7 +45,7 @@ struct BenefitList: View {
     @State var benefit: Benefits
     
     var body: some View {
-        ForEach(benefit, id: \.self) { benefit in
+        ForEach(benefit.prefix(3), id: \.self) { benefit in
             BenefitCell(benefit: benefit.values.first!)
         }
         .padding([.top, .leading, .trailing], 5)
@@ -59,7 +59,7 @@ struct BenefitCell: View {
     @State private var isExpanded = false
     
     var body: some View {
-        VStack {
+        LazyVStack {
             HStack(alignment: .firstTextBaseline) {
                 Text(benefit["category"] ?? String())
                     .font(.system(size: 14))
@@ -73,7 +73,8 @@ struct BenefitCell: View {
                     .font(.system(size: 12))
                     .fontWeight(.semibold)
                     .foregroundColor(.black.opacity(0.8))
-                    .lineLimit(4)
+                    .lineLimit(2)
+                Spacer()
             }
         }
     }
@@ -85,11 +86,11 @@ struct LogoHStack: View {
     var body: some View {
         HStack() {
             if category.count > 0 {
-                ForEach(category, id: \.count) { index in
+                ForEach(category.prefix(6), id: \.self) { index in
                     Image(index)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 25, height: 25)
+                        .frame(width: 20, height: 20)
                         .padding(6)
                         .background {
                             Circle().fill(.gray.opacity(0.2))
