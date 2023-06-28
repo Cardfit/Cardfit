@@ -68,20 +68,20 @@ struct DetailView: View {
                                     .fontWeight(.bold)
                                     .foregroundColor(.gray)
                                 
-//                                Text("\(model.selectedCard.requiredPreviousMonthUsage)")
-//                                    .fontWeight(.bold)
-//                                    .foregroundColor(.white)
+                                Text("\(model.selectedCard.requiredPreviousMonthUsage ?? 0)")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
                             }
                         }
                         .frame(width: 350)
                         .padding()
                         
                         // Benefit
-//                        VStack{
-//                            ForEach(model.selectedCard.benefit ?? [], id: \.self) { listitem in
-//                                BenefitView(cate: listitem.first?.key ?? "", benefit: listitem.first?.value ?? "").padding([.leading,.trailing])
-//                            }
-//                        }
+                        VStack{
+                            ForEach(model.selectedCard.benefit ?? [], id:\.self) { data in
+                                BenefitView(category: data.first?.key ?? "28", benefit: data.values.first?["description"] ?? "")
+                            }
+                        }
                     }
                 }
                 
