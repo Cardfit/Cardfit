@@ -687,7 +687,7 @@
 				CODE_SIGN_ENTITLEMENTS = CardfitWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G8228CR939;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardfitWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CardfitWidget;
@@ -716,7 +716,7 @@
 				CODE_SIGN_ENTITLEMENTS = CardfitWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G8228CR939;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardfitWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CardfitWidget;
@@ -861,7 +861,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cardfit/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G8228CR939;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cardfit/Info.plist;
@@ -894,7 +894,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cardfit/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G8228CR939;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cardfit/Info.plist;
@@ -923,7 +923,7 @@
 				CODE_SIGN_ENTITLEMENTS = UserCardIntent/UserCardIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G8228CR939;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UserCardIntent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = UserCardIntent;
@@ -950,7 +950,7 @@
 				CODE_SIGN_ENTITLEMENTS = UserCardIntent/UserCardIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G8228CR939;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UserCardIntent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = UserCardIntent;

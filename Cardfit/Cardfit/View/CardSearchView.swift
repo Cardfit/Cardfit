@@ -22,6 +22,7 @@ struct CardSearchView: View {
                     } label: {
                         CompanyButton(company: company)
                     }
+                    
                 }
             }
             .padding([.top, .horizontal])
@@ -29,7 +30,7 @@ struct CardSearchView: View {
         }
         .navigationTitle("카드 선택")
         .accentColor(.black)
-        .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search for Card")
+        .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "카드사 검색")
         .textInputAutocapitalization(.never)
         .autocorrectionDisabled(true)
     }

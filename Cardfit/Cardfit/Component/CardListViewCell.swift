@@ -16,7 +16,7 @@ struct CardListViewCell: View {
     let company: CompanyList
     
     var body: some View {
-        HStack(alignment: .top) {
+        HStack() {
             if let uiImage = UIImage(data: imageData ?? Data()) {
                 Image(uiImage: uiImage)
                     .resizable()
@@ -41,9 +41,12 @@ struct CardListViewCell: View {
                     .padding(.top, 5)
             }
             Spacer(minLength: 10)
-            Image(systemName: "checkmark.circle.fill")
-                .foregroundColor(isSelected ? .blue : .gray)
-                .padding([.top, .trailing], 20)
+            VStack {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundColor(isSelected ? Color("AppColor") : .gray)
+                    .padding([.top, .trailing], 20)
+                Spacer()
+            }
         }
         .frame(maxWidth: .infinity, alignment: .center)
         .background(
@@ -52,7 +55,7 @@ struct CardListViewCell: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(isSelected ? Color.blue : .black.opacity(0.3), lineWidth: 1)
+                .stroke(isSelected ? Color("AppColor") : .black.opacity(0.3), lineWidth: 1)
         )
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         .onTapGesture {

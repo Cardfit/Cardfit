@@ -15,32 +15,33 @@ struct WidgetContentView: View {
     }
     
     var body: some View {
-        ZStack(alignment: .topTrailing) {
-            VStack(alignment: .leading, spacing: 0) {
-                TitleLabel(title: card.cardName ?? String(), font: .title3)
-                    .padding([.top, .leading, .bottom], 15)
-                    .frame(height: 70, alignment: .bottom)
-                Divider()
-                    .padding(.horizontal, 10)
-                BenefitList(benefit: card.benefit ?? Benefits())
+        VStack(alignment: .leading, spacing: 0) {
+            HStack {
+                TitleLabel(title: card.cardName ?? String(), font: .title3, color: .white)
                     .padding(.leading, 10)
+                    .frame(height: 70)
                 Spacer()
-                Divider()
-                    .padding(.horizontal, 10)
-                
-                VStack(alignment: .leading) {
-                    TitleLabel(title: "브랜드", font: .headline)
-                    LogoHStack(category: category)
-                        .padding(.leading, 5)
-                }
-                .padding(15)
+                CardImageView(imageData: card.imageData ?? Data())
+                    .padding(10)
             }
+            .background(Color("AppColor"))
+            BenefitList(benefit: card.benefit ?? Benefits())
+            Spacer()
+            Divider()
+                .padding(.horizontal, 10)
             
-            CardImageView(imageData: card.imageData ?? Data())
+            VStack(alignment: .leading) {
+                TitleLabel(title: "브랜드", font: .headline, color: Color("AppColor"))
+                    .padding(5)
+                    .padding(.bottom, 0)
+                LogoHStack(category: category)
+            }
+            .padding(10)
         }
     }
 }
-                
+
+
 struct BenefitList: View {
     @State var benefit: Benefits
     
@@ -48,8 +49,7 @@ struct BenefitList: View {
         ForEach(benefit.prefix(3), id: \.self) { benefit in
             BenefitCell(benefit: benefit.values.first!)
         }
-        .padding([.top, .leading, .trailing], 5)
-        .padding(.bottom, 5)
+        .padding([.top, .leading, .bottom], 5)
     }
 }
 
@@ -62,13 +62,18 @@ struct BenefitCell: View {
         LazyVStack {
             HStack(alignment: .firstTextBaseline) {
                 Text(benefit["category"] ?? String())
-                    .font(.system(size: 14))
+                    .font(.system(size: 12))
                     .fontWeight(.semibold)
                     .padding(5)
+                    .foregroundColor(Color("AppColor"))
                     .background {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(.gray.opacity(0.1))
+                        RoundedRectangle(cornerRadius: 13)
+                            .fill(.white)
                     }
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 13)
+                            .stroke(Color("AppColor"), lineWidth: 1)
+                    )
                 Text(benefit["description"] ?? String())
                     .font(.system(size: 12))
                     .fontWeight(.semibold)
@@ -84,7 +89,7 @@ struct LogoHStack: View {
     @State var category: [String]
     
     var body: some View {
-        HStack() {
+        HStack {
             if category.count > 0 {
                 ForEach(category.prefix(6), id: \.self) { index in
                     Image(index)
@@ -93,7 +98,7 @@ struct LogoHStack: View {
                         .frame(width: 20, height: 20)
                         .padding(6)
                         .background {
-                            Circle().fill(.gray.opacity(0.2))
+                            Circle().fill(Color.white)
                         }
                 }
             } else {
