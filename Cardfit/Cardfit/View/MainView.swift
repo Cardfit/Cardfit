@@ -136,6 +136,9 @@ struct Main: View {
             else {
                 model.cards[index].offset = 0
             }
+            if index == model.cards.count - 1{
+                ResetViews()
+            }
         }
     }
     
