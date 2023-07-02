@@ -74,7 +74,7 @@ struct BenefitCell: View {
                         RoundedRectangle(cornerRadius: 13)
                             .stroke(Color("AppColor"), lineWidth: 1)
                     )
-                Text(benefit["description"] ?? String())
+                Text(benefitInputEnter(benefit["description"] ?? String()))
                     .font(.system(size: 12))
                     .fontWeight(.semibold)
                     .foregroundColor(.black.opacity(0.8))
@@ -82,6 +82,10 @@ struct BenefitCell: View {
                 Spacer()
             }
         }
+    }
+    
+    func benefitInputEnter(_ benefit: String) -> String {
+        benefit.replacingOccurrences(of: "*", with: "\n\n*").replacingOccurrences(of: "※", with: "\n\n※").replacingOccurrences(of: "-", with: "\n -")
     }
 }
 
