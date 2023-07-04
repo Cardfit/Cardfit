@@ -31,7 +31,7 @@ struct BenefitView: View {
         .background {
             RoundedRectangle(cornerRadius: 15)
                 .fill(.white)
-        }//.padding([.leading,.trailing])
+        }
         .overlay(RoundedRectangle(cornerRadius: 15)
                     .stroke(Color.black, lineWidth: 2))
     }

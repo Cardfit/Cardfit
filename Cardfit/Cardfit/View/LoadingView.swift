@@ -6,39 +6,59 @@
 //
 
 import SwiftUI
+import Combine
 
 struct LoadingView: View {
     
     @Environment(\.dismiss) private var dismiss
     
     @State var percent: CGFloat = 0
-    private var isLoaded: Bool { percent == CGFloat(100) ? true : false }
-    private let timer = Timer.publish(every: 0.008, on: .main, in: .common).autoconnect()
+    @State private var rotationAngle: Double = 0
+    
+    private var isSaved: Bool { percent == CGFloat(100) ? true : false }
+    private let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
     
     let selectedCards: [Card]
     
     var body: some View {
         VStack(spacing: 20) {
-            Text(isLoaded ? "카드 등록이 완료되었습니다." : "카드 등록중입니다...")
-                .font(.title2)
+            Image("CardImage")
+                .resizable()
+                .frame(width: 150, height: 100)
+                .rotation3DEffect(.degrees(rotationAngle), axis: (0,1,0))
+                .onAppear {
+                    withAnimation(Animation.linear(duration: 5)) {
+                        rotationAngle += 360
+                    }
+                }
+                .onReceive(Just(isSaved)) { isSaved in
+                }
+                .padding(100)
+            Text(isSaved ? "카드 등록 완료" : "카드 등록중...")
+                .font(.title)
+                .fontWeight(.semibold)
+                .foregroundColor(Color("AppColor"))
             
             LoadingProgressView(percent: $percent)
             
             Text(String(format: "%.0f", percent) + "%")
+                .font(.title2)
+                .fontWeight(.semibold)
+                .foregroundColor(Color("AppColor"))
             
-            Button(isLoaded ? "확인" : "취소") {
-                if isLoaded {
+            Button(isSaved ? "확인" : "취소") {
+                if isSaved {
                     NavigationManager.shared.popToRoot()
                 } else {
-//                    PersistenceController.shared.deleteData(entity: .userCardEntity)
+                    //                    PersistenceController.shared.deleteData(entity: .userCardEntity)
                     dismiss()
                 }
             }
             .fontWeight(.bold)
             .font(.system(size: 20))
-            .foregroundColor(percent == CGFloat(100) ? .blue : .red)
+            .foregroundColor(percent == CGFloat(100) ? Color("AppColor") : .red)
             .buttonStyle(.plain)
-            .padding(.top, 10)
+            .padding(.top, 50)
         }
         .onAppear {
             if !selectedCards.isEmpty {
@@ -84,7 +104,7 @@ struct LoadingProgressView: View {
             
             Capsule()
                 .fill(
-                    LinearGradient(gradient: Gradient(colors: [.white, .blue]), startPoint: .leading, endPoint: .trailing)
+                    LinearGradient(gradient: Gradient(colors: [.white, Color("AppColor")]), startPoint: .leading, endPoint: .trailing)
                 )
                 .frame(width: 300 * percent/100, height: 20)
         }

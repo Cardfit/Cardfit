@@ -10,5 +10,6 @@ import Foundation
 enum CardfitError: Error {
     case parsingError
     case fetchError
+    case empty
     case saveError
 }

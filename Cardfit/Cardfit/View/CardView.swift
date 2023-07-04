@@ -33,9 +33,11 @@ struct CardView: View {
                         .frame(width: 250, height: 250, alignment: .center)
                         .padding()
                 } else {
-                    ProgressView()
+                    Image("CardImage")
+                        .resizable()
+                        .scaledToFit()
                         .frame(width: 250, height: 250, alignment: .center)
-                        .padding()// 이미지 로딩 중일 때 표시될 로딩 표시기
+                        .padding()
                 }
 
                 Spacer(minLength: 0)
@@ -81,6 +83,6 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: Card(), color: .red, animation: Namespace().wrappedValue)
+        CardView(card: Card.placeholder(), color: .red, animation: Namespace().wrappedValue)
     }
 }

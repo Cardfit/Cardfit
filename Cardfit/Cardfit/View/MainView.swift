@@ -32,9 +32,10 @@ struct Main: View {
                         } label: {
                             Image(systemName: "plus.app")
                                 .resizable()
+                                .foregroundColor(Color("AppColor"))
                                 .frame(width: 40, height: 40)
                         }
-                        .padding(.trailing, 10)
+                        .padding(.trailing, 20)
                         .navigationDestination(isPresented: $isPresented) {
                             CardSearchView()
                         }
@@ -81,9 +82,8 @@ struct Main: View {
                     } else {
                         HStack(alignment: .center, spacing: 10) {
                             Image(systemName: "plus.app")
-                                .foregroundColor(.blue)
+                                .foregroundColor(Color("AppColor"))
                             Text("를 눌러서 카드를 등록해주세요.")
-                        
                         }
                         .font(.system(size: 23))
                         .padding(.top, 30)
@@ -109,6 +109,7 @@ struct Main: View {
                 }
             }
         }
+        .accentColor(Color("AppColor"))
     }
     
     func ResetViews(){
