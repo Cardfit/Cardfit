@@ -13,7 +13,7 @@ struct PersistenceController {
         case userCardEntity = "UserCardEntity"
     }
     
-    private let appGroup = "group.com.Cardfit"
+    private let appGroup = "group.Hud.Cardfit"
     static let shared = PersistenceController(inMemory: false)
     let container = NSPersistentContainer(name: "Cardfit")
     
