@@ -14,19 +14,19 @@ struct CardImageView: View {
     var body: some View {
         ZStack {
             Circle()
-                .fill(.gray.opacity(0.1))
-                .frame(width: 50)
-            Image(uiImage: UIImage(data: imageData) ?? UIImage())
+                .fill(.white)
+                .frame(width: 40)
+            Image(uiImage: UIImage(data: imageData)?.preparingThumbnail(of: CGSize(width: 100, height: 100)) ?? UIImage(named: "CardImage")!)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 30)
         }
-        .padding(10)
     }
 }
 
 struct CardImageView_Previews: PreviewProvider {
     static var previews: some View {
-        CardImageView(imageData: Data()).previewContext(WidgetPreviewContext(family: .systemLarge))
+        CardImageView(imageData: Data())
+            .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }

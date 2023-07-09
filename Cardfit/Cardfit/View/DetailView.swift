@@ -46,7 +46,9 @@ struct DetailView: View {
                                 .frame(width: 250, height: 250, alignment: .center)
                             
                         } else {
-                            ProgressView()
+                            Image("CardImage")
+                                .resizable()
+                                .scaledToFit()
                                 .frame(width: 250, height: 250, alignment: .center)
                                 .padding()// 이미지 로딩 중일 때 표시될 로딩 표시기
                         }

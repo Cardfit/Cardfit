@@ -46,7 +46,7 @@ struct CardListView: View {
                 if !viewModel.selectedCards.isEmpty {
                     NavigationLink(destination: LoadingView(selectedCards: viewModel.selectedCards).navigationBarBackButtonHidden()) {
                         Text("추가")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("AppColor"))
                     }
                 } else {
                     Text("추가")

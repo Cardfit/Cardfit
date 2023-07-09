@@ -20,7 +20,7 @@ class MainViewModel: ObservableObject{
     @Published var image: [Image] = []
     
     func fetchUserCardList() async -> Result<[Card], CardfitError> {
-        guard let userCardEntity = PersistenceController.shared.fetchData(entity: .userCardEntity, entityType: UserCardEntity.self, predicate: nil).first else { return .failure(.fetchError) }
+        guard let userCardEntity = PersistenceController.shared.fetchData(entity: .userCardEntity, entityType: UserCardEntity.self, predicate: nil).first else { return .failure(.empty) }
         let cards = userCardEntity.convertToCards()
         return .success(cards)
     }
