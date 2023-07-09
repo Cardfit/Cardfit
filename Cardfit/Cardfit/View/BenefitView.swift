@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct BenefitView: View {
-    @State private var Details = false
+    @State private var details = false
     var category: String
     var benefit: String
     
     var body: some View {
-        DisclosureGroup(isExpanded: $Details, content: {
+        DisclosureGroup(isExpanded: $details, content: {
             Text(benefitInputEnter(benefit))
                 .padding(.top)
         },

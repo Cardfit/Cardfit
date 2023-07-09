@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DetailView: View {
     @EnvironmentObject var model: MainViewModel
-    @State private var Details = false
     
     var animation: Namespace.ID
     var body: some View {
@@ -22,7 +21,7 @@ struct DetailView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                     .padding(.top, 10)
-                    .matchedGeometryEffect(id: "Date-\(model.selectedCard.id)", in: animation)
+                    .matchedGeometryEffect(id: "Name-\(model.selectedCard.cardName)", in: animation)
             
                 HStack{
                     Text(model.selectedCard.cardName ?? "")
@@ -45,6 +44,7 @@ struct DetailView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 250, height: 250, alignment: .center)
+                            
                         } else {
                             ProgressView()
                                 .frame(width: 250, height: 250, alignment: .center)
@@ -80,6 +80,7 @@ struct DetailView: View {
                         VStack{
                             ForEach(model.selectedCard.benefit ?? [], id:\.self) { data in
                                 BenefitView(category: data.first?.key ?? "28", benefit: data.values.first?["description"] ?? "")
+                                    .padding([.leading, .trailing])
                             }
                         }
                     }
@@ -100,7 +101,7 @@ struct DetailView: View {
                 Spacer()
                 
                 if model.showContent{
-                    Button(action: CloseView) {
+                    Button(action: closeView) {
                         Image(systemName: "arrow.down")
                             .font(.system(size: 20, weight: .semibold))
                             .foregroundColor(.blue)
@@ -118,7 +119,7 @@ struct DetailView: View {
         }
     }
     
-    func CloseView(){
+    func closeView(){
         withAnimation(.spring()){
             model.showCard.toggle()
             

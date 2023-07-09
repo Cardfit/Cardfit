@@ -13,6 +13,7 @@ struct CardView: View {
     @State var card: Card
     var color: Color
     var animation: Namespace.ID
+    var image: Image
     
     var body: some View {
         VStack{
@@ -23,20 +24,25 @@ struct CardView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
                 .padding(.top, 10)
-                .matchedGeometryEffect(id: "Date-\(card.id)", in: animation)
+                .matchedGeometryEffect(id: "Name-\(card.cardName)", in: animation)
             
             HStack{
-                if let imageData = card.imageData, let uiImage = UIImage(data: imageData) {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 250, height: 250, alignment: .center)
-                        .padding()
-                } else {
-                    ProgressView()
-                        .frame(width: 250, height: 250, alignment: .center)
-                        .padding()// 이미지 로딩 중일 때 표시될 로딩 표시기
-                }
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 250, height: 250, alignment: .center)
+                    .padding()
+//                if let imageData = card.imageData, let uiImage = UIImage(data: imageData) {
+//                    Image(uiImage: uiImage)
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 250, height: 250, alignment: .center)
+//                        .padding()
+//                } else {
+//                    ProgressView()
+//                        .frame(width: 250, height: 250, alignment: .center)
+//                        .padding()// 이미지 로딩 중일 때 표시될 로딩 표시기
+//                }
 
                 Spacer(minLength: 0)
             }
@@ -81,6 +87,6 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: Card(), color: .red, animation: Namespace().wrappedValue)
+        Main()
     }
 }

@@ -17,6 +17,7 @@ class MainViewModel: ObservableObject{
     @Published var selectedCard : Card = Card()
     @Published var selectedColor : Color = .clear
     @Published var showContent = false
+    @Published var image: [Image] = []
     
     func fetchUserCardList() async -> Result<[Card], CardfitError> {
         guard let userCardEntity = PersistenceController.shared.fetchData(entity: .userCardEntity, entityType: UserCardEntity.self, predicate: nil).first else { return .failure(.fetchError) }

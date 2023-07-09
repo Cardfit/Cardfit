@@ -19,7 +19,6 @@ struct Main: View {
             ZStack {
                 VStack {
                     Spacer()
-                    
                     HStack(alignment: .center){
                         Text("My Cards")
                             .font(.system(size: 40))
@@ -45,9 +44,10 @@ struct Main: View {
                     
                     if !model.cards.isEmpty {
                         ZStack{
+                            
                             ForEach(model.cards.indices.reversed(), id:\.self){index in
                                 HStack{
-                                    CardView(card: model.cards[index], color: getColor(index: index), animation: animation)
+                                    CardView(card: model.cards[index], color: getColor(index: index), animation: animation, image: model.image[index])
                                         .frame(width: getCardWidth(index: index), height: getCardHeight(index: index))
                                         .offset(x: getCardOffset(index: index))
                                         .rotationEffect(.init(degrees: getCardRotation(index: index)))
@@ -64,6 +64,7 @@ struct Main: View {
                                             onEnd(value: value, index: index)
                                         })
                                 )
+                                
                             }
                         }
                         .padding(.top,25)
@@ -103,6 +104,11 @@ struct Main: View {
                     case .success(let cards):
                         print(cards)
                         self.model.cards = cards
+                        for i in model.cards{
+                            if let imageData = i.imageData, let uiImage = UIImage(data: imageData) {
+                                model.image.append(Image(uiImage: uiImage))
+                            }
+                        }
                     case .failure(let failure):
                         print(failure)
                     }
