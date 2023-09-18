@@ -22,7 +22,7 @@ struct CardListViewCell: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 80)
-                    .background(.white)
+                    .background(Color(uiColor: .systemBackground))
                     .padding(.all, 20)
             } else {
                 ProgressView()
@@ -30,9 +30,9 @@ struct CardListViewCell: View {
                     .padding(20)
             }
             VStack(alignment: .leading, spacing: 5) {
-                Text(card.cardName ?? String())
+                Text(card.cardName)
                     .font(.system(size: 18, weight: .bold, design: .default))
-                    .foregroundColor(.black)
+                    .foregroundColor(Color(uiColor: .label))
                     .padding(.top, 25)
                 
                 Text(card.mainBenefit ?? String())
@@ -51,18 +51,18 @@ struct CardListViewCell: View {
         .frame(maxWidth: .infinity, alignment: .center)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(.white)
+                .fill(Color(uiColor: .systemBackground))
         )
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(isSelected ? Color("AppColor") : .black.opacity(0.3), lineWidth: 1)
+                .stroke(isSelected ? Color("AppColor") : Color(uiColor: .label).opacity(0.3), lineWidth: 1)
         )
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         .onTapGesture {
             isSelected.toggle()
         }
         .onAppear {
-            downLoadImage(company: company, cardNumber: card.cardNumber ?? String())
+            downLoadImage(company: company, cardNumber: card.cardNumber)
         }
     }
     
@@ -78,6 +78,6 @@ struct CardListViewCell: View {
 
 struct CardListViewCell_Previews: PreviewProvider {
     static var previews: some View {
-        CardListViewCell(isSelected: .constant(false), card: .init(cardNumber: ""), company: .bc)
+        CardListViewCell(isSelected: .constant(false), card: .init(objectId: .generate()), company: .bc)
     }
 }

@@ -14,7 +14,7 @@ struct CardImageView: View {
     var body: some View {
         ZStack {
             Circle()
-                .fill(.white)
+                .fill(Color(uiColor: .systemBackground))
                 .frame(width: 40)
             Image(uiImage: UIImage(data: imageData)?.preparingThumbnail(of: CGSize(width: 100, height: 100)) ?? UIImage(named: "CardImage")!)
                 .resizable()

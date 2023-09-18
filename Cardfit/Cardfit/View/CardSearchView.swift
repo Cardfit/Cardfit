@@ -29,7 +29,7 @@ struct CardSearchView: View {
             .padding(.bottom, 80)
         }
         .navigationTitle("카드 선택")
-        .accentColor(.black)
+        .accentColor(Color(uiColor: .label))
         .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "카드사 검색")
         .textInputAutocapitalization(.never)
         .autocorrectionDisabled(true)

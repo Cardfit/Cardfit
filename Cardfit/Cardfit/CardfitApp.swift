@@ -7,20 +7,22 @@
 
 import SwiftUI
 import FirebaseFirestoreSwift
+import RealmSwift
 
 @main
-struct CardfitApp: App {
+struct CardfitApp: SwiftUI.App {
     @Environment(\.scenePhase) private var scenePhase
     @StateObject var mainModel = MainViewModel()
+    @State var isLoaded = false
 
     var body: some Scene {
         WindowGroup {
-            Main()
-                .environmentObject(mainModel)
-        }.onChange(of: scenePhase) { newValue in
-            // 영구저장소에 잘못 저장된데이터가 있으면 여기서 지우세요!
-            if newValue == .inactive {
-//                PersistenceController.shared.deleteData(entity: .cardEntity)
+            if isLoaded {
+                Main()
+                    .environmentObject(mainModel)
+                    .environment(\.realmConfiguration, Realm.Configuration())
+            } else {
+                LaunchScreen(percent: 0, isLoaded: $isLoaded)
             }
         }
     }

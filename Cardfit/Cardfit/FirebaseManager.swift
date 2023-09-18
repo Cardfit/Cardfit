@@ -9,8 +9,6 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 import FirebaseStorage
-import CoreData
-import UIKit
 
 class FirebaseManager: NSObject {
     static let shared = FirebaseManager()
@@ -40,7 +38,7 @@ class FirebaseManager: NSObject {
                         let data = try Data(contentsOf: url)
                         continuation.resume(returning: data)
                     } catch {
-                        print(error)
+                        print(error, #function)
                         continuation.resume(returning: Data())
                     }
                 }
@@ -48,11 +46,13 @@ class FirebaseManager: NSObject {
         }
     }
     
-    func fetchCardInfo(of company: CompanyList) async throws -> [Card] {
-        let reference = getReference(of: company)
-        let snapshots = try await reference.getDocuments().documents
+    func fetchCardInfo(of company: CompanyList, after cardNumber: String?, size: Int = 10) async throws -> [Card] {
+        let reference = getQuery(of: company, startAfter: cardNumber)
+        let fixedNumberOfCard = reference.limit(to: size)
+        let snapshots = try await fixedNumberOfCard.getDocuments().documents
         
         var cards: [Card] = []
+        
         for snapshot in snapshots {
             do {
                 let card = try await createCard(from: snapshot, company: company)
@@ -64,27 +64,40 @@ class FirebaseManager: NSObject {
         
         return cards
     }
+    
+    func getTotalCountOfCard(of company: CompanyList) async -> Int {
+        do {
+            let reference = getQuery(of: company, startAfter: nil)
+            let snapshots = try await reference.getDocuments().documents
+            let numberOfCards = snapshots.count
+            return numberOfCards
+        } catch {
+            print("Failed to get total count")
+            return 0
+        }
+    }
 
-    func createCard(from snapshot: QueryDocumentSnapshot, company: CompanyList) async throws -> Card {
+    private func createCard(from snapshot: QueryDocumentSnapshot, company: CompanyList) async throws -> Card {
         var card = try snapshot.data(as: Card.self)
         card.company = company.rawValue
         
-        if let cardNumber = card.cardNumber {
-            let imageData = await downloadImageData(company: company, cardNumber: cardNumber)
-            card.imageData = imageData
-        }
+        let imageData = await downloadImageData(company: company, cardNumber: card.cardNumber)
+        card.imageData = imageData
         
         return card
     }
-
+    
 }
 
 extension FirebaseManager {
-    private func getReference(of company: CompanyList) -> CollectionReference {
+    private func getQuery(of company: CompanyList, startAfter cardNumber: String?) -> Query {
         let cardListRef = firestore.collection("CardList")
         let allCardInfo = cardListRef.document("CardInfo")
-        let selectedCompanyReference = allCardInfo.collection(company.rawValue)
+        var query = allCardInfo.collection(company.rawValue).order(by: "cardNumber", descending: true)
+        if let lastCardNumber = cardNumber {
+            query = query.start(at: [lastCardNumber])
+        }
         
-        return selectedCompanyReference
+        return query
     }
 }

@@ -7,6 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7205FB1B2AB6F420008E6C4C /* CardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB1A2AB6F420008E6C4C /* CardEntity.swift */; };
+		7205FB1E2AB6FF7E008E6C4C /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7205FB1D2AB6FF7E008E6C4C /* Realm */; };
+		7205FB202AB6FF7E008E6C4C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7205FB1F2AB6FF7E008E6C4C /* RealmSwift */; };
+		7205FB2A2AB71C92008E6C4C /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB292AB71C92008E6C4C /* Repository.swift */; };
+		7205FB2C2AB72235008E6C4C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB2B2AB72235008E6C4C /* Card.swift */; };
+		7205FB2E2AB73147008E6C4C /* JSONCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB2D2AB73147008E6C4C /* JSONCoder.swift */; };
+		7205FB302AB733AE008E6C4C /* DotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB2F2AB733AE008E6C4C /* DotView.swift */; };
+		7205FB322AB733D3008E6C4C /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB312AB733D3008E6C4C /* LaunchScreen.swift */; };
+		7205FB342AB73A10008E6C4C /* CardRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB332AB73A10008E6C4C /* CardRegisterViewModel.swift */; };
+		7205FB4B2AB7445A008E6C4C /* JSONCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB2D2AB73147008E6C4C /* JSONCoder.swift */; };
+		7205FB4C2AB7445F008E6C4C /* CardfitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D3EA302A44364C004CA733 /* CardfitError.swift */; };
+		7205FB502AB76371008E6C4C /* Card.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB4F2AB76371008E6C4C /* Card.intentdefinition */; };
+		7205FB512AB76551008E6C4C /* Card.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB4F2AB76371008E6C4C /* Card.intentdefinition */; };
+		7205FB582AB766FF008E6C4C /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7205FB572AB766FF008E6C4C /* Intents.framework */; };
+		7205FB5B2AB766FF008E6C4C /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB5A2AB766FF008E6C4C /* IntentHandler.swift */; };
+		7205FB5F2AB766FF008E6C4C /* IntentsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7205FB562AB766FF008E6C4C /* IntentsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7205FB632AB7672A008E6C4C /* Card.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB4F2AB76371008E6C4C /* Card.intentdefinition */; };
+		7205FB652AB76902008E6C4C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB2B2AB72235008E6C4C /* Card.swift */; };
+		7205FB662AB76920008E6C4C /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB292AB71C92008E6C4C /* Repository.swift */; };
+		7205FB682AB76938008E6C4C /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7205FB672AB76938008E6C4C /* Realm */; };
+		7205FB6A2AB7693F008E6C4C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7205FB692AB7693F008E6C4C /* RealmSwift */; };
+		7205FB6B2AB76969008E6C4C /* CardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB1A2AB6F420008E6C4C /* CardEntity.swift */; };
 		721825612A3C5D7900D5F282 /* CompanyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721825602A3C5D7900D5F282 /* CompanyList.swift */; };
 		721825BB2A43087F00D5F282 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721825BA2A43087F00D5F282 /* WidgetKit.framework */; };
 		721825BD2A43087F00D5F282 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721825BC2A43087F00D5F282 /* SwiftUI.framework */; };
@@ -20,41 +42,23 @@
 		721E76E92A20BFE2001DFBBF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E76E82A20BFE2001DFBBF /* ContentView.swift */; };
 		721E76EB2A20BFE4001DFBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 721E76EA2A20BFE4001DFBBF /* Assets.xcassets */; };
 		721E76EE2A20BFE4001DFBBF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 721E76ED2A20BFE4001DFBBF /* Preview Assets.xcassets */; };
-		721E76F32A20BFE4001DFBBF /* Cardfit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 721E76F12A20BFE4001DFBBF /* Cardfit.xcdatamodeld */; };
 		721E772E2A247DBB001DFBBF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 721E772D2A247DBB001DFBBF /* FirebaseFirestore */; };
 		721E77302A247DBB001DFBBF /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 721E772F2A247DBB001DFBBF /* FirebaseFirestoreSwift */; };
 		721E77322A247DBB001DFBBF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 721E77312A247DBB001DFBBF /* FirebaseStorage */; };
 		721E77362A248040001DFBBF /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E77352A248040001DFBBF /* FirebaseManager.swift */; };
 		721E77662A2764A8001DFBBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 721E77652A2764A8001DFBBF /* GoogleService-Info.plist */; };
-		721E77682A279D77001DFBBF /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E77672A279D77001DFBBF /* Card.swift */; };
 		721E77742A28C5F6001DFBBF /* CardListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E77732A28C5F6001DFBBF /* CardListViewCell.swift */; };
 		721E77782A28CEDB001DFBBF /* CardSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E77772A28CEDB001DFBBF /* CardSearchView.swift */; };
 		727F2B0A2A49DF88008A5BAB /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727F2B092A49DF88008A5BAB /* NavigationManager.swift */; };
 		72AE832E2A29E93700390AF8 /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE832D2A29E93700390AF8 /* CardListView.swift */; };
 		72AE83302A29EC8E00390AF8 /* CompanyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE832F2A29EC8E00390AF8 /* CompanyButton.swift */; };
 		72AE83362A2DF4E900390AF8 /* CardSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE83352A2DF4E900390AF8 /* CardSearchViewModel.swift */; };
-		72AE833A2A30438800390AF8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE83392A30438800390AF8 /* LoadingView.swift */; };
+		72AE833A2A30438800390AF8 /* CardRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE83392A30438800390AF8 /* CardRegisterView.swift */; };
 		72AE83442A324E4300390AF8 /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE83432A324E4300390AF8 /* CardListViewModel.swift */; };
 		72D3EA312A44364C004CA733 /* CardfitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D3EA302A44364C004CA733 /* CardfitError.swift */; };
-		72D3EA352A4438FD004CA733 /* UserCardEntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D3EA342A4438FD004CA733 /* UserCardEntityExtension.swift */; };
 		72D3EA3C2A44756F004CA733 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D3EA3B2A44756F004CA733 /* Category.swift */; };
-		72D3EA4C2A4743F9004CA733 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D3EA4B2A4743F9004CA733 /* Intents.framework */; };
-		72D3EA532A4743F9004CA733 /* UserCardIntent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 72D3EA4A2A4743F9004CA733 /* UserCardIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		72D3EA5F2A485ABC004CA733 /* CardfitWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721825C12A43087F00D5F282 /* CardfitWidget.swift */; };
-		72D3EA682A485E2E004CA733 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E76EF2A20BFE4001DFBBF /* Persistence.swift */; };
-		72D3EA812A48626C004CA733 /* CardfitWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 721825C32A43087F00D5F282 /* CardfitWidget.intentdefinition */; };
-		72D3EA822A4862C5004CA733 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D3EA4E2A4743F9004CA733 /* IntentHandler.swift */; };
 		72D3EA9C2A486439004CA733 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 721825C42A43088100D5F282 /* Assets.xcassets */; };
-		72D3EA9D2A4884DD004CA733 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E76EF2A20BFE4001DFBBF /* Persistence.swift */; };
-		72D3EA9E2A4884DE004CA733 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E76EF2A20BFE4001DFBBF /* Persistence.swift */; };
-		72D3EA9F2A488505004CA733 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E77672A279D77001DFBBF /* Card.swift */; };
-		72D3EAA22A49288C004CA733 /* Cardfit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 721E76F12A20BFE4001DFBBF /* Cardfit.xcdatamodeld */; };
-		72D3EAA32A49288C004CA733 /* Cardfit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 721E76F12A20BFE4001DFBBF /* Cardfit.xcdatamodeld */; };
-		72D3EAA42A4928CC004CA733 /* CardfitWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 721825C32A43087F00D5F282 /* CardfitWidget.intentdefinition */; };
-		72D3EAA52A4928CD004CA733 /* CardfitWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 721825C32A43087F00D5F282 /* CardfitWidget.intentdefinition */; };
-		72D3EAA62A492908004CA733 /* UserCardEntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D3EA342A4438FD004CA733 /* UserCardEntityExtension.swift */; };
-		72D3EAA72A492909004CA733 /* UserCardEntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D3EA342A4438FD004CA733 /* UserCardEntityExtension.swift */; };
-		72D3EAA82A492934004CA733 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E77672A279D77001DFBBF /* Card.swift */; };
 		AA331FB02A39DA0100EBDBD4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA331FAF2A39DA0100EBDBD4 /* MainView.swift */; };
 		AA331FB22A39DA0C00EBDBD4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA331FB12A39DA0C00EBDBD4 /* CardView.swift */; };
 		AA331FB42A39DA1700EBDBD4 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA331FB32A39DA1700EBDBD4 /* DetailView.swift */; };
@@ -66,19 +70,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7205FB5D2AB766FF008E6C4C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 721E76DB2A20BFE2001DFBBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7205FB552AB766FF008E6C4C;
+			remoteInfo = IntentsExtension;
+		};
 		721825C92A43088100D5F282 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 721E76DB2A20BFE2001DFBBF /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 721825B72A43087F00D5F282;
 			remoteInfo = CardfitWidgetExtension;
-		};
-		72D3EA512A4743F9004CA733 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 721E76DB2A20BFE2001DFBBF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 72D3EA492A4743F9004CA733;
-			remoteInfo = UserCardIntent;
 		};
 		AAEFAEA42A2F192600B9170C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -103,8 +107,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				7205FB5F2AB766FF008E6C4C /* IntentsExtension.appex in Embed Foundation Extensions */,
 				721825CB2A43088100D5F282 /* CardfitWidgetExtension.appex in Embed Foundation Extensions */,
-				72D3EA532A4743F9004CA733 /* UserCardIntent.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,13 +116,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7205FB1A2AB6F420008E6C4C /* CardEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEntity.swift; sourceTree = "<group>"; };
+		7205FB292AB71C92008E6C4C /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		7205FB2B2AB72235008E6C4C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		7205FB2D2AB73147008E6C4C /* JSONCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCoder.swift; sourceTree = "<group>"; };
+		7205FB2F2AB733AE008E6C4C /* DotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotView.swift; sourceTree = "<group>"; };
+		7205FB312AB733D3008E6C4C /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		7205FB332AB73A10008E6C4C /* CardRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRegisterViewModel.swift; sourceTree = "<group>"; };
+		7205FB4F2AB76371008E6C4C /* Card.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Card.intentdefinition; sourceTree = "<group>"; };
+		7205FB562AB766FF008E6C4C /* IntentsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IntentsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7205FB572AB766FF008E6C4C /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		7205FB5A2AB766FF008E6C4C /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		7205FB5C2AB766FF008E6C4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		721825602A3C5D7900D5F282 /* CompanyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyList.swift; sourceTree = "<group>"; };
 		721825B82A43087F00D5F282 /* CardfitWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CardfitWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		721825BA2A43087F00D5F282 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		721825BC2A43087F00D5F282 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		721825BF2A43087F00D5F282 /* CardfitWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardfitWidgetBundle.swift; sourceTree = "<group>"; };
 		721825C12A43087F00D5F282 /* CardfitWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardfitWidget.swift; sourceTree = "<group>"; };
-		721825C32A43087F00D5F282 /* CardfitWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = CardfitWidget.intentdefinition; sourceTree = "<group>"; };
 		721825C42A43088100D5F282 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		721825C62A43088100D5F282 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		721825D12A4310DA00D5F282 /* WidgetContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetContentView.swift; sourceTree = "<group>"; };
@@ -131,28 +146,19 @@
 		721E76E82A20BFE2001DFBBF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		721E76EA2A20BFE4001DFBBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		721E76ED2A20BFE4001DFBBF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		721E76EF2A20BFE4001DFBBF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		721E76F22A20BFE4001DFBBF /* Cardfit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cardfit.xcdatamodel; sourceTree = "<group>"; };
 		721E77352A248040001DFBBF /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		721E77652A2764A8001DFBBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		721E77672A279D77001DFBBF /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		721E77732A28C5F6001DFBBF /* CardListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewCell.swift; sourceTree = "<group>"; };
 		721E77772A28CEDB001DFBBF /* CardSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchView.swift; sourceTree = "<group>"; };
 		727F2B092A49DF88008A5BAB /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		72AE832D2A29E93700390AF8 /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
 		72AE832F2A29EC8E00390AF8 /* CompanyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyButton.swift; sourceTree = "<group>"; };
 		72AE83352A2DF4E900390AF8 /* CardSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchViewModel.swift; sourceTree = "<group>"; };
-		72AE83392A30438800390AF8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		72AE83392A30438800390AF8 /* CardRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRegisterView.swift; sourceTree = "<group>"; };
 		72AE83432A324E4300390AF8 /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
 		72D3EA302A44364C004CA733 /* CardfitError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardfitError.swift; sourceTree = "<group>"; };
-		72D3EA342A4438FD004CA733 /* UserCardEntityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardEntityExtension.swift; sourceTree = "<group>"; };
 		72D3EA372A443D01004CA733 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		72D3EA3B2A44756F004CA733 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		72D3EA4A2A4743F9004CA733 /* UserCardIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = UserCardIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		72D3EA4B2A4743F9004CA733 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
-		72D3EA4E2A4743F9004CA733 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
-		72D3EA502A4743F9004CA733 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		72D3EA632A485C77004CA733 /* UserCardIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UserCardIntent.entitlements; sourceTree = "<group>"; };
 		AA331FAF2A39DA0100EBDBD4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		AA331FB12A39DA0C00EBDBD4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AA331FB32A39DA1700EBDBD4 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -166,10 +172,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7205FB532AB766FF008E6C4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7205FB582AB766FF008E6C4C /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		721825B52A43087F00D5F282 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7205FB6A2AB7693F008E6C4C /* RealmSwift in Frameworks */,
+				7205FB682AB76938008E6C4C /* Realm in Frameworks */,
 				721825BD2A43087F00D5F282 /* SwiftUI.framework in Frameworks */,
 				721825BB2A43087F00D5F282 /* WidgetKit.framework in Frameworks */,
 			);
@@ -181,15 +197,9 @@
 			files = (
 				721E772E2A247DBB001DFBBF /* FirebaseFirestore in Frameworks */,
 				721E77302A247DBB001DFBBF /* FirebaseFirestoreSwift in Frameworks */,
+				7205FB1E2AB6FF7E008E6C4C /* Realm in Frameworks */,
+				7205FB202AB6FF7E008E6C4C /* RealmSwift in Frameworks */,
 				721E77322A247DBB001DFBBF /* FirebaseStorage in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72D3EA472A4743F9004CA733 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				72D3EA4C2A4743F9004CA733 /* Intents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,10 +220,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7205FB192AB6F413008E6C4C /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				7205FB1A2AB6F420008E6C4C /* CardEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		7205FB592AB766FF008E6C4C /* IntentsExtension */ = {
+			isa = PBXGroup;
+			children = (
+				7205FB5A2AB766FF008E6C4C /* IntentHandler.swift */,
+				7205FB5C2AB766FF008E6C4C /* Info.plist */,
+			);
+			path = IntentsExtension;
+			sourceTree = "<group>";
+		};
 		7218255F2A3C5D6500D5F282 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				721E77672A279D77001DFBBF /* Card.swift */,
+				7205FB2B2AB72235008E6C4C /* Card.swift */,
 				721825602A3C5D7900D5F282 /* CompanyList.swift */,
 				72D3EA302A44364C004CA733 /* CardfitError.swift */,
 				72D3EA3B2A44756F004CA733 /* Category.swift */,
@@ -235,7 +262,6 @@
 			children = (
 				721E76EA2A20BFE4001DFBBF /* Assets.xcassets */,
 				721E77652A2764A8001DFBBF /* GoogleService-Info.plist */,
-				721E76F12A20BFE4001DFBBF /* Cardfit.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -245,7 +271,7 @@
 			children = (
 				721825BA2A43087F00D5F282 /* WidgetKit.framework */,
 				721825BC2A43087F00D5F282 /* SwiftUI.framework */,
-				72D3EA4B2A4743F9004CA733 /* Intents.framework */,
+				7205FB572AB766FF008E6C4C /* Intents.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -253,12 +279,12 @@
 		721825BE2A43087F00D5F282 /* CardfitWidget */ = {
 			isa = PBXGroup;
 			children = (
+				7205FB4F2AB76371008E6C4C /* Card.intentdefinition */,
 				721825BF2A43087F00D5F282 /* CardfitWidgetBundle.swift */,
 				721825C12A43087F00D5F282 /* CardfitWidget.swift */,
 				721825D12A4310DA00D5F282 /* WidgetContentView.swift */,
 				721825D42A4312E000D5F282 /* CardImageView.swift */,
 				721825D72A43162100D5F282 /* TitleLabel.swift */,
-				721825C32A43087F00D5F282 /* CardfitWidget.intentdefinition */,
 				721825C42A43088100D5F282 /* Assets.xcassets */,
 				721825C62A43088100D5F282 /* Info.plist */,
 			);
@@ -273,7 +299,7 @@
 				AAEFAE9F2A2F192600B9170C /* CardfitUITests */,
 				AAEFAEAE2A2F193300B9170C /* CardfitTests */,
 				721825BE2A43087F00D5F282 /* CardfitWidget */,
-				72D3EA4D2A4743F9004CA733 /* UserCardIntent */,
+				7205FB592AB766FF008E6C4C /* IntentsExtension */,
 				721825B92A43087F00D5F282 /* Frameworks */,
 				721E76E42A20BFE2001DFBBF /* Products */,
 			);
@@ -286,7 +312,7 @@
 				AAEFAE9E2A2F192500B9170C /* CardfitUITests.xctest */,
 				AAEFAEAD2A2F193300B9170C /* CardfitTests.xctest */,
 				721825B82A43087F00D5F282 /* CardfitWidgetExtension.appex */,
-				72D3EA4A2A4743F9004CA733 /* UserCardIntent.appex */,
+				7205FB562AB766FF008E6C4C /* IntentsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -298,15 +324,16 @@
 				721825DC2A43BB7F00D5F282 /* Cardfit.entitlements */,
 				721E76E62A20BFE2001DFBBF /* CardfitApp.swift */,
 				721E76E82A20BFE2001DFBBF /* ContentView.swift */,
-				721E76EF2A20BFE4001DFBBF /* Persistence.swift */,
 				721E77352A248040001DFBBF /* FirebaseManager.swift */,
 				727F2B092A49DF88008A5BAB /* NavigationManager.swift */,
+				7205FB2D2AB73147008E6C4C /* JSONCoder.swift */,
+				7205FB292AB71C92008E6C4C /* Repository.swift */,
+				7205FB192AB6F413008E6C4C /* Entity */,
 				7218255F2A3C5D6500D5F282 /* Model */,
 				AA331FAA2A39A0CD00EBDBD4 /* View */,
 				AA331FA92A39A0C700EBDBD4 /* ViewModel */,
 				721825622A3C5DE600D5F282 /* Component */,
 				721825632A3C5DFE00D5F282 /* Resources */,
-				72D3EA332A4438D6004CA733 /* Extension */,
 				721E76EC2A20BFE4001DFBBF /* Preview Content */,
 			);
 			path = Cardfit;
@@ -320,30 +347,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		72D3EA332A4438D6004CA733 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				72D3EA342A4438FD004CA733 /* UserCardEntityExtension.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		72D3EA4D2A4743F9004CA733 /* UserCardIntent */ = {
-			isa = PBXGroup;
-			children = (
-				72D3EA632A485C77004CA733 /* UserCardIntent.entitlements */,
-				72D3EA4E2A4743F9004CA733 /* IntentHandler.swift */,
-				72D3EA502A4743F9004CA733 /* Info.plist */,
-			);
-			path = UserCardIntent;
-			sourceTree = "<group>";
-		};
 		AA331FA92A39A0C700EBDBD4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				AA811A372A3B8C50006AE3FF /* MainViewModel.swift */,
 				72AE83352A2DF4E900390AF8 /* CardSearchViewModel.swift */,
 				72AE83432A324E4300390AF8 /* CardListViewModel.swift */,
+				7205FB332AB73A10008E6C4C /* CardRegisterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -357,7 +367,9 @@
 				AA331FB52A39DA2400EBDBD4 /* BenefitView.swift */,
 				721E77772A28CEDB001DFBBF /* CardSearchView.swift */,
 				72AE832D2A29E93700390AF8 /* CardListView.swift */,
-				72AE83392A30438800390AF8 /* LoadingView.swift */,
+				72AE83392A30438800390AF8 /* CardRegisterView.swift */,
+				7205FB2F2AB733AE008E6C4C /* DotView.swift */,
+				7205FB312AB733D3008E6C4C /* LaunchScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -382,6 +394,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7205FB552AB766FF008E6C4C /* IntentsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7205FB602AB766FF008E6C4C /* Build configuration list for PBXNativeTarget "IntentsExtension" */;
+			buildPhases = (
+				7205FB522AB766FF008E6C4C /* Sources */,
+				7205FB532AB766FF008E6C4C /* Frameworks */,
+				7205FB542AB766FF008E6C4C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IntentsExtension;
+			productName = IntentsExtension;
+			productReference = 7205FB562AB766FF008E6C4C /* IntentsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		721825B72A43087F00D5F282 /* CardfitWidgetExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 721825CF2A43088100D5F282 /* Build configuration list for PBXNativeTarget "CardfitWidgetExtension" */;
@@ -395,6 +424,10 @@
 			dependencies = (
 			);
 			name = CardfitWidgetExtension;
+			packageProductDependencies = (
+				7205FB672AB76938008E6C4C /* Realm */,
+				7205FB692AB7693F008E6C4C /* RealmSwift */,
+			);
 			productName = CardfitWidgetExtension;
 			productReference = 721825B82A43087F00D5F282 /* CardfitWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -412,34 +445,19 @@
 			);
 			dependencies = (
 				721825CA2A43088100D5F282 /* PBXTargetDependency */,
-				72D3EA522A4743F9004CA733 /* PBXTargetDependency */,
+				7205FB5E2AB766FF008E6C4C /* PBXTargetDependency */,
 			);
 			name = Cardfit;
 			packageProductDependencies = (
 				721E772D2A247DBB001DFBBF /* FirebaseFirestore */,
 				721E772F2A247DBB001DFBBF /* FirebaseFirestoreSwift */,
 				721E77312A247DBB001DFBBF /* FirebaseStorage */,
+				7205FB1D2AB6FF7E008E6C4C /* Realm */,
+				7205FB1F2AB6FF7E008E6C4C /* RealmSwift */,
 			);
 			productName = Cardfit;
 			productReference = 721E76E32A20BFE2001DFBBF /* Cardfit.app */;
 			productType = "com.apple.product-type.application";
-		};
-		72D3EA492A4743F9004CA733 /* UserCardIntent */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 72D3EA542A4743FA004CA733 /* Build configuration list for PBXNativeTarget "UserCardIntent" */;
-			buildPhases = (
-				72D3EA462A4743F9004CA733 /* Sources */,
-				72D3EA472A4743F9004CA733 /* Frameworks */,
-				72D3EA482A4743F9004CA733 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = UserCardIntent;
-			productName = UserCardIntent;
-			productReference = 72D3EA4A2A4743F9004CA733 /* UserCardIntent.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 		AAEFAE9D2A2F192500B9170C /* CardfitUITests */ = {
 			isa = PBXNativeTarget;
@@ -455,6 +473,8 @@
 				AAEFAEA52A2F192600B9170C /* PBXTargetDependency */,
 			);
 			name = CardfitUITests;
+			packageProductDependencies = (
+			);
 			productName = CardfitUITests;
 			productReference = AAEFAE9E2A2F192500B9170C /* CardfitUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -473,6 +493,8 @@
 				AAEFAEB22A2F193300B9170C /* PBXTargetDependency */,
 			);
 			name = CardfitTests;
+			packageProductDependencies = (
+			);
 			productName = CardfitTests;
 			productReference = AAEFAEAD2A2F193300B9170C /* CardfitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -487,13 +509,13 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					7205FB552AB766FF008E6C4C = {
+						CreatedOnToolsVersion = 14.3;
+					};
 					721825B72A43087F00D5F282 = {
 						CreatedOnToolsVersion = 14.3;
 					};
 					721E76E22A20BFE2001DFBBF = {
-						CreatedOnToolsVersion = 14.3;
-					};
-					72D3EA492A4743F9004CA733 = {
 						CreatedOnToolsVersion = 14.3;
 					};
 					AAEFAE9D2A2F192500B9170C = {
@@ -517,6 +539,7 @@
 			mainGroup = 721E76DA2A20BFE2001DFBBF;
 			packageReferences = (
 				721E772C2A247DBB001DFBBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				7205FB1C2AB6FF7E008E6C4C /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 721E76E42A20BFE2001DFBBF /* Products */;
 			projectDirPath = "";
@@ -526,12 +549,19 @@
 				AAEFAE9D2A2F192500B9170C /* CardfitUITests */,
 				AAEFAEAC2A2F193300B9170C /* CardfitTests */,
 				721825B72A43087F00D5F282 /* CardfitWidgetExtension */,
-				72D3EA492A4743F9004CA733 /* UserCardIntent */,
+				7205FB552AB766FF008E6C4C /* IntentsExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7205FB542AB766FF008E6C4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		721825B62A43087F00D5F282 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -548,13 +578,6 @@
 				721E76EE2A20BFE4001DFBBF /* Preview Assets.xcassets in Resources */,
 				721E76EB2A20BFE4001DFBBF /* Assets.xcassets in Resources */,
 				721E77662A2764A8001DFBBF /* GoogleService-Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72D3EA482A4743F9004CA733 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,20 +598,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7205FB522AB766FF008E6C4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7205FB632AB7672A008E6C4C /* Card.intentdefinition in Sources */,
+				7205FB5B2AB766FF008E6C4C /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		721825B42A43087F00D5F282 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7205FB502AB76371008E6C4C /* Card.intentdefinition in Sources */,
 				721825D32A43113E00D5F282 /* WidgetContentView.swift in Sources */,
-				72D3EA9F2A488505004CA733 /* Card.swift in Sources */,
-				72D3EA9D2A4884DD004CA733 /* Persistence.swift in Sources */,
 				721825C02A43087F00D5F282 /* CardfitWidgetBundle.swift in Sources */,
 				72D3EA5F2A485ABC004CA733 /* CardfitWidget.swift in Sources */,
+				7205FB662AB76920008E6C4C /* Repository.swift in Sources */,
 				721825D82A43162100D5F282 /* TitleLabel.swift in Sources */,
+				7205FB4B2AB7445A008E6C4C /* JSONCoder.swift in Sources */,
+				7205FB652AB76902008E6C4C /* Card.swift in Sources */,
+				7205FB4C2AB7445F008E6C4C /* CardfitError.swift in Sources */,
+				7205FB6B2AB76969008E6C4C /* CardEntity.swift in Sources */,
 				721825D52A4312E000D5F282 /* CardImageView.swift in Sources */,
-				72D3EAA62A492908004CA733 /* UserCardEntityExtension.swift in Sources */,
-				72D3EAA22A49288C004CA733 /* Cardfit.xcdatamodeld in Sources */,
-				72D3EA812A48626C004CA733 /* CardfitWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,6 +629,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7205FB322AB733D3008E6C4C /* LaunchScreen.swift in Sources */,
 				72AE83442A324E4300390AF8 /* CardListViewModel.swift in Sources */,
 				AA331FB42A39DA1700EBDBD4 /* DetailView.swift in Sources */,
 				72AE83362A2DF4E900390AF8 /* CardSearchViewModel.swift in Sources */,
@@ -603,36 +637,25 @@
 				72AE832E2A29E93700390AF8 /* CardListView.swift in Sources */,
 				727F2B0A2A49DF88008A5BAB /* NavigationManager.swift in Sources */,
 				72D3EA3C2A44756F004CA733 /* Category.swift in Sources */,
-				721E77682A279D77001DFBBF /* Card.swift in Sources */,
+				7205FB2E2AB73147008E6C4C /* JSONCoder.swift in Sources */,
+				7205FB2A2AB71C92008E6C4C /* Repository.swift in Sources */,
 				72D3EA312A44364C004CA733 /* CardfitError.swift in Sources */,
 				721825612A3C5D7900D5F282 /* CompanyList.swift in Sources */,
-				72AE833A2A30438800390AF8 /* LoadingView.swift in Sources */,
-				721E76F32A20BFE4001DFBBF /* Cardfit.xcdatamodeld in Sources */,
-				72D3EA682A485E2E004CA733 /* Persistence.swift in Sources */,
+				7205FB302AB733AE008E6C4C /* DotView.swift in Sources */,
+				72AE833A2A30438800390AF8 /* CardRegisterView.swift in Sources */,
 				AA331FB02A39DA0100EBDBD4 /* MainView.swift in Sources */,
+				7205FB1B2AB6F420008E6C4C /* CardEntity.swift in Sources */,
 				721E77362A248040001DFBBF /* FirebaseManager.swift in Sources */,
-				72D3EA352A4438FD004CA733 /* UserCardEntityExtension.swift in Sources */,
+				7205FB2C2AB72235008E6C4C /* Card.swift in Sources */,
 				721E77782A28CEDB001DFBBF /* CardSearchView.swift in Sources */,
+				7205FB512AB76551008E6C4C /* Card.intentdefinition in Sources */,
 				721E76E92A20BFE2001DFBBF /* ContentView.swift in Sources */,
 				721E76E72A20BFE2001DFBBF /* CardfitApp.swift in Sources */,
 				AA331FB22A39DA0C00EBDBD4 /* CardView.swift in Sources */,
 				AA331FB62A39DA2400EBDBD4 /* BenefitView.swift in Sources */,
 				721E77742A28C5F6001DFBBF /* CardListViewCell.swift in Sources */,
-				72D3EAA42A4928CC004CA733 /* CardfitWidget.intentdefinition in Sources */,
+				7205FB342AB73A10008E6C4C /* CardRegisterViewModel.swift in Sources */,
 				AA811A382A3B8C50006AE3FF /* MainViewModel.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72D3EA462A4743F9004CA733 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				72D3EAA52A4928CD004CA733 /* CardfitWidget.intentdefinition in Sources */,
-				72D3EAA82A492934004CA733 /* Card.swift in Sources */,
-				72D3EA822A4862C5004CA733 /* IntentHandler.swift in Sources */,
-				72D3EAA72A492909004CA733 /* UserCardEntityExtension.swift in Sources */,
-				72D3EAA32A49288C004CA733 /* Cardfit.xcdatamodeld in Sources */,
-				72D3EA9E2A4884DE004CA733 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,15 +679,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7205FB5E2AB766FF008E6C4C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7205FB552AB766FF008E6C4C /* IntentsExtension */;
+			targetProxy = 7205FB5D2AB766FF008E6C4C /* PBXContainerItemProxy */;
+		};
 		721825CA2A43088100D5F282 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 721825B72A43087F00D5F282 /* CardfitWidgetExtension */;
 			targetProxy = 721825C92A43088100D5F282 /* PBXContainerItemProxy */;
-		};
-		72D3EA522A4743F9004CA733 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 72D3EA492A4743F9004CA733 /* UserCardIntent */;
-			targetProxy = 72D3EA512A4743F9004CA733 /* PBXContainerItemProxy */;
 		};
 		AAEFAEA52A2F192600B9170C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -679,6 +702,58 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		7205FB612AB766FF008E6C4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G8228CR939;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = IntentsExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = IntentsExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hub.Cardfit.IntentsExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7205FB622AB766FF008E6C4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G8228CR939;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = IntentsExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = IntentsExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hub.Cardfit.IntentsExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		721825CD2A43088100D5F282 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -687,7 +762,7 @@
 				CODE_SIGN_ENTITLEMENTS = CardfitWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W36L2A7H57;
+				DEVELOPMENT_TEAM = G8228CR939;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardfitWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CardfitWidget;
@@ -699,7 +774,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Hud.Cardfit.CardfitWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hub.Cardfit.CardfitWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -716,7 +791,7 @@
 				CODE_SIGN_ENTITLEMENTS = CardfitWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W36L2A7H57;
+				DEVELOPMENT_TEAM = G8228CR939;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardfitWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CardfitWidget;
@@ -728,7 +803,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Hud.Cardfit.CardfitWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hub.Cardfit.CardfitWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -787,7 +862,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -841,7 +916,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -861,22 +936,22 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cardfit/Preview Content\"";
-				DEVELOPMENT_TEAM = W36L2A7H57;
+				DEVELOPMENT_TEAM = G8228CR939;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cardfit/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Hud.Cardfit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hub.Cardfit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -897,80 +972,26 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cardfit/Preview Content\"";
-				DEVELOPMENT_TEAM = W36L2A7H57;
+				DEVELOPMENT_TEAM = G8228CR939;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cardfit/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Hud.Cardfit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hub.Cardfit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		72D3EA552A4743FA004CA733 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = UserCardIntent/UserCardIntent.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W36L2A7H57;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UserCardIntent/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = UserCardIntent;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Hud.Cardfit.UserCardIntent;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		72D3EA562A4743FA004CA733 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = UserCardIntent/UserCardIntent.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W36L2A7H57;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UserCardIntent/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = UserCardIntent;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Hud.Cardfit.UserCardIntent;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -982,7 +1003,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W36L2A7H57;
+				DEVELOPMENT_TEAM = G8228CR939;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.project.CardfitUITests;
@@ -1002,7 +1023,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W36L2A7H57;
+				DEVELOPMENT_TEAM = G8228CR939;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.project.CardfitUITests;
@@ -1023,7 +1044,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W36L2A7H57;
+				DEVELOPMENT_TEAM = G8228CR939;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.project.CardfitTests;
@@ -1044,7 +1065,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W36L2A7H57;
+				DEVELOPMENT_TEAM = G8228CR939;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.project.CardfitTests;
@@ -1062,6 +1083,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7205FB602AB766FF008E6C4C /* Build configuration list for PBXNativeTarget "IntentsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7205FB612AB766FF008E6C4C /* Debug */,
+				7205FB622AB766FF008E6C4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		721825CF2A43088100D5F282 /* Build configuration list for PBXNativeTarget "CardfitWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1089,15 +1119,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		72D3EA542A4743FA004CA733 /* Build configuration list for PBXNativeTarget "UserCardIntent" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				72D3EA552A4743FA004CA733 /* Debug */,
-				72D3EA562A4743FA004CA733 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		AAEFAEA82A2F192600B9170C /* Build configuration list for PBXNativeTarget "CardfitUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1119,6 +1140,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7205FB1C2AB6FF7E008E6C4C /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 		721E772C2A247DBB001DFBBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1130,6 +1159,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7205FB1D2AB6FF7E008E6C4C /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7205FB1C2AB6FF7E008E6C4C /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		7205FB1F2AB6FF7E008E6C4C /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7205FB1C2AB6FF7E008E6C4C /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		7205FB672AB76938008E6C4C /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7205FB1C2AB6FF7E008E6C4C /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		7205FB692AB7693F008E6C4C /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7205FB1C2AB6FF7E008E6C4C /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		721E772D2A247DBB001DFBBF /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 721E772C2A247DBB001DFBBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -1146,19 +1195,6 @@
 			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		721E76F12A20BFE4001DFBBF /* Cardfit.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				721E76F22A20BFE4001DFBBF /* Cardfit.xcdatamodel */,
-			);
-			currentVersion = 721E76F22A20BFE4001DFBBF /* Cardfit.xcdatamodel */;
-			path = Cardfit.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 721E76DB2A20BFE2001DFBBF /* Project object */;
 }

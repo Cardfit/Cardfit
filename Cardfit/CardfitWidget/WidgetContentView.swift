@@ -17,7 +17,7 @@ struct WidgetContentView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                TitleLabel(title: card.cardName ?? String(), font: .title3, color: .white)
+                TitleLabel(title: card.cardName, font: .title3, color: .white)
                     .padding(.leading, 10)
                     .frame(height: 70)
                 Spacer()
@@ -29,6 +29,7 @@ struct WidgetContentView: View {
             Spacer()
             Divider()
                 .padding(.horizontal, 10)
+                .foregroundColor(.secondary)
             
             VStack(alignment: .leading) {
                 TitleLabel(title: "브랜드", font: .headline, color: Color("AppColor"))
@@ -38,6 +39,7 @@ struct WidgetContentView: View {
             }
             .padding(10)
         }
+        .foregroundColor(.white)
     }
 }
 
@@ -68,7 +70,7 @@ struct BenefitCell: View {
                     .foregroundColor(Color("AppColor"))
                     .background {
                         RoundedRectangle(cornerRadius: 13)
-                            .fill(.white)
+                            .fill(.background)
                     }
                     .overlay(
                         RoundedRectangle(cornerRadius: 13)
@@ -77,7 +79,7 @@ struct BenefitCell: View {
                 Text(benefitInputEnter(benefit["description"] ?? String()))
                     .font(.system(size: 12))
                     .fontWeight(.semibold)
-                    .foregroundColor(.black.opacity(0.8))
+                    .foregroundColor(.primary.opacity(0.8))
                     .lineLimit(2)
                 Spacer()
             }
@@ -97,12 +99,14 @@ struct LogoHStack: View {
             if category.count > 0 {
                 ForEach(category.prefix(6), id: \.self) { index in
                     Image(index)
+                        .renderingMode(.template)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 20, height: 20)
                         .padding(6)
+                        .foregroundColor(.primary)
                         .background {
-                            Circle().fill(Color.white)
+                            Circle().fill(.background)
                         }
                 }
             } else {

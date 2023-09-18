@@ -7,9 +7,9 @@
 	<key>INIntentDefinitionModelVersion</key>
 	<string>1.2</string>
 	<key>INIntentDefinitionNamespace</key>
-	<string>88xZPY</string>
+	<string>fEJisO</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>22E261</string>
+	<string>22F82</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
 	<string>14E222b</string>
 	<key>INIntentDefinitionToolsVersion</key>
@@ -18,55 +18,42 @@
 	<array>
 		<dict>
 			<key>INIntentCategory</key>
-			<string>information</string>
-			<key>INIntentDescription</key>
-			<string>Recommend card that introducing myself.</string>
+			<string>generic</string>
 			<key>INIntentDescriptionID</key>
-			<string>tVvJ9c</string>
+			<string>BQhg7x</string>
 			<key>INIntentEligibleForWidgets</key>
 			<true/>
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>18</integer>
+			<integer>2</integer>
 			<key>INIntentName</key>
-			<string>Configuration</string>
+			<string>Card</string>
 			<key>INIntentParameters</key>
 			<array>
 				<dict>
 					<key>INIntentParameterConfigurable</key>
 					<true/>
+					<key>INIntentParameterCustomDisambiguation</key>
+					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>내 카드</string>
+					<string>카드명</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>KTeZ7e</string>
+					<string>NmejEc</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>1</integer>
 					<key>INIntentParameterName</key>
-					<string>MyCard</string>
+					<string>parameter</string>
 					<key>INIntentParameterObjectType</key>
-					<string>MyCard</string>
+					<string>Type</string>
 					<key>INIntentParameterObjectTypeNamespace</key>
-					<string>88xZPY</string>
-					<key>INIntentParameterPromptDialogs</key>
-					<array>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Configuration</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Primary</string>
-						</dict>
-					</array>
+					<string>fEJisO</string>
 					<key>INIntentParameterSupportsDynamicEnumeration</key>
 					<true/>
+					<key>INIntentParameterSupportsResolution</key>
+					<true/>
 					<key>INIntentParameterTag</key>
-					<integer>18</integer>
+					<integer>2</integer>
 					<key>INIntentParameterType</key>
 					<string>Object</string>
 				</dict>
@@ -86,30 +73,28 @@
 						<string>failure</string>
 					</dict>
 				</array>
-				<key>INIntentResponseLastParameterTag</key>
-				<integer>3</integer>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Configuration</string>
+			<string>Card</string>
 			<key>INIntentTitleID</key>
-			<string>gpCwrM</string>
+			<string>W1sghI</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>
-			<string>View</string>
+			<string>Do</string>
 		</dict>
 	</array>
 	<key>INTypes</key>
 	<array>
 		<dict>
 			<key>INTypeDisplayName</key>
-			<string>MyCard</string>
+			<string>Card</string>
 			<key>INTypeDisplayNameID</key>
-			<string>W6mo2A</string>
+			<string>6ACtFK</string>
 			<key>INTypeLastPropertyTag</key>
-			<integer>102</integer>
+			<integer>100</integer>
 			<key>INTypeName</key>
-			<string>MyCard</string>
+			<string>Type</string>
 			<key>INTypeProperties</key>
 			<array>
 				<dict>
@@ -164,29 +149,15 @@
 				</dict>
 				<dict>
 					<key>INTypePropertyDisplayName</key>
-					<string>Card Number</string>
+					<string>Card Name</string>
 					<key>INTypePropertyDisplayNameID</key>
-					<string>v7XG6r</string>
+					<string>dnjlwN</string>
 					<key>INTypePropertyDisplayPriority</key>
 					<integer>5</integer>
 					<key>INTypePropertyName</key>
-					<string>cardNumber</string>
-					<key>INTypePropertyTag</key>
-					<integer>101</integer>
-					<key>INTypePropertyType</key>
-					<string>String</string>
-				</dict>
-				<dict>
-					<key>INTypePropertyDisplayName</key>
-					<string>Card Name</string>
-					<key>INTypePropertyDisplayNameID</key>
-					<string>0L09mb</string>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>6</integer>
-					<key>INTypePropertyName</key>
 					<string>cardName</string>
 					<key>INTypePropertyTag</key>
-					<integer>102</integer>
+					<integer>100</integer>
 					<key>INTypePropertyType</key>
 					<string>String</string>
 				</dict>
