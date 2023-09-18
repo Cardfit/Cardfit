@@ -11,6 +11,7 @@ struct CardListView: View {
     @ObservedObject private var viewModel: CardListViewModel
     
     @State private var isLoading = true
+    @State private var everyCardIsLoaded = false
     
     init(company: CompanyList) {
         self.viewModel = CardListViewModel(company: company)
@@ -18,33 +19,42 @@ struct CardListView: View {
     
     var body: some View {
         ScrollView {
-            if isLoading {
-                ProgressView("Loading...")
-                    .padding()
-            } else {
+            VStack(spacing: 20) {
                 ForEach(viewModel.cardList, id: \.self) { card in
                     CardListViewCell(isSelected: bindingForCard(card), card: card, company: viewModel.company)
                         .environmentObject(viewModel)
                 }
-            }
-        }
-        .onAppear {
-            Task(priority: .background) {
-                let result = await viewModel.fetchCardList()
-                switch result {
-                case .success(let cards):
-                    viewModel.cardList = cards
-                    isLoading = false
-                case .failure(let error):
-                    print(error)
+                if everyCardIsLoaded {
+                    Text("카드 더이상 없음.")
+                } else {
+                    if !isLoading {
+                        Button {
+                            Task {
+                                isLoading = true
+                                await loadCardList()
+                            }
+                        } label: {
+                            if !isLoading {
+                                Image(systemName: "plus.circle.fill")
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                            }
+                        }.disabled(isLoading)
+                    } else {
+                        HStack {
+                            DotView()
+                            DotView(delay: 0.2)
+                            DotView(delay: 0.4)
+                        }
+                    }
                 }
-            
             }
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 if !viewModel.selectedCards.isEmpty {
-                    NavigationLink(destination: LoadingView(selectedCards: viewModel.selectedCards).navigationBarBackButtonHidden()) {
+                    NavigationLink(destination: CardRegisterView(viewModel: CardRegisterViewModel(selectedCards: viewModel.selectedCards))
+                        .navigationBarBackButtonHidden()) {
                         Text("추가")
                             .foregroundColor(Color("AppColor"))
                     }
@@ -53,6 +63,10 @@ struct CardListView: View {
                         .foregroundColor(.gray)
                 }
             }
+        }
+        .task {
+            await viewModel.getCardCountOnServer()
+            await loadCardList()
         }
         .onDisappear {
             viewModel.selectedCards = []
@@ -73,8 +87,16 @@ struct CardListView: View {
             }
         )
     }
+    
+    private func loadCardList() async {
+        isLoading = true
+        await viewModel.fetchCardList (onSuccess: {
+            isLoading = false
+        }, complete: {
+            everyCardIsLoaded = true
+        })
+    }
 }
-
 struct CardListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {

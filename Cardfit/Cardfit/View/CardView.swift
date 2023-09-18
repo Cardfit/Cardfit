@@ -17,10 +17,10 @@ struct CardView: View {
     
     var body: some View {
         VStack{
-            Text(card.cardName ?? "")
+            Text(card.cardName)
                 .font(.caption)
                 .fontWeight(.bold)
-                .foregroundColor(Color.white.opacity(0.85))
+                .foregroundColor(Color(uiColor: .systemBackground).opacity(0.85))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
                 .padding(.top, 10)
@@ -57,7 +57,7 @@ struct CardView: View {
                     Image(systemName: "arrow.right")
                 }
             }
-            .foregroundColor(Color.white.opacity(0.9))
+            .foregroundColor(Color(uiColor: .systemBackground).opacity(0.9))
             .padding(30)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -66,7 +66,7 @@ struct CardView: View {
             .cornerRadius(25)
             .overlay(RoundedRectangle(cornerRadius: 25)
                         .stroke(Color.secondary, lineWidth: 2))
-            .matchedGeometryEffect(id: "bgColor-\(card.id)", in: animation)
+            .matchedGeometryEffect(id: "bgColor-\(card.cardName)", in: animation)
         )
         .onTapGesture {
             withAnimation(.spring()){

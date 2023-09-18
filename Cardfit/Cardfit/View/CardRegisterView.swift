@@ -8,17 +8,18 @@
 import SwiftUI
 import Combine
 
-struct LoadingView: View {
+struct CardRegisterView: View {
     
-    @Environment(\.dismiss) private var dismiss
+    @ObservedObject var viewModel: CardRegisterViewModel
     
     @State var percent: CGFloat = 0
     @State private var rotationAngle: Double = 0
-    
     private var isSaved: Bool { percent == CGFloat(100) ? true : false }
     private let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
     
-    let selectedCards: [Card]
+    init(viewModel: CardRegisterViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         VStack(spacing: 20) {
@@ -39,33 +40,26 @@ struct LoadingView: View {
                 .fontWeight(.semibold)
                 .foregroundColor(Color("AppColor"))
             
-            LoadingProgressView(percent: $percent)
+            LoadingProgressView(percent: $percent, startColor: Color(uiColor: .systemBackground), endColor: Color("AppColor"))
             
             Text(String(format: "%.0f", percent) + "%")
                 .font(.title2)
                 .fontWeight(.semibold)
                 .foregroundColor(Color("AppColor"))
             
-            Button(isSaved ? "확인" : "취소") {
-                if isSaved {
-                    NavigationManager.shared.popToRoot()
-                } else {
-                    //                    PersistenceController.shared.deleteData(entity: .userCardEntity)
-                    dismiss()
-                }
+            Button("확인") {
+                NavigationManager.shared.popToRoot()
             }
+            .disabled(!isSaved)
             .fontWeight(.bold)
             .font(.system(size: 20))
-            .foregroundColor(percent == CGFloat(100) ? Color("AppColor") : .red)
+            .foregroundColor(Color("AppColor"))
             .buttonStyle(.plain)
             .padding(.top, 50)
         }
         .onAppear {
-            if !selectedCards.isEmpty {
-                Task(priority: .background) {
-                    await saveToPersistence(cards: selectedCards)
-                }
-            }
+            viewModel.saveCards()
+        
         }
         .onReceive(timer) { time in
             if percent == CGFloat(100) {
@@ -75,26 +69,13 @@ struct LoadingView: View {
             }
         }
     }
-    
-    func saveToPersistence(cards: [Card]) async {
-        let cardNumbers = cards.map { $0.cardNumber }
-        let predicate = NSPredicate(format: "cardNumber IN %@", cardNumbers)
-        
-        // ✅ 일단 기존에 등록한 카드를 모두 삭제후 재등록하도록 구현
-        PersistenceController.shared.deleteData(entity: .userCardEntity)
-        
-        let cardEntities = PersistenceController.shared.fetchData(entity: .cardEntity, entityType: CardEntity.self, predicate: predicate)
-        PersistenceController.shared.saveSingleData(entityType: UserCardEntity.self) { userCardEntity in
-            cardEntities.forEach { entity in
-                userCardEntity.addToCards(entity)
-            }
-        }
-    }
 }
 
 struct LoadingProgressView: View {
     
     @Binding var percent: CGFloat
+    var startColor: Color
+    var endColor: Color
     
     var body: some View {
         ZStack(alignment: .leading) {
@@ -104,7 +85,7 @@ struct LoadingProgressView: View {
             
             Capsule()
                 .fill(
-                    LinearGradient(gradient: Gradient(colors: [.white, Color("AppColor")]), startPoint: .leading, endPoint: .trailing)
+                    LinearGradient(gradient: Gradient(colors: [startColor, endColor]), startPoint: .leading, endPoint: .trailing)
                 )
                 .frame(width: 300 * percent/100, height: 20)
         }
@@ -113,6 +94,6 @@ struct LoadingProgressView: View {
 
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        LoadingView(selectedCards: [])
+        CardRegisterView(viewModel: CardRegisterViewModel(selectedCards: []))
     }
 }

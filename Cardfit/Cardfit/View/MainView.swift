@@ -13,18 +13,36 @@ struct Main: View {
     @EnvironmentObject var model: MainViewModel
     @Namespace var animation
     @State private var isPresented = false
+    @State private var showAlert = false
     
     var body: some View {
         NavigationStack {
             ZStack {
                 VStack {
-                    Spacer()
                     HStack(alignment: .center){
                         Text("My Cards")
                             .font(.system(size: 40))
                             .fontWeight(.bold)
                             .padding(.leading, 25)
                         Spacer()
+                        
+                        Button {
+                            showAlert = true
+                        } label: {
+                            Image(systemName: "trash.fill")
+                                .resizable()
+                                .foregroundColor(Color("AppColor"))
+                                .frame(width: 40, height: 40)
+                        }
+                        .alert(isPresented: $showAlert) {
+                            Alert(title: Text("주의"),
+                                  message: Text("등록하신 카드를 삭제하시겠습니까?"),
+                                  primaryButton: .destructive(Text("삭제"), action: {
+                                Repository.shared.deleteAll()
+                                model.cards.removeAll()
+                            }),
+                                  secondaryButton: .cancel(Text("취소")))
+                        }
                         
                         Button {
                             isPresented = true
@@ -39,13 +57,13 @@ struct Main: View {
                             CardSearchView()
                         }
                     }
+                    .padding(.top, 30)
                     .onReceive(NavigationManager.shared.isActivePublisher) { isPresented in
                         self.isPresented = isPresented
                     }
                     
                     if !model.cards.isEmpty {
                         ZStack{
-                            
                             ForEach(model.cards.indices.reversed(), id:\.self){index in
                                 HStack{
                                     CardView(card: model.cards[index], color: getColor(index: index), animation: animation, image: model.image[index])
@@ -98,21 +116,7 @@ struct Main: View {
                 }
             }
             .onAppear {
-                Task {
-                    let result = await model.fetchUserCardList()
-                    switch result {
-                    case .success(let cards):
-                        print(cards)
-                        self.model.cards = cards
-                        for i in model.cards{
-                            if let imageData = i.imageData, let uiImage = UIImage(data: imageData) {
-                                model.image.append(Image(uiImage: uiImage))
-                            }
-                        }
-                    case .failure(let failure):
-                        print(failure)
-                    }
-                }
+                model.fetchUserCardList()
             }
         }
         .accentColor(Color("AppColor"))

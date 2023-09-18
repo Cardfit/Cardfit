@@ -15,22 +15,22 @@ struct DetailView: View {
         ZStack {
             VStack{
                 
-                Text(model.selectedCard.company ?? "")
+                Text(model.selectedCard?.company ?? "")
                     .font(.caption)
-                    .foregroundColor(Color.white.opacity(0.85))
+                    .foregroundColor(Color(uiColor: .systemBackground).opacity(0.85))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                     .padding(.top, 10)
-                    .matchedGeometryEffect(id: "Name-\(model.selectedCard.cardName)", in: animation)
+                    .matchedGeometryEffect(id: "Name-\(model.selectedCard?.cardName)", in: animation)
             
                 HStack{
-                    Text(model.selectedCard.cardName ?? "")
+                    Text(model.selectedCard?.cardName ?? "")
                         .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(.white)
+                        .foregroundColor(Color(uiColor: .systemBackground))
                         .frame(width: 250, alignment: .leading)
                         .padding()
-                        .matchedGeometryEffect(id: "Title-\(model.selectedCard.cardName)", in: animation)
+                        .matchedGeometryEffect(id: "Title-\(model.selectedCard?.cardName)", in: animation)
                     
                     Spacer(minLength: 0)
                 }
@@ -39,7 +39,7 @@ struct DetailView: View {
                 
                 if model.showContent{
                     ScrollView(showsIndicators: false){
-                        if let imageData = model.selectedCard.imageData, let uiImage = UIImage(data: imageData) {
+                        if let imageData = model.selectedCard?.imageData, let uiImage = UIImage(data: imageData) {
                             Image(uiImage: uiImage)
                                 .resizable()
                                 .scaledToFit()
@@ -60,9 +60,9 @@ struct DetailView: View {
                                     .fontWeight(.bold)
                                     .foregroundColor(.gray)
                                     
-                                Text(model.selectedCard.domesticAnnualFee ?? "0")
+                                Text(model.selectedCard?.domesticAnnualFee ?? "0")
                                     .fontWeight(.bold)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(Color(uiColor: .systemBackground))
                             }
                             
                             HStack{
@@ -70,9 +70,9 @@ struct DetailView: View {
                                     .fontWeight(.bold)
                                     .foregroundColor(.gray)
                                 
-                                Text("\(model.selectedCard.requiredPreviousMonthUsage ?? 0)")
+                                Text("\(model.selectedCard?.requiredPreviousMonthUsage ?? 0)")
                                     .fontWeight(.bold)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(Color(uiColor: .systemBackground))
                             }
                         }
                         .frame(width: 350)
@@ -80,7 +80,7 @@ struct DetailView: View {
                         
                         // Benefit
                         VStack{
-                            ForEach(model.selectedCard.benefit ?? [], id:\.self) { data in
+                            ForEach(model.selectedCard?.benefit ?? [], id:\.self) { data in
                                 BenefitView(category: data.first?.key ?? "28", benefit: data.values.first?["description"] ?? "")
                                     .padding([.leading, .trailing])
                             }
@@ -95,7 +95,7 @@ struct DetailView: View {
             .background(
                 model.selectedColor
                     .cornerRadius(25)
-                    .matchedGeometryEffect(id: "bgColor-\(model.selectedCard.id)", in: animation)
+                    .matchedGeometryEffect(id: "bgColor-\(model.selectedCard?.id)", in: animation)
                     .ignoresSafeArea(.all, edges: .bottom)
             )
             
@@ -108,7 +108,7 @@ struct DetailView: View {
                             .font(.system(size: 20, weight: .semibold))
                             .foregroundColor(.blue)
                             .padding()
-                            .background(Color.white.opacity(0.6))
+                            .background(Color(uiColor: .systemBackground).opacity(0.6))
                             .clipShape(Circle())
                             .padding(5)
                             .background(Color.white.opacity(0.7))

@@ -11,49 +11,54 @@ class CardListViewModel: ObservableObject {
     @Published var cardList: [Card] = []
     @Published var selectedCards: [Card] = []
     
-    var company: CompanyList
+    private var lastCardNumber: String? {
+        return cardList.last?.cardNumber
+    }
+    
+    private var cardNumberOnServer: Int = 0
+    private var isFirstLoading = true
+    
+    let company: CompanyList
     
     init(company: CompanyList) {
         self.company = company
     }
     
-    func fetchCardList() async -> Result<[Card], Error> {
+    func getCardCountOnServer() async {
+        self.cardNumberOnServer = await FirebaseManager.shared.getTotalCountOfCard(of: company)
+    }
+    
+    @MainActor
+    func fetchCardList(onSuccess: () -> Void, complete: () -> Void) async {
+        
         do {
-            
-            let entities = PersistenceController.shared.fetchData(entity: .cardEntity, entityType: CardEntity.self, predicate: NSPredicate(format: "company == %@", company.rawValue))
-            
-            if entities.isEmpty {
-                let cardList = try await FirebaseManager.shared.fetchCardInfo(of: company)
-                
-                PersistenceController.shared.saveMulitpleData(datas: cardList, entityType: CardEntity.self) { (data, entity) in
-                    let benefit = try? JSONEncoder().encode(data.benefit)
-                    
-                    entity.setValue(benefit, forKey: "benefit")
-                    entity.setValue(data.cardName, forKey: "cardName")
-                    entity.setValue(data.cardNumber, forKey: "cardNumber")
-                    entity.setValue(data.company, forKey: "company")
-                    entity.setValue(data.mainBenefit, forKey: "mainBenefit")
-                    entity.setValue(data.imageData, forKey: "imageData")
-                    entity.setValue(data.domesticAnnualFee, forKey: "domesticAnnualFee")
-                    entity.setValue(data.requiredPreviousMonthUsage, forKey: "requiredPreviousMonthUsage")
+            let cards = Repository.shared.fetchFilteredCards { $0.company == company.rawValue }
+            let sortedCards = cards.sorted(by: {$0.cardNumber > $1.cardNumber})
+            if sortedCards.count != cardNumberOnServer {
+                var fetchedCards = try await FirebaseManager.shared.fetchCardInfo(of: company, after: lastCardNumber)
+                if !isFirstLoading {
+                    fetchedCards.removeFirst()
+                } else {
+                    isFirstLoading = false
                 }
                 
-                return .success(cardList)
+                Repository.shared.saveCards(fetchedCards)
+                cardList.append(contentsOf: fetchedCards)
+                onSuccess()
+            } else if lastCardNumber == sortedCards.last?.cardNumber {
+                onSuccess()
+                complete()
+                return
             } else {
-                let cards = try entities.map { cardEntity in
-                    let benefit = try JSONDecoder().decode(Benefits.self, from: cardEntity.benefit ?? Data())
-                    let card = Card(id: Int(cardEntity.cardNumber!), cardName: cardEntity.cardName, cardNumber: cardEntity.cardNumber ?? String(), cardImageURL: cardEntity.cardImageURL, domesticAnnualFee: cardEntity.domesticAnnualFee, requiredPreviousMonthUsage: cardEntity.requiredPreviousMonthUsage, mainBenefit: cardEntity.mainBenefit, company: cardEntity.company, benefit: benefit)
-                   
-                    return card
-                }
-                return .success(cards)
+                cardList.append(contentsOf: sortedCards)
+                onSuccess()
             }
         } catch {
-            return .failure(error)
+            print(error)
         }
     }
     
     func removeCardEntity() {
-        PersistenceController.shared.deleteData(entity: .cardEntity)
+        Repository.shared.deleteFilteredCards { $0.company == company.rawValue }
     }
 }
