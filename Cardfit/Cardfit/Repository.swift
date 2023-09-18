@@ -22,19 +22,24 @@ final class Repository {
     
     // MARK: Get
     
-    func fetchUserCards() -> Result<[Card], CardfitError> {
+    func fetchUserCards() async -> [Card] {
         let result = realm.objects(UserCardEntity.self).flatMap { $0.cards.map { $0.toDomain() } }
-        return .success(Array(result))
+        return Array(result)
     }
     
-    func fetchCards() -> Result<[Card], CardfitError> {
+    func fetchUserCards() -> [Card] {
+        let result = realm.objects(UserCardEntity.self).flatMap { $0.cards.map { $0.toDomain() } }
+        return Array(result)
+    }
+    
+    func fetchCards() -> [Card]{
         let result = realm.objects(CardEntity.self).map { $0.toDomain() }
-        return .success(Array(result))
+        return Array(result)
     }
     
-    func fetchFilteredCards(isIncluded: (CardEntity) -> Bool) -> Result<[Card], CardfitError> {
+    func fetchFilteredCards(isIncluded: (CardEntity) -> Bool) -> [Card] {
         let result = realm.objects(CardEntity.self).filter(isIncluded).sorted(by: { $0.cardNumber < $1.cardNumber }).map { $0.toDomain() }
-        return .success(Array(result))
+        return Array(result)
     }
     
     // MARK: Save

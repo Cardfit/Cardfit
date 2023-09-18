@@ -26,7 +26,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>2</integer>
+			<integer>12</integer>
 			<key>INIntentName</key>
 			<string>Card</string>
 			<key>INIntentParameters</key>
@@ -34,10 +34,8 @@
 				<dict>
 					<key>INIntentParameterConfigurable</key>
 					<true/>
-					<key>INIntentParameterCustomDisambiguation</key>
-					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>카드명</string>
+					<string>선택된 카드</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>NmejEc</string>
 					<key>INIntentParameterDisplayPriority</key>
@@ -45,15 +43,13 @@
 					<key>INIntentParameterName</key>
 					<string>parameter</string>
 					<key>INIntentParameterObjectType</key>
-					<string>Type</string>
+					<string>UserCard</string>
 					<key>INIntentParameterObjectTypeNamespace</key>
 					<string>fEJisO</string>
 					<key>INIntentParameterSupportsDynamicEnumeration</key>
 					<true/>
-					<key>INIntentParameterSupportsResolution</key>
-					<true/>
 					<key>INIntentParameterTag</key>
-					<integer>2</integer>
+					<integer>12</integer>
 					<key>INIntentParameterType</key>
 					<string>Object</string>
 				</dict>
@@ -73,6 +69,8 @@
 						<string>failure</string>
 					</dict>
 				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>1</integer>
 			</dict>
 			<key>INIntentTitle</key>
 			<string>Card</string>
@@ -88,13 +86,13 @@
 	<array>
 		<dict>
 			<key>INTypeDisplayName</key>
-			<string>Card</string>
+			<string>User Card</string>
 			<key>INTypeDisplayNameID</key>
-			<string>6ACtFK</string>
+			<string>Xs2dQf</string>
 			<key>INTypeLastPropertyTag</key>
-			<integer>100</integer>
+			<integer>101</integer>
 			<key>INTypeName</key>
-			<string>Type</string>
+			<string>UserCard</string>
 			<key>INTypeProperties</key>
 			<array>
 				<dict>
@@ -151,7 +149,7 @@
 					<key>INTypePropertyDisplayName</key>
 					<string>Card Name</string>
 					<key>INTypePropertyDisplayNameID</key>
-					<string>dnjlwN</string>
+					<string>ckMWiD</string>
 					<key>INTypePropertyDisplayPriority</key>
 					<integer>5</integer>
 					<key>INTypePropertyName</key>

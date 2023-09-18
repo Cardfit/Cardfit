@@ -32,32 +32,26 @@ class CardListViewModel: ObservableObject {
     func fetchCardList(onSuccess: () -> Void, complete: () -> Void) async {
         
         do {
-            let result = Repository.shared.fetchFilteredCards { $0.company == company.rawValue }
-            
-            switch result {
-            case .success(let cards):
-                let sortedCards = cards.sorted(by: {$0.cardNumber > $1.cardNumber})
-                if sortedCards.count != cardNumberOnServer {
-                    var fetchedCards = try await FirebaseManager.shared.fetchCardInfo(of: company, after: lastCardNumber)
-                    if !isFirstLoading {
-                        fetchedCards.removeFirst()
-                    } else {
-                        isFirstLoading = false
-                    }
-                    
-                    Repository.shared.saveCards(fetchedCards)
-                    cardList.append(contentsOf: fetchedCards)
-                    onSuccess()
-                } else if lastCardNumber == sortedCards.last?.cardNumber {
-                    onSuccess()
-                    complete()
-                    return
+            let cards = Repository.shared.fetchFilteredCards { $0.company == company.rawValue }
+            let sortedCards = cards.sorted(by: {$0.cardNumber > $1.cardNumber})
+            if sortedCards.count != cardNumberOnServer {
+                var fetchedCards = try await FirebaseManager.shared.fetchCardInfo(of: company, after: lastCardNumber)
+                if !isFirstLoading {
+                    fetchedCards.removeFirst()
                 } else {
-                    cardList.append(contentsOf: sortedCards)
-                    onSuccess()
+                    isFirstLoading = false
                 }
-            case .failure(let error):
-                print(error)
+                
+                Repository.shared.saveCards(fetchedCards)
+                cardList.append(contentsOf: fetchedCards)
+                onSuccess()
+            } else if lastCardNumber == sortedCards.last?.cardNumber {
+                onSuccess()
+                complete()
+                return
+            } else {
+                cardList.append(contentsOf: sortedCards)
+                onSuccess()
             }
         } catch {
             print(error)

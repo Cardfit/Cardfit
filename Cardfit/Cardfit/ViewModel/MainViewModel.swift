@@ -38,12 +38,7 @@ class MainViewModel: ObservableObject {
     
     @MainActor
     func fetchUserCardList() {
-        let result = Repository.shared.fetchUserCards()
-        switch result {
-        case .success(let cards):
-            self.cards = cards
-        case .failure(let error):
-            print(error)
-        }
+        let cards = Repository.shared.fetchUserCards()
+        self.cards = cards
     }
 }

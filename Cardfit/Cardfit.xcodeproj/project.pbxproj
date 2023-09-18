@@ -55,6 +55,14 @@
 		72AE83362A2DF4E900390AF8 /* CardSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE83352A2DF4E900390AF8 /* CardSearchViewModel.swift */; };
 		72AE833A2A30438800390AF8 /* CardRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE83392A30438800390AF8 /* CardRegisterView.swift */; };
 		72AE83442A324E4300390AF8 /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE83432A324E4300390AF8 /* CardListViewModel.swift */; };
+		72C166FC2AB828B100C889C4 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB2B2AB72235008E6C4C /* Card.swift */; };
+		72C166FE2AB8292900C889C4 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 72C166FD2AB8292900C889C4 /* Realm */; };
+		72C167002AB8292F00C889C4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 72C166FF2AB8292F00C889C4 /* RealmSwift */; };
+		72C167012AB8293F00C889C4 /* CardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB1A2AB6F420008E6C4C /* CardEntity.swift */; };
+		72C167022AB8294C00C889C4 /* JSONCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB2D2AB73147008E6C4C /* JSONCoder.swift */; };
+		72C167032AB82A4800C889C4 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB292AB71C92008E6C4C /* Repository.swift */; };
+		72C167042AB82A9400C889C4 /* CardfitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D3EA302A44364C004CA733 /* CardfitError.swift */; };
+		72C167062AB835BA00C889C4 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7205FB5A2AB766FF008E6C4C /* IntentHandler.swift */; };
 		72D3EA312A44364C004CA733 /* CardfitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D3EA302A44364C004CA733 /* CardfitError.swift */; };
 		72D3EA3C2A44756F004CA733 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D3EA3B2A44756F004CA733 /* Category.swift */; };
 		72D3EA5F2A485ABC004CA733 /* CardfitWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721825C12A43087F00D5F282 /* CardfitWidget.swift */; };
@@ -156,6 +164,7 @@
 		72AE83352A2DF4E900390AF8 /* CardSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSearchViewModel.swift; sourceTree = "<group>"; };
 		72AE83392A30438800390AF8 /* CardRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRegisterView.swift; sourceTree = "<group>"; };
 		72AE83432A324E4300390AF8 /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
+		72C167052AB8348900C889C4 /* IntentsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IntentsExtension.entitlements; sourceTree = "<group>"; };
 		72D3EA302A44364C004CA733 /* CardfitError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardfitError.swift; sourceTree = "<group>"; };
 		72D3EA372A443D01004CA733 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		72D3EA3B2A44756F004CA733 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -176,6 +185,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72C167002AB8292F00C889C4 /* RealmSwift in Frameworks */,
+				72C166FE2AB8292900C889C4 /* Realm in Frameworks */,
 				7205FB582AB766FF008E6C4C /* Intents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,6 +242,7 @@
 		7205FB592AB766FF008E6C4C /* IntentsExtension */ = {
 			isa = PBXGroup;
 			children = (
+				72C167052AB8348900C889C4 /* IntentsExtension.entitlements */,
 				7205FB5A2AB766FF008E6C4C /* IntentHandler.swift */,
 				7205FB5C2AB766FF008E6C4C /* Info.plist */,
 			);
@@ -407,6 +419,10 @@
 			dependencies = (
 			);
 			name = IntentsExtension;
+			packageProductDependencies = (
+				72C166FD2AB8292900C889C4 /* Realm */,
+				72C166FF2AB8292F00C889C4 /* RealmSwift */,
+			);
 			productName = IntentsExtension;
 			productReference = 7205FB562AB766FF008E6C4C /* IntentsExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -602,8 +618,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72C167042AB82A9400C889C4 /* CardfitError.swift in Sources */,
 				7205FB632AB7672A008E6C4C /* Card.intentdefinition in Sources */,
+				72C166FC2AB828B100C889C4 /* Card.swift in Sources */,
+				72C167022AB8294C00C889C4 /* JSONCoder.swift in Sources */,
+				72C167012AB8293F00C889C4 /* CardEntity.swift in Sources */,
 				7205FB5B2AB766FF008E6C4C /* IntentHandler.swift in Sources */,
+				72C167032AB82A4800C889C4 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +642,7 @@
 				7205FB652AB76902008E6C4C /* Card.swift in Sources */,
 				7205FB4C2AB7445F008E6C4C /* CardfitError.swift in Sources */,
 				7205FB6B2AB76969008E6C4C /* CardEntity.swift in Sources */,
+				72C167062AB835BA00C889C4 /* IntentHandler.swift in Sources */,
 				721825D52A4312E000D5F282 /* CardImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,6 +727,7 @@
 		7205FB612AB766FF008E6C4C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = IntentsExtension/IntentsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -731,6 +754,7 @@
 		7205FB622AB766FF008E6C4C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = IntentsExtension/IntentsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -1193,6 +1217,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 721E772C2A247DBB001DFBBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		72C166FD2AB8292900C889C4 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7205FB1C2AB6FF7E008E6C4C /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		72C166FF2AB8292F00C889C4 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7205FB1C2AB6FF7E008E6C4C /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
