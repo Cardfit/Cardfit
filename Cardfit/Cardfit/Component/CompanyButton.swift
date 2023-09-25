@@ -20,7 +20,7 @@ struct CompanyButton: View {
                     .padding(.all, 5)
                 Spacer()
                 Text(company.kor)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.black)
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .padding(.top, 5)
@@ -29,7 +29,7 @@ struct CompanyButton: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.white)
             .cornerRadius(20)
-            .shadow(color: Color.black.opacity(0.1), radius: 20, x: 0, y: 0)
+            .shadow(color: .black.opacity(0.1), radius: 20, x: 0, y: 0)
         }
     }
 }

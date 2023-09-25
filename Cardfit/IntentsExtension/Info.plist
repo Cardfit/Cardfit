@@ -12,7 +12,7 @@
 			<array/>
 			<key>IntentsSupported</key>
 			<array>
-				<string>ConfigurationIntent</string>
+				<string>CardIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>

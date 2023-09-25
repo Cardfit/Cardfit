@@ -16,24 +16,25 @@ struct BenefitView: View {
         DisclosureGroup(isExpanded: $details, content: {
             Text(benefitInputEnter(benefit))
                 .padding(.top)
+                .foregroundColor(Color(uiColor: .label))
         },
         label: {
-            Image(category)
+            Image(category).renderingMode(.template)
                 .resizable()
                 .frame(width: 30, height: 30)
+                .foregroundColor(Color(uiColor: .label))
                 .aspectRatio(contentMode: .fill)
             
             Text(Category.match(category))
-        }
-        )
+        })
         .padding()
-        .foregroundColor(.black)
+        .foregroundColor(.init(uiColor: .label))
         .background {
             RoundedRectangle(cornerRadius: 15)
-                .fill(.white)
+                .fill(Color(uiColor: .systemBackground))
         }
         .overlay(RoundedRectangle(cornerRadius: 15)
-                    .stroke(Color.black, lineWidth: 2))
+            .stroke(Color(uiColor: .label), lineWidth: 2))
     }
     
     func benefitInputEnter(_ benefit: String) -> String{

@@ -6,6 +6,7 @@
 	<false/>
 	<key>NSUserActivityTypes</key>
 	<array>
+		<string>CardIntent</string>
 		<string>ConfigurationIntent</string>
 	</array>
 </dict>
