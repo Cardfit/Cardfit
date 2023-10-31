@@ -66,7 +66,7 @@ struct Main: View {
                         ZStack{
                             ForEach(model.cards.indices.reversed(), id:\.self){index in
                                 HStack{
-                                    CardView(card: model.cards[index], color: getColor(index: index), animation: animation, image: model.image[index])
+                                    CardView(card: model.cards[index], color: getColor(index: index), animation: animation)
                                         .frame(width: getCardWidth(index: index), height: getCardHeight(index: index))
                                         .offset(x: getCardOffset(index: index))
                                         .rotationEffect(.init(degrees: getCardRotation(index: index)))

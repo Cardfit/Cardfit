@@ -13,7 +13,6 @@ struct CardView: View {
     @State var card: Card
     var color: Color
     var animation: Namespace.ID
-    var image: Image
     
     var body: some View {
         VStack{
@@ -27,22 +26,17 @@ struct CardView: View {
                 .matchedGeometryEffect(id: "Name-\(card.cardName)", in: animation)
             
             HStack{
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 250, height: 250, alignment: .center)
-                    .padding()
-//                if let imageData = card.imageData, let uiImage = UIImage(data: imageData) {
-//                    Image(uiImage: uiImage)
-//                        .resizable()
-//                        .scaledToFit()
-//                        .frame(width: 250, height: 250, alignment: .center)
-//                        .padding()
-//                } else {
-//                    ProgressView()
-//                        .frame(width: 250, height: 250, alignment: .center)
-//                        .padding()// 이미지 로딩 중일 때 표시될 로딩 표시기
-//                }
+                if let imageData = card.imageData, let uiImage = UIImage(data: imageData) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 250, height: 250, alignment: .center)
+                        .padding()
+                } else {
+                    ProgressView()
+                        .frame(width: 250, height: 250, alignment: .center)
+                        .padding()// 이미지 로딩 중일 때 표시될 로딩 표시기
+                }
 
                 Spacer(minLength: 0)
             }
