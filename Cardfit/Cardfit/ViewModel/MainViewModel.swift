@@ -20,21 +20,8 @@ class MainViewModel: ObservableObject {
     @Published var selectedCard : Card?
     @Published var selectedColor : Color = .clear
     @Published var showContent = false
-    @Published var image: [Image] = []
     
     private var anyCancellable = Set<AnyCancellable>()
-    
-    init() {
-        
-        $cards.sink { cards in
-            cards.forEach { card in
-                if let imageData = card.imageData,
-                   let image = UIImage(data: imageData) {
-                    self.image.append(Image(uiImage: image))
-                }
-            }
-        }.store(in: &anyCancellable)
-    }
     
     @MainActor
     func fetchUserCardList() {
